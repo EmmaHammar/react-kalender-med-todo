@@ -1,6 +1,8 @@
 import Calendar from 'react-calendar';
 // import 'react-calendar/dist/Calendar.css';
 import { useState, setState } from 'react';
+import PrintDayCard from './PrintDayCard';
+
 const moment = require('moment');
 
 function CreateCalendar() {
@@ -9,24 +11,36 @@ function CreateCalendar() {
   console.log("m", m.toString());
 
   const [value, onChange] = useState(new Date());
+  
 
   const [day, setDay] = useState('');
 
   function handleChange(e) {
     setDay(e);
     console.log("e klickad dag:", e);
+
+    //printa DayCard - HUR?
+    // <PrintDayCard />
+  
+    
+    
+    let addTask = prompt( "lägg till ny uppgift för "+ e)
+    console.log("addTask:", addTask);
+    if (addTask !== "") {
+      alert ("Din uppgift är sparad");
+
+      
+    } else {
+      alert("Du måste fylla i en uppgift för att kunna spara.");
+    }
+    
+    
+    
   }
 
-  // function printDeadlines(date, view) { 
-    
-  //   <div> 1 deadline </div>
-      
-  //   } 
 
+  const tileContent = ({ date, view }) => view === 'month' && date.toDateString() === "Thu Aug 12 2021" ? <p>FÅNGAT ETT DATUM!</p> : null;
   
-
-
-
     return (
       <div>
        
@@ -34,14 +48,15 @@ function CreateCalendar() {
           onChange={ onChange } 
           onChange={ handleChange }
           // showWeekNumbers
-          // tileContent={ printDeadlines } 
-          tileContent={ (date, view ) => (
-            <div>
-              <div> 1 deadline </div>
-              <div> Task List </div>
-            </div>
+          tileContent={ tileContent } 
+          // tileContent={ (date, view ) => (
+            
+          //   <div>
+          //     <div> 1 deadline </div>
+          //     <div> Task List </div>
+          //   </div>
               
-            )} 
+          //   )} 
 
           value={ value } 
         />
