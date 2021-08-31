@@ -36,7 +36,10 @@ Biofoga länk till repo samt länk till fungerande demo på Heroku alternativt G
 
 
 
-
+## installed:
+npx create-react-app
+npm i react-calendar
+npm install moment --save 
 
 
 # Getting Started with Create React App
