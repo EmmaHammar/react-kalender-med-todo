@@ -20,13 +20,25 @@ function CreateCalendar() {
     //försöker fånga dag med ISO-string - funkar ej:
     // const tileContent2 = ({ date, view }) => view === 'month' && date.toISOString() === "2021-09-05T12:04:40.333Z" ? <p>Fångat datum2!</p> : null;
 
-
     //catch click on a date square:
     function handleChange(e) {
       console.log("e klickad dag:", e.toISOString());
       // <PrintDayCard />
     };
 
+    const printDayCard = () => {
+        console.log("hej från printDayCard");
+
+        //printa ut - HUR?
+        
+        <div>Hej från printDayCard-funktionen</div>
+        
+    };
+
+    const onClickDay = () => {
+        printDayCard()
+    };
+    
     return (
       <div>
         <Calendar 
@@ -35,6 +47,7 @@ function CreateCalendar() {
           tileContent={ tileContent }
           // tileContent={ tileContent2 }
           onChange={ handleChange }
+          onClickDay={ onClickDay }
         />
         < GetTaskInfo />
         {/* <PrintDayCard /> */}
