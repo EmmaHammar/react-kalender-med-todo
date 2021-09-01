@@ -2,6 +2,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import PrintDayCard from './PrintDayCard';
+import GetTaskInfo from './GetTaskInfo';
+
 
 // const moment = require('moment');
 
@@ -34,7 +36,7 @@ function CreateCalendar() {
           // tileContent={ tileContent2 }
           onChange={ handleChange }
         />
-        
+        < GetTaskInfo />
         {/* <PrintDayCard /> */}
       </div>
     
