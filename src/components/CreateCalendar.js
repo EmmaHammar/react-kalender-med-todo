@@ -2,9 +2,8 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import PrintDayCard from './PrintDayCard';
-import { render } from '@testing-library/react';
 
-const moment = require('moment');
+// const moment = require('moment');
 
 function CreateCalendar() {
 
@@ -19,7 +18,7 @@ function CreateCalendar() {
     //catch click on a date square:
     function handleChange(e) {
       console.log("e klickad dag:", e);
-      //köra PrintDayCard?
+      // <PrintDayCard />
     };
 
     return (
@@ -29,9 +28,7 @@ function CreateCalendar() {
           value={ value } 
           tileContent={ tileContent }
           onChange={ handleChange }
-          // showWeekNumbers
         />
-        
         
         {/* <PrintDayCard /> */}
       </div>
@@ -42,12 +39,6 @@ function CreateCalendar() {
 export default CreateCalendar;
 
     
-   
-    // const [date, setDate] = useState(new Date());
-    // const [title, setTitle] = useState("vabba");
-
- 
-
   
       
   
