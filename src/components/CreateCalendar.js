@@ -1,48 +1,53 @@
 import Calendar from 'react-calendar';
-// import 'react-calendar/dist/Calendar.css';
+import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import PrintDayCard from './PrintDayCard';
+import { render } from '@testing-library/react';
 
 const moment = require('moment');
 
 function CreateCalendar() {
 
-  let m = moment();
-  console.log("m", m.toString());
-
-  const [value, onChange] = useState(new Date());
-  const [date, setDate] = useState(new Date());
-
-  const [title, setTitle] = useState("vabba");
-
-  function handleChange(e) {
-    console.log("e klickad dag:", e);
-
-    //köra PrintDayCard?
-  };
-
-  const tileContent = ({ date, view }) => view === 'month' && date.toDateString() === "Thu Aug 12 2021" ? <p>FÅNGAT ETT DATUM!</p> : null;
+    // let m = moment();
+    // console.log("m", m.toString());
     
-  
+    const [value, onChange] = useState(new Date());
+
+    const tileContent = ({ date, view }) => view === 'month' && date.getDate() === 8 ? <p>Fångat datum!</p> : null;
+
     return (
       <div>
-       
         <Calendar 
           onChange={ onChange } 
-          onChange={ handleChange }
-          // showWeekNumbers
-          tileContent={ tileContent } 
           value={ value } 
+          tileContent={ tileContent }
+
+          // onChange={ handleChange }
+          // showWeekNumbers
         />
         
         
         {/* <PrintDayCard /> */}
       </div>
+    
     );
-  }
-  
-  export default CreateCalendar;
+};
 
+export default CreateCalendar;
+
+    
+   
+    // const [date, setDate] = useState(new Date());
+    // const [title, setTitle] = useState("vabba");
+
+    // function handleChange(e) {
+    //   console.log("e klickad dag:", e);
+    //   //köra PrintDayCard?
+    // };
+
+  
+      
+  
 
   //kom ihåg:
     // const [time, setTime] = useState(new Date());
