@@ -13,7 +13,14 @@ function CreateCalendar() {
     
     const [value, onChange] = useState(new Date());
 
+    //catch a date in calendar and print text:
     const tileContent = ({ date, view }) => view === 'month' && date.getDate() === 8 ? <p>Fångat datum!</p> : null;
+
+    //catch click on a date square:
+    function handleChange(e) {
+      console.log("e klickad dag:", e);
+      //köra PrintDayCard?
+    };
 
     return (
       <div>
@@ -21,8 +28,7 @@ function CreateCalendar() {
           onChange={ onChange } 
           value={ value } 
           tileContent={ tileContent }
-
-          // onChange={ handleChange }
+          onChange={ handleChange }
           // showWeekNumbers
         />
         
@@ -40,10 +46,7 @@ export default CreateCalendar;
     // const [date, setDate] = useState(new Date());
     // const [title, setTitle] = useState("vabba");
 
-    // function handleChange(e) {
-    //   console.log("e klickad dag:", e);
-    //   //köra PrintDayCard?
-    // };
+ 
 
   
       
