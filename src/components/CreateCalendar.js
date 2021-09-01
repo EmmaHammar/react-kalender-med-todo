@@ -15,9 +15,13 @@ function CreateCalendar() {
     //catch a date in calendar and print text:
     const tileContent = ({ date, view }) => view === 'month' && date.getDate() === 8 ? <p>Fångat datum!</p> : null;
 
+    //försöker fånga dag med ISO-string - funkar ej:
+    // const tileContent2 = ({ date, view }) => view === 'month' && date.toISOString() === "2021-09-05T12:04:40.333Z" ? <p>Fångat datum2!</p> : null;
+
+
     //catch click on a date square:
     function handleChange(e) {
-      console.log("e klickad dag:", e);
+      console.log("e klickad dag:", e.toISOString());
       // <PrintDayCard />
     };
 
@@ -27,6 +31,7 @@ function CreateCalendar() {
           onChange={ onChange } 
           value={ value } 
           tileContent={ tileContent }
+          // tileContent={ tileContent2 }
           onChange={ handleChange }
         />
         
