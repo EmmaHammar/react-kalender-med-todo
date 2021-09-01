@@ -27,7 +27,12 @@ function CreateCalendar() {
     };
 
     const printDayCard = () => {
+        console.log("hej från printDayCard");
+
+        //printa ut - HUR?
+        
         <div>Hej från printDayCard-funktionen</div>
+        
     };
 
     const onClickDay = () => {
