@@ -11,57 +11,18 @@ function CreateCalendar() {
   console.log("m", m.toString());
 
   const [value, onChange] = useState(new Date());
+  const [date, setDate] = useState(new Date());
+
   const [title, setTitle] = useState("vabba");
 
-
   function handleChange(e) {
-    // console.log("e klickad dag:", e);
-    printDayCard(e); //vill lägga över funktionen till en komponent, varför funkar det ej att skriva <PrintDayCard />?
+    console.log("e klickad dag:", e);
+
+    //köra PrintDayCard?
   };
 
   const tileContent = ({ date, view }) => view === 'month' && date.toDateString() === "Thu Aug 12 2021" ? <p>FÅNGAT ETT DATUM!</p> : null;
-  
-  const printDayCard = (e) => {
-    let dayCardBody = document.getElementById("dayCardBody");
-
-  const onSubmit = (evt) => {
-    evt.preventDefault();
-    console.log("submit form");
-    //ändra state
-  }
-    //byta ut input till form med onSubmit:
-    dayCardBody.innerHTML = `
-      <div id="DayCardMain">
-        <div id="AddTaskCardContainer">
-          <h3>Lägg till ny uppgift för: ${e}</h3>
-          <form onSubmit=${onSubmit}>
-            <input type="text" value=${title} onChange=${e => setTitle(e.target.value)} placeholder="Skriv din uppgift"></input>
-            <button type="submit">Spara</button>
-          </form>
-          
-          <h4>Sätt deadline</h4>
-          <p>finns detta i react-calendar?</p>
-          
-        </div>
-
-        <div id="DayListContainer">
-          <h3>Dagens lista</h3>
-          <ul>
-            <li>
-              <input type="checkbox">06:00 Vakna</input>
-            </li>
-            <li>
-              <input type="checkbox">07:30 Lämna barn</input>
-            </li>
-            <li>
-              <input type="checkbox">09:15 Möte</input>
-            </li>
-          </ul>
-        </div>
-      </div>
-    `;
-        
-  };
+    
   
     return (
       <div>
@@ -74,6 +35,8 @@ function CreateCalendar() {
           value={ value } 
         />
         
+        
+        {/* <PrintDayCard /> */}
       </div>
     );
   }
@@ -101,3 +64,36 @@ function CreateCalendar() {
   // }, []);
   //laddas varje gång sidan laddas + klick (för att day omrenderas = då körs useEffect? Vill sen ändra så att useEffect endast körs vid klick)
   //dependency-array, lämnas tom = bara köras onMount.  
+
+
+
+  // dayCardBody.innerHTML = `
+  //     <div id="DayCardMain">
+  //       <div id="AddTaskCardContainer">
+  //         <h3>Lägg till ny uppgift för: ${e}</h3>
+  //         <form onSubmit=${onSubmit}>
+  //           <input type="text" value=${title} onChange=${e => setTitle(e.target.value)} placeholder="Skriv din uppgift"></input>
+  //           <button type="submit">Spara</button>
+  //         </form>
+          
+  //         <h4>Sätt deadline</h4>
+  //         <p>finns detta i react-calendar?</p>
+          
+  //       </div>
+
+  //       <div id="DayListContainer">
+  //         <h3>Dagens lista</h3>
+  //         <ul>
+  //           <li>
+  //             <input type="checkbox">06:00 Vakna</input>
+  //           </li>
+  //           <li>
+  //             <input type="checkbox">07:30 Lämna barn</input>
+  //           </li>
+  //           <li>
+  //             <input type="checkbox">09:15 Möte</input>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //     </div>
+  //   `;
