@@ -11,6 +11,8 @@ function CreateCalendar() {
   console.log("m", m.toString());
 
   const [value, onChange] = useState(new Date());
+  const [title, setTitle] = useState("vabba");
+
 
   function handleChange(e) {
     // console.log("e klickad dag:", e);
@@ -22,15 +24,24 @@ function CreateCalendar() {
   const printDayCard = (e) => {
     let dayCardBody = document.getElementById("dayCardBody");
 
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    console.log("submit form");
+    //ändra state
+  }
     //byta ut input till form med onSubmit:
     dayCardBody.innerHTML = `
       <div id="DayCardMain">
         <div id="AddTaskCardContainer">
           <h3>Lägg till ny uppgift för: ${e}</h3>
-          <input placeholder="Skriv din uppgift"></input>
+          <form onSubmit=${onSubmit}>
+            <input type="text" value=${title} onChange=${e => setTitle(e.target.value)} placeholder="Skriv din uppgift"></input>
+            <button type="submit">Spara</button>
+          </form>
+          
           <h4>Sätt deadline</h4>
           <p>finns detta i react-calendar?</p>
-          <button>Spara</button>
+          
         </div>
 
         <div id="DayListContainer">
