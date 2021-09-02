@@ -8,9 +8,13 @@ function PrintMasterListCard(props) {
   .then(data => data.json())
   .then(taskData => {
 
-    for (let task in taskData) {
-      console.log("taskDataArray:", taskData[task]);
-    }
+    // for (let task in taskData) {
+    //   console.log("taskDataArray:", taskData[task]);
+    // }
+
+    // setTasks(taskData)
+    // console.log("tasks:", tasks);
+
 
     //printa taskData - HUR?
     // const saveAllTasks = (taskData) => {
