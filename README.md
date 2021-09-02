@@ -43,6 +43,17 @@ npm install moment --save
 
 JSON-file
 
+
+==
+Backend-repot:
+npx express-generator --no-view
+npm install
+starta servern: nodemon start (npm start)
+Surfa in på localhost/3010
+npm install mongodb
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
