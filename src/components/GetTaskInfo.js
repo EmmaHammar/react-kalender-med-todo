@@ -15,21 +15,11 @@ function GetTaskInfo() {
   const onSubmit = (evt) => {
   //  console.log("hej från onsubmit", evt);
   console.log("uppdaterat statet för title fr onSubmit", title);
-  console.log("evt", evt);
+  // console.log("evt", evt);
 
-  //title ska sparas i db
-  //hämta
-  // fetch(`http://localhost:3010/task/add`)
-  // .then(data => data.json())
-  // .then(taskData => {
-
-  //   for (let task in taskData) {
-  //     console.log("taskDataArray GetTaskInfo:", taskData[task]);
-  //   }
-  // });
   let newTask = { 
-    date: "2021-11-17T08:00:00.000+00:00",
-    title: "träna",
+    date: "2021-11-17T09:00:00.000+00:00",
+    title: title,
     isFinish: false
   };
 
