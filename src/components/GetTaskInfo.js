@@ -4,8 +4,14 @@ import { useState, useEffect } from 'react';
 
 function GetTaskInfo() {
 
+  let [addedNewTask, setAddedNewTask] = useState(false);
+
   // const [newTask, onChange] = useState('');
   const [title, setTitle] = useState('');
+
+  useEffect( () => {
+    console.log("useeffect");
+  }, [addedNewTask]);
     
   const handleChange = (evt) => {
   // console.log("evt", evt.target.value);
@@ -33,24 +39,20 @@ function GetTaskInfo() {
   .then(data => data.json())
   .then(res => {
       console.log("res from post fetch:", res);
+      setAddedNewTask(true);
   });
-
-
-  //insertOne
-  // fetch('https://localhost3000/newTask')
-  // .then(res => res.json())
-  // .then(data => {
-  //   console.log("data fr fetch:", data);
-  // })
 
     evt.preventDefault();
   }
 
   return (
-    <form onSubmit={ onSubmit }>
-        <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
-        <button type="submit" id="saveBtn">Spara</button>
-    </form>
+    <div>
+      <form onSubmit={ onSubmit }>
+          <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
+          <button type="submit" id="saveBtn">Spara</button>
+      </form>
+      {addedNewTask ? "Du har lagt till en ny uppgift!" : ""}
+    </div>
   );
 }
   
