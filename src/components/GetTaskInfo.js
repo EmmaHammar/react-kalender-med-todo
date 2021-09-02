@@ -15,9 +15,37 @@ function GetTaskInfo() {
   const onSubmit = (evt) => {
   //  console.log("hej från onsubmit", evt);
   console.log("uppdaterat statet för title fr onSubmit", title);
+  console.log("evt", evt);
 
   //title ska sparas i db
   //hämta
+  // fetch(`http://localhost:3010/task/add`)
+  // .then(data => data.json())
+  // .then(taskData => {
+
+  //   for (let task in taskData) {
+  //     console.log("taskDataArray GetTaskInfo:", taskData[task]);
+  //   }
+  // });
+  let newTask = { 
+    date: "2021-11-17T08:00:00.000+00:00",
+    title: "träna",
+    isFinish: false
+  };
+
+  fetch(`http://localhost:3010/task/add`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+    body: JSON.stringify(newTask)
+  })
+  .then(data => data.json())
+  .then(res => {
+      console.log("res from post fetch:", res);
+  });
+
+
   //insertOne
   // fetch('https://localhost3000/newTask')
   // .then(res => res.json())
