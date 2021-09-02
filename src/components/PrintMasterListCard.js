@@ -1,27 +1,37 @@
-function PrintMasterListCard() {
+import { useState, useEffect } from 'react';
+
+function PrintMasterListCard(props) {
+
+  const [tasks, setTasks] = useState('');
+  
+  
 
   fetch(`http://localhost:3010/task`)
   .then(data => data.json())
   .then(taskData => {
-    console.log("taskData", taskData);
-    // console.log("data", data);
 
+    for (let task in taskData) {
+      console.log("taskDataArray:", taskData[task]);
+    }
 
-    // fetch(`https://api.mymemory.translated.net/get?q=${textForTranslation}!&langpair=${this.props.selectFrom}|${this.props.selectTo}`) 
-    // .then( res => res.json() )
-    // .then( translation => {
-    //     console.log("translated text:", translation.responseData.translatedText);
-
-    //     //Skicka översatta texten som prop till app.js, via funktionen som kallas på i Translate??
-    //     //vår callback är getNewText - skicka tillbaka nya statet till App.js (som sen ska spara det)
-    //     this.props.getNewText( translation.responseData.translatedText )
+    //printa taskData - HUR?
+    // const saveAllTasks = (taskData) => {
+    //   //spara statet getTasks
+    //   setTasks(taskData);    
+    // }
     
-  })
+    //min cb är getAllTasks -> skicka tillbaka nya statet taskData till App.js som ska spara det. Blir oändligt med get-anrop
+    // props.getAllTasks(taskData)
+    
+  });
+
+
 
 
   return (
     <div id="masterListCard">
       <h2>Master Task List</h2>
+      {/* { tasks } */}
     </div>
   );
 
