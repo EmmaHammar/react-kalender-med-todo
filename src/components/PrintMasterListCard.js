@@ -4,8 +4,6 @@ function PrintMasterListCard(props) {
 
   const [tasks, setTasks] = useState('');
   
-  
-
   fetch(`http://localhost:3010/task`)
   .then(data => data.json())
   .then(taskData => {
