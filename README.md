@@ -37,6 +37,7 @@ Biofoga länk till repo samt länk till fungerande demo på Heroku alternativt G
 
 
 ## installed:
+"Frontend"-repot:
 npx create-react-app
 npm i react-calendar
 npm install moment --save 
@@ -44,15 +45,17 @@ npm install moment --save
 JSON-file
 
 
-==
+===========
 Backend-repot:
+
 npx express-generator --no-view
 npm install
 starta servern: nodemon start (npm start)
 Surfa in på localhost/3010
 npm install mongodb
 
-
+npm install cors
+===========
 
 # Getting Started with Create React App
 
