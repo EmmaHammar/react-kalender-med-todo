@@ -2,7 +2,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useState, useEffect } from 'react';
 import PrintDayCard from './PrintDayCard';
-import GetTaskInfo from './GetTaskInfo';
+// import GetTaskInfo from './PrintDayCard';
 
 
 // const moment = require('moment');
@@ -13,6 +13,11 @@ function CreateCalendar() {
     // console.log("m", m.toString());
     
     const [value, onChange] = useState(new Date());
+    const [clickedDay, setClickedDay] = useState(false);
+
+    useEffect( () => {
+      console.log("useeffect!");
+    }, [clickedDay]);
 
     //catch a date in calendar and print text:
     const tileContent = ({ date, view }) => view === 'month' && date.getDate() === 8 ? <p>Fångat datum!</p> : null;
@@ -23,6 +28,7 @@ function CreateCalendar() {
     //catch click on a date square:
     function handleChange(e) {
       console.log("e klickad dag:", e.toISOString());
+      setClickedDay(true);
       // <PrintDayCard />
     };
 
@@ -49,7 +55,8 @@ function CreateCalendar() {
           onChange={ handleChange }
           onClickDay={ onClickDay }
         />
-        < GetTaskInfo />
+        {/* < GetTaskInfo /> */}
+        {clickedDay ? <PrintDayCard /> : ""}
         {/* <PrintDayCard /> */}
       </div>
     
