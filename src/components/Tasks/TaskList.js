@@ -5,9 +5,6 @@ import TaskCard from "./TaskCard";
 const taskArr = require('../../data/taskData.json');
 console.log("taskArr", taskArr);
 
-
-
-
 function TaskList() {
 
     // const printTasklist = Object.keys(taskArr).map(key => {
@@ -29,9 +26,16 @@ function TaskList() {
             {
                 taskArr.map( (task) => {
                     return (
-                        <li>
-                            {task.title}
-                        </li>
+                        <TaskCard 
+                            isFinish={ false }
+                            title={ task.title }
+                            deadline={ task.deadline }
+
+
+                        />
+                        // <li>
+                        //     {task.title}
+                        // </li>
                     )
                 })
 
