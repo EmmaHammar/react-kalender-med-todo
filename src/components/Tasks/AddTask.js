@@ -54,7 +54,7 @@ function AddTask(selectedDate) {
 
   return (
     <div>
-      <h3>Lägg till ny uppgift {selectedDate.selectedDate}</h3>
+      <h3>Lägg till ny uppgift med deadline: {selectedDate.selectedDate}</h3>
       <form onSubmit={ onSubmit }>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           {/* <input type="date" value={ date } onChange={ handleChangeDate }></input> */}
