@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import './MyCalendar.css';
+import dayStyles from './MyCalendarStyles';
+
 const moment = require('moment');
 
 function MyCalendar() {
@@ -34,31 +36,46 @@ function MyCalendar() {
         };
         //update the state with the matrix when while-loop is finish:
         setCalendar(calendarArr)
-
     }, [value]);
     //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
     // [] => useEffect sker bara 1 gång.
 
+    function currMonthName() {
+        return value.format("MMMM")
+    }
+
+    function currYear() {
+        return value.format("YYYY")
+    }
+
+
     //change index to id from object later
     return(
         <div className="calendar">
-            <h3>Hej fr MyCalendar</h3>
-            
-            { 
-                calendar.map((week, index) => 
-                    <div key={index}>
-                        {
-                            week.map((day, index) => 
-                                <div className="day" key={index} onClick={ () => setValue(day) }>
-                                    <div className={value.isSame(day, "day") ? "selected-day" : ""}>
-                                        {day.format("D")}
-                                    </div>
-                                    
-                                </div>)
-                        }
-                    </div>)
-            }
 
+            <div className="calendar-header">
+                <h3>Hej fr MyCalendar</h3>
+                <div className="prev">{String.fromCharCode(171)}</div>
+                <div className="curr">{currYear()} {currMonthName()}</div>
+                <div className="next">{String.fromCharCode(187)}</div>
+            </div>
+            
+            <div className="calendar-body">
+                { 
+                    calendar.map((week, index) => 
+                        <div key={index}>
+                            {
+                                week.map((day, index) => 
+                                    <div className="day" key={index} onClick={ () => setValue(day) }>
+                                        <div className={ dayStyles(day, value) }>
+                                            {day.format("D")}
+                                        </div>
+                                        
+                                    </div>)
+                            }
+                        </div>)
+                }
+            </div>
 
         </div>
     )

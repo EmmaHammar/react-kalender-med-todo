@@ -16,6 +16,24 @@
 
 }
 
+.before {
+    color: grey;
+}
 .selected-day {
     background-color: salmon;
+}
+.today {
+    background-color: wheat;
+}
+
+.prev {
+
+}
+
+.curr {
+    
+}
+
+.next {
+    
 }
