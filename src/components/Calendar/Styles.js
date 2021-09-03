@@ -14,6 +14,8 @@ function isToday(day) {
 export default function dayStyles(day, value) {
     if (beforeToday(day)) return "before"
     if (isSelected(day, value)) return "selected-day"
+    if (isSelected(day, value)) return console.log("date clicked", day);
+
     if (isToday(day)) return "today"
     return ""
 

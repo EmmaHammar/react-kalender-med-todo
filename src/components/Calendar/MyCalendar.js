@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
+// import AddTask from './components/Tasks/AddTask';
+
 
 const moment = require('moment');
 
@@ -10,7 +12,8 @@ function MyCalendar() {
     //sätta värdena som default i state:
     //1) getter, 2) setter
     const [calendar, setCalendar] = useState([]);
-    let [value, setValue] = useState(moment());
+    const [value, setValue] = useState(moment());
+    const [onClickDay, setOnClickDay] = useState(false)
 
     //startOf("month").startOf("week") -> så starday för en månad i kalendervyn blir 08/29 o ej 1/9. Gör samma för endday av en månad 
     //.weekday(1) -> så veckovyn börjar på måndag
@@ -46,6 +49,18 @@ function MyCalendar() {
     //konsollogga datumen
     //öppna taskList
 
+    // const clickedDay = (evt, day ) => {
+    //     console.log("clickedDay", evt);
+
+    //     const notLoop = () => setValue(day)
+       
+ 
+    // }
+    function clickedDate(day) {
+        console.log("clickedDate", day._d);
+    }
+
+
     //change index to id from object later
     return(
         <div className="calendar">
@@ -58,16 +73,26 @@ function MyCalendar() {
                         <div key={index}>
                             {
                                 week.map((day, index) => 
-                                    <div className="day" key={index} onClick={ () => setValue(day) }>
-                                        <div className={ dayStyles(day, value) }>
-                                            {day.format("D")}
-                                        </div>
-                                        
+                                    // <div className="day" key={index} onClick={ clickedDay }>
+                                    <div className="day" 
+                                        key={index} 
+                                        onClick=
+                                            { 
+                                                function clickedDay() { 
+                                                    setValue(day); 
+                                                    clickedDate(day);
+                                                }
+                                            } >
+                                    <div className={ dayStyles(day, value) }>
+                                        {day.format("D")}
+                                    </div>
+                                    
                                     </div>)
                             }
                         </div>)
                 }
             </div>
+
 
         </div>
     )
@@ -79,3 +104,6 @@ export default MyCalendar;
 //arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.
 
 //hitta vilken dag som är vald
+
+
+//                                     
