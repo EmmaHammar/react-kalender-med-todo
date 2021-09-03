@@ -1,5 +1,6 @@
 import Header from './components/Header';
 import Main from './components/Main';
+import MyCalendar from './components/MyCalendar'
 import Footer from './components/Footer';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div>
       <Header />
       <Main />
+      <MyCalendar />
       <Footer />
     </div>
   );

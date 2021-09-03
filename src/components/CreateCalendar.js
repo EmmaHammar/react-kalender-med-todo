@@ -67,7 +67,71 @@ export default CreateCalendar;
 
     
   
-      
+  //COPY AV CALENDAR FROM NPM
+//   import Calendar from 'react-calendar';
+// import 'react-calendar/dist/Calendar.css';
+// import { useState, useEffect } from 'react';
+// import PrintDayCard from './PrintDayCard';
+
+// // const moment = require('moment');
+
+// function CreateCalendar() {
+
+//     // let m = moment();
+//     // console.log("m", m.toString());
+    
+//     const [value, onChange] = useState(new Date());
+//     const [clickedDay, setClickedDay] = useState(false);
+
+//     useEffect( () => {
+//       console.log("useeffect!");
+//     }, [clickedDay]);
+
+//     //catch a date in calendar and print text:
+//     const tileContent = ({ date, view }) => view === 'month' && date.getDate() === 8 ? <p>Fångat datum!</p> : null;
+
+//     //försöker fånga dag med ISO-string - funkar ej:
+//     // const tileContent2 = ({ date, view }) => view === 'month' && date.toISOString() === "2021-09-05T12:04:40.333Z" ? <p>Fångat datum2!</p> : null;
+
+//     //catch click on a date square:
+//     function handleChange(e) {
+//       console.log("e klickad dag:", e.toISOString());
+//       setClickedDay(true);
+//     };
+
+//     const printDayCard = () => {
+//         console.log("hej från printDayCard");
+
+//         //printa ut - HUR?
+//         <div>Hej från printDayCard-funktionen</div>
+        
+//     };
+
+//     const onClickDay = () => {
+//         printDayCard()
+//     };
+    
+//     return (
+//       <div>
+//         <Calendar 
+//           onChange={ onChange } 
+//           value={ value } 
+//           tileContent={ tileContent }
+//           onChange={ handleChange }
+//           onClickDay={ onClickDay }
+//         />
+//         {clickedDay ? <PrintDayCard /> : ""}
+//       </div>
+    
+//     );
+// };
+
+// export default CreateCalendar;
+
+
+
+  //SLUT PÅ COPY AV CALENDAR FROM NPM
+
   
 
   //kom ihåg:
