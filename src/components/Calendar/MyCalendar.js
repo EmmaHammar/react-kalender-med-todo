@@ -42,6 +42,9 @@ function MyCalendar() {
     // [] => useEffect sker bara 1 gång.
 
 
+    //fånga klick på en dag
+    //konsollogga datumen
+    //öppna taskList
 
     //change index to id from object later
     return(
