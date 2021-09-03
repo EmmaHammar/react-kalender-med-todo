@@ -1,32 +1,43 @@
+import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 const moment = require('moment');
 
-
 function MyCalendar() {
-    //mitt m är value i videon
-    // let m = moment();
-    // console.log("m", m.toString());
-    let value = moment();
+
+    //sätta värdena som default i state:
+    //1) getter, 2) setter
+    const [calendar, setCalendar] = useState([]);
+    let [value, setValue] = useState(moment());
 
     //startOf("month").startOf("week") -> så starday för en månad i kalendervyn blir 08/29 o ej 1/9. Gör samma för endday av en månad 
     //.weekday(1) -> så veckovyn börjar på måndag
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
 
-    //loopa ut:
-    const day = startDay.clone().subtract(1, "day")
-    const calendar = [];
-    
-    //whileloopen utförs så länge endDay inte är uppfyllt, intervallet ska vara day:
-    while(day.isBefore(endDay, "day")) {
+    //komma ur oändlig while-loop - använd useEffect + lägg till dependecy:
+    useEffect( () => {
 
-        //skjuta in i tomma arrayen. 7-dagar på en vecka. fill(0) för att ha något att map() över:
-        calendar.push(
-            Array(7)
-            .fill(0)
-            .map( () => day.add(1, "day").clone())
-        )
-    };
+        //loopa ut:
+        const day = startDay.clone().subtract(1, "day")
+        //vill ej sätta state i varje loop -> temporär variabel:
+        const calendarArr = [];
+
+        //whileloopen utförs så länge endDay inte är uppfyllt, intervallet ska vara day:
+        while(day.isBefore(endDay, "day")) {
+
+            //skjuta in i tomma arrayen. 7-dagar på en vecka. fill(0) för att ha något att map() över:
+            calendarArr.push(
+                Array(7)
+                .fill(0)
+                .map( () => day.add(1, "day").clone())
+            )
+        };
+        //update the state with the matrix when while-loop is finish:
+        setCalendar(calendarArr)
+
+    }, [value]);
+    //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
+    // [] => useEffect sker bara 1 gång.
 
     //change index to id from object later
     return(
@@ -34,13 +45,18 @@ function MyCalendar() {
             <h3>Hej fr MyCalendar</h3>
             
             { 
-                calendar.map((week, index) => <div key={index}>
-                    {
-                        week.map((day, index) => <div className="day" key={index}>
-                            {day.format("D")}
-                        </div>)
-                    }
-                </div>)
+                calendar.map((week, index) => 
+                    <div key={index}>
+                        {
+                            week.map((day, index) => 
+                                <div className="day" key={index} onClick={ () => setValue(day) }>
+                                    <div className={value.isSame(day, "day") ? "selected-day" : ""}>
+                                        {day.format("D")}
+                                    </div>
+                                    
+                                </div>)
+                        }
+                    </div>)
             }
 
 
@@ -50,4 +66,7 @@ function MyCalendar() {
 
 export default MyCalendar;
 
+//onClick på day-diven: så när du klickar på en dag så sätts värdet till dagen.
+//arrowfunktion för vill delaya setValue
 
+//hitta vilken dag som är vald
