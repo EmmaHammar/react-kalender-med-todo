@@ -21,7 +21,6 @@ export default function CalendarHeader({value, setValue}) {
     }
     return(
         <div className="calendar-header">
-                <h3>Hej fr MyCalendar</h3>
                 <div className="prev" onClick={ () => setValue(prevMonth()) }>
                     {String.fromCharCode(171)}
                 </div>

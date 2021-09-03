@@ -1,18 +1,29 @@
 .calendar {
     border: 2px solid darkolivegreen;
+    max-width: 80%;
+    margin: 1rem;
+}
+
+.calendar-header {
+    border: 2px darkcyan;
+    background-color:beige;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
 }
 
 .day {
     position: relative;
     width: calc(100% / 7);
-    height: 44px;
+    height: 5rem;
     display: inline-block;
     background-color: antiquewhite;
-    padding: 0;
-    margin: 0;
+    /* padding: 0; */
+    /* margin: 0; */
     box-sizing: border-box;
     /* z-index: 1; */
     text-align: center;
+    border: 1px solid darkolivegreen;
 
 }
 
@@ -26,8 +37,16 @@
     background-color: wheat;
 }
 
-.prev {
+.day:hover {
+    cursor: pointer;
+}
 
+.prev:hover, .next:hover {
+    cursor: pointer;
+}
+
+.prev {
+    margin-right: 10px;
 }
 
 .curr {
@@ -35,5 +54,5 @@
 }
 
 .next {
-    
+    margin-left: 10px;
 }

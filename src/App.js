@@ -1,4 +1,4 @@
-import Header from './components/Header';
+import Header from './components/Header/Header';
 import Main from './components/Main';
 import MyCalendar from './components/Calendar/MyCalendar'
 import Footer from './components/Footer';
@@ -6,12 +6,11 @@ import Footer from './components/Footer';
 function App() {
 
   return (
-    <div>
+    <>
       <Header />
-      <Main />
       <MyCalendar />
       <Footer />
-    </div>
+    </>
   );
 }
 
