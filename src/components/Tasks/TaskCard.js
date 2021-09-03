@@ -13,8 +13,8 @@ function TaskCard (props) {
 
     return (
         <div className="task-list">
-            
-            <div className="task-card">
+
+            <div className="task-card" key={props.key}>
                 {props.isFinish ? <input type="checkbox" defaultChecked></input> : <input type="checkbox"></input>}
                 <h3>{ props.title }</h3>
                 <p>{ props.deadline }</p>
@@ -30,3 +30,5 @@ export default TaskCard;
 //toggla mellan klasser isFinish true/false istället för defaultChecked?
 
 // {props.isFinish ? <input type="checkbox"/> : <input type="checkbox"/> }
+
+//Warning: TaskCard: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)

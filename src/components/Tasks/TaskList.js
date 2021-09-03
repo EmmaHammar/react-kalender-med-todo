@@ -6,18 +6,6 @@ const taskArr = require('../../data/taskData.json');
 console.log("taskArr", taskArr);
 
 function TaskList() {
-
-    // const printTasklist = Object.keys(taskArr).map(key => {
-    //     return (
-    //         <TaskCard 
-    //             deadline={ taskArr[key].deadline}
-    //             title={ taskArr[key].title}
-    //             isFinish={ taskArr[key].done}
-    //             key={key}
-    //         />
-    //     )
-    // })
-    
     
     return (
         <div>
@@ -30,12 +18,8 @@ function TaskList() {
                             isFinish={ false }
                             title={ task.title }
                             deadline={ task.deadline }
-
-
+                            key = { task.id }
                         />
-                        // <li>
-                        //     {task.title}
-                        // </li>
                     )
                 })
 
