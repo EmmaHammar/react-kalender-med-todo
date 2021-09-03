@@ -1,6 +1,6 @@
 import Header from './components/Header';
 import Main from './components/Main';
-import MyCalendar from './components/MyCalendar'
+import MyCalendar from './components/Calendar/MyCalendar'
 import Footer from './components/Footer';
 
 function App() {

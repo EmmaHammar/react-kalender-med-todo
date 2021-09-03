@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './MyCalendar.css';
-import dayStyles from './MyCalendarStyles';
+import dayStyles from './Styles';
+import CalendarHeader from './CalendarHeader';
 
 const moment = require('moment');
 
@@ -40,25 +41,13 @@ function MyCalendar() {
     //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
     // [] => useEffect sker bara 1 gång.
 
-    function currMonthName() {
-        return value.format("MMMM")
-    }
-
-    function currYear() {
-        return value.format("YYYY")
-    }
 
 
     //change index to id from object later
     return(
         <div className="calendar">
 
-            <div className="calendar-header">
-                <h3>Hej fr MyCalendar</h3>
-                <div className="prev">{String.fromCharCode(171)}</div>
-                <div className="curr">{currYear()} {currMonthName()}</div>
-                <div className="next">{String.fromCharCode(187)}</div>
-            </div>
+            <CalendarHeader value={value} setValue={setValue} />
             
             <div className="calendar-body">
                 { 
@@ -84,6 +73,6 @@ function MyCalendar() {
 export default MyCalendar;
 
 //onClick på day-diven: så när du klickar på en dag så sätts värdet till dagen.
-//arrowfunktion för vill delaya setValue
+//arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.
 
 //hitta vilken dag som är vald
