@@ -1,7 +1,7 @@
 // const data = require('../data/taskInfo.json');
 import { useState, useEffect } from 'react';
 
-function AddTask() {
+function AddTask(selectedDate) {
 
   let [addedNewTask, setAddedNewTask] = useState(false);
 
@@ -30,7 +30,7 @@ function AddTask() {
   // console.log("evt", evt);
 
   let newTask = { 
-    date: date,
+    date: date, //default clickedDate
     title: title,
     isFinish: false
     
@@ -54,7 +54,7 @@ function AddTask() {
 
   return (
     <div>
-      <h3>Lägg till ny uppgift</h3>
+      <h3>Lägg till ny uppgift {selectedDate.selectedDate}</h3>
       <form onSubmit={ onSubmit }>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           <input type="date" value={ date } onChange={ handleChangeDate }></input>

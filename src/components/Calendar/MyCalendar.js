@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
-// import AddTask from './components/Tasks/AddTask';
-
+import AddTask from '../Tasks/AddTask';
 
 const moment = require('moment');
 
@@ -14,6 +13,7 @@ function MyCalendar() {
     const [calendar, setCalendar] = useState([]);
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
+    const [selectedDate, setSelectedDate] = useState('');
 
     //startOf("month").startOf("week") -> så starday för en månad i kalendervyn blir 08/29 o ej 1/9. Gör samma för endday av en månad 
     //.weekday(1) -> så veckovyn börjar på måndag
@@ -44,16 +44,18 @@ function MyCalendar() {
     //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
     // [] => useEffect sker bara 1 gång.
 
-
-    //öppna taskList
-
-    function clickedDate(day) {
+    function formatDate(day) {
         const clickedDate = day._d;
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
+        setSelectedDate(clickedDateRightFormat);
+        console.log("selectedDate", selectedDate);
+        console.log("clickedDateRightFormat", clickedDateRightFormat); //HUR SKICKA DETTA SÅ DET -> testa state
+        
+    };
 
-        console.log("clickedDateRightFormat", clickedDateRightFormat);
-
-    }
+    useEffect( () => {    
+        console.log("useeffect onclickday:", onClickDay);
+    }, [onClickDay]);
 
 
     //change index to id from object later
@@ -75,7 +77,8 @@ function MyCalendar() {
                                             { 
                                                 function clickedDay() { 
                                                     setValue(day); 
-                                                    clickedDate(day);
+                                                    formatDate(day);
+                                                    setOnClickDay(true);
                                                 }
                                             } >
                                     <div className={ dayStyles(day, value) }>
@@ -87,6 +90,9 @@ function MyCalendar() {
                         </div>)
                 }
             </div>
+            
+            {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""}
+
 
 
         </div>
@@ -98,7 +104,4 @@ export default MyCalendar;
 //onClick på day-diven: så när du klickar på en dag så sätts värdet till dagen.
 //arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.
 
-//hitta vilken dag som är vald
-
-
-//                                     
+//hitta vilken dag som är vald                                   
