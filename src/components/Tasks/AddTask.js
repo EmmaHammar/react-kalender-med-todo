@@ -19,10 +19,10 @@ function AddTask(selectedDate) {
   setTitle(evt.target.value)
   }
 
-  const handleChangeDate = (evt) => {
-    console.log("handleChangeDate:", evt.target.value);
-    setDate(evt.target.value);
-  }
+  // const handleChangeDate = (evt) => {
+  //   console.log("handleChangeDate:", evt.target.value);
+  //   setDate(evt.target.value);
+  // }
 
   const onSubmit = (evt) => {
   //  console.log("hej från onsubmit", evt);
@@ -30,7 +30,7 @@ function AddTask(selectedDate) {
   // console.log("evt", evt);
 
   let newTask = { 
-    date: date, //default clickedDate
+    date: selectedDate.selectedDate, //not object
     title: title,
     isFinish: false
     
@@ -57,7 +57,7 @@ function AddTask(selectedDate) {
       <h3>Lägg till ny uppgift {selectedDate.selectedDate}</h3>
       <form onSubmit={ onSubmit }>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
-          <input type="date" value={ date } onChange={ handleChangeDate }></input>
+          {/* <input type="date" value={ date } onChange={ handleChangeDate }></input> */}
           <button type="submit" id="saveBtn">Spara</button>
       </form>
       {addedNewTask ? "Du har lagt till en ny uppgift!" : ""}
