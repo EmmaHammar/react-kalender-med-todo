@@ -1,17 +1,17 @@
 [
     {
         "id": 111,
-        "deadline": "2021-09-15T22:00:00.000Z",
+        "date": "2021-09-15T22:00:00.000Z",
         "title": "städa",
         "isFinish": false
     }, {
         "id": 112,
-        "deadline": "2021-09-17T20:00:00.000Z",
+        "date": "2021-09-17T20:00:00.000Z",
         "title": "tennis",
         "isFinish": false
     }, {
         "id": 113,
-        "deadline": "2021-10-18T08:00:00.000Z",
+        "date": "2021-10-18T08:00:00.000Z",
         "title": "tandläkaren",
         "isFinish": false
     }

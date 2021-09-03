@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useState } from 'react';
 import TaskCard from "./TaskCard";
 
@@ -13,12 +14,13 @@ function TaskList() {
             <ul className="task-list-ul">
             {
                 taskArr.map( (task) => {
+                    
                     return (
                         <TaskCard 
                             isFinish={ false }
                             title={ task.title }
-                            deadline={ task.deadline }
-                            key = { task.id }
+                            date={ moment(task.date).format("YYYY/MM/DD") }
+                            key={ task.id } //varför blir denna undefined i TaskCard?
                         />
                     )
                 })

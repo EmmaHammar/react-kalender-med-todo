@@ -14,10 +14,10 @@ function TaskCard (props) {
     return (
         <div className="task-list">
 
-            <div className="task-card" key={props.key}>
+            <div className="task-card" key={ props.title + props.date}>
                 {props.isFinish ? <input type="checkbox" defaultChecked></input> : <input type="checkbox"></input>}
                 <h3>{ props.title }</h3>
-                <p>{ props.deadline }</p>
+                <p>{ props.date }</p>
                 <button className="btn">Radera</button>
             </div>
                         
