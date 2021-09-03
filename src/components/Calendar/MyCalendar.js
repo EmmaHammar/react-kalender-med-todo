@@ -45,19 +45,14 @@ function MyCalendar() {
     // [] => useEffect sker bara 1 gång.
 
 
-    //fånga klick på en dag
-    //konsollogga datumen
     //öppna taskList
 
-    // const clickedDay = (evt, day ) => {
-    //     console.log("clickedDay", evt);
-
-    //     const notLoop = () => setValue(day)
-       
- 
-    // }
     function clickedDate(day) {
-        console.log("clickedDate", day._d);
+        const clickedDate = day._d;
+        const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
+
+        console.log("clickedDateRightFormat", clickedDateRightFormat);
+
     }
 
 
