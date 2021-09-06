@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import SaveData from './SaveData';
 
-function AddTask(selectedDate) {
+function AddTask(selectedDate, cb) {
 
   const [title, setTitle] = useState('');
   let [isAdded, setIsAdded] = useState(false);
@@ -36,6 +36,7 @@ function AddTask(selectedDate) {
           <button type="submit" id="saveBtn">Spara</button>
       </form>
       {isAdded ? "Du har lagt till en ny uppgift!" : ""}
+      {/* {cb(isAdded)} */}
     </div>
   );
 }

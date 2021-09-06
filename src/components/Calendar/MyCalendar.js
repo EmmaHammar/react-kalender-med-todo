@@ -8,22 +8,17 @@ const moment = require('moment');
 
 function MyCalendar() {
 
-    //sätta värdena som default i state:
-    //1) getter, 2) setter
     const [calendar, setCalendar] = useState([]);
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
+    // const [isAdded, setIsAdded] = useState(false);
 
-    //startOf("month").startOf("week") -> så starday för en månad i kalendervyn blir 08/29 o ej 1/9. Gör samma för endday av en månad 
-    //.weekday(1) -> så veckovyn börjar på måndag
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
 
-    //komma ur oändlig while-loop - använd useEffect + lägg till dependecy:
     useEffect( () => {
 
-        //loopa ut:
         const day = startDay.clone().subtract(1, "day")
         //vill ej sätta state i varje loop -> temporär variabel:
         const calendarArr = [];
@@ -41,22 +36,17 @@ function MyCalendar() {
         //update the state with the matrix when while-loop is finish:
         setCalendar(calendarArr)
     }, [value]);
-    //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
 
     function formatDate(day) {
         const clickedDate = day._d;
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
         setSelectedDate(clickedDateRightFormat);
-        // console.log("selectedDate", selectedDate);
-        // console.log("clickedDateRightFormat", clickedDateRightFormat); //HUR SKICKA DETTA SÅ DET -> testa state
     };
 
     useEffect( () => {    
-        console.log("useeffect onclickday:", onClickDay);
-        //när [onClickDay] blir true ska <AddTask /> köras
+        console.log("useeffect onclickday:", onClickDay);        
     }, [onClickDay]);
 
-    //change index to id from object later
     return(
         <div className="calendar">
 
@@ -68,7 +58,6 @@ function MyCalendar() {
                         <div key={index}>
                             {
                                 week.map((day, index) => 
-                                    // <div className="day" key={index} onClick={ clickedDay }>
                                     <div className="day" 
                                         key={index} 
                                         onClick=
@@ -83,13 +72,13 @@ function MyCalendar() {
                                         {day.format("D")}
                                     </div>
                                     
-                                    </div>)
+                                </div>)
                             }
                         </div>)
                 }
             </div>
             
-            {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""}
+            {onClickDay ? <AddTask selectedDate={ selectedDate } /> : ""}
         </div>
     )
 }
@@ -97,6 +86,4 @@ function MyCalendar() {
 export default MyCalendar;
 
 //onClick på day-diven: så när du klickar på en dag så sätts värdet till dagen.
-//arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.
-
-//hitta vilken dag som är vald                                   
+//arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.                            

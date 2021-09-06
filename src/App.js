@@ -5,6 +5,8 @@ import Footer from './components/Footer';
 
 function App() {
 
+    // const [isAdded, setIsAdded] = useState(false);
+
   return (
     <>
       <Header />
@@ -16,3 +18,5 @@ function App() {
 }
 
 export default App;
+
+//vill uppdatera isAdded från AddTask > MyCalendar > App => TaskList omrenderas o ny task syns i listan
