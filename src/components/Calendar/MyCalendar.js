@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
-// import AddTask from '../Tasks/AddTask';
+import AddTask from '../Tasks/AddTask';
 
 const moment = require('moment');
 
@@ -42,21 +42,19 @@ function MyCalendar() {
         setCalendar(calendarArr)
     }, [value]);
     //vill att calendar-arrayen ska köras varje gång du ändrar den valda dagen/next month = value-variabeln: 
-    // [] => useEffect sker bara 1 gång.
 
     function formatDate(day) {
         const clickedDate = day._d;
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
         setSelectedDate(clickedDateRightFormat);
-        console.log("selectedDate", selectedDate);
-        console.log("clickedDateRightFormat", clickedDateRightFormat); //HUR SKICKA DETTA SÅ DET -> testa state
-        
+        // console.log("selectedDate", selectedDate);
+        // console.log("clickedDateRightFormat", clickedDateRightFormat); //HUR SKICKA DETTA SÅ DET -> testa state
     };
 
     useEffect( () => {    
         console.log("useeffect onclickday:", onClickDay);
+        //när [onClickDay] blir true ska <AddTask /> köras
     }, [onClickDay]);
-
 
     //change index to id from object later
     return(
@@ -91,7 +89,8 @@ function MyCalendar() {
                 }
             </div>
             
-            {/* {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""} */}
+            {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""}
+            
 
 
 
