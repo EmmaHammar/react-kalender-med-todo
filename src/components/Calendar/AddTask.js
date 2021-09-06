@@ -1,4 +1,3 @@
-// const data = require('../data/taskInfo.json');
 import { useState, useEffect } from 'react';
 import SaveData from './SaveData';
 
@@ -19,8 +18,7 @@ function AddTask(selectedDate) {
   }
 
   const onSubmit = (evt) => {
-    console.log("saveBtn klick med task:", title);
-    //uppdatera statet isAdded
+    // console.log("saveBtn klick med task:", title);
     setIsAdded(true);
     SaveData(newTask);
     evt.preventDefault();
@@ -30,23 +28,6 @@ function AddTask(selectedDate) {
     console.log("isAdded har ändrats till true");
   }, [isAdded]);
     
-
-  // fetch(`http://localhost:3010/task/add`, {
-  //   method: 'post',
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   }, 
-  //   body: JSON.stringify(newTask)
-  // })
-  // .then(data => data.json())
-  // .then(res => {
-  //     console.log("res from post fetch:", res);
-  //     setAddedNewTask(true);
-  // });
-
-  //   evt.preventDefault();
-  // }
-
   return (
     <div>
       <h3>Lägg till ny uppgift med deadline: {selectedDate.selectedDate}</h3>
