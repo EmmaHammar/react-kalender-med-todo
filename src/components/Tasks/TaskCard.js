@@ -14,7 +14,7 @@ function TaskCard (props) {
     return (
         <div className="task-list">
 
-            <div className="task-card" key={ props.title + props.date}>
+            <div className="task-card" key={ props.id }>
                 {props.isFinish ? <input type="checkbox" defaultChecked></input> : <input type="checkbox"></input>}
                 <h3>{ props.title }</h3>
                 <p>{ props.date }</p>
