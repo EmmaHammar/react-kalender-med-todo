@@ -4,12 +4,12 @@ import './TaskCard.css';
 
 function TaskCard (props) {
 
-    // const [isFinishState, setIsFinishState] = useState(false);
+    const [isFinishState, setIsFinishState] = useState(false);
 
-    // function updateIsFinish() {
-    //     setIsFinishState(true);
+    function updateIsFinish() {
+        setIsFinishState(true);
 
-    // }
+    }
 
     return (
         <div className="task-list">

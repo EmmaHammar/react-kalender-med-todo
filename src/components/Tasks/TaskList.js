@@ -22,54 +22,33 @@ function TaskList() {
         console.log("useEffect TaskList - vill ha 1 ggn");
         GetData((data) => {
             console.log("data fr komponent: data eller data[0]", data);
-            setList(data);
+            setList(data[0]);
         //     let listArr = data[0];
         //     setList(listArr);
         })
-
-
-        //fetch funkar o ger endast 1 get
-        // fetch(`http://localhost:3011/list`)
-        // .then(response => response.json())
-        // .then(data => {
-        //     console.log("data from fetch: data[0] eller data?", data[0]);
-        //     // cb(data); 
-        // });
         setIsUser(true)
+
     }, []);
 
-    // useEffect( () => {
-    //     console.log("useeffect fr TaskList()");
-    //     GetData((data) => {
-    //         // console.log("data", data[0]);
-    //         let listArr = data[0];
-    //         // console.log("listArr", listArr);
-    //         setList(listArr);
-    //         console.log("list", list);
-    //     })
-    // }, []) 
-
-
-    // const printList = Object.keys(list).map(key => {
-    //     return (
-    //         // console.log("id", list[key]._id)
-    //         // console.log("date", list[key].date)
-    //         // console.log("title", list[key].title)
-    //         // console.log("status isFinish", list[key].isFinish)
-    //         <TaskCard 
+    const printList = Object.keys(list).map(key => {
+        return (
+            <TaskCard 
             
-    //                 isFinish={ list[key].isFinish }
-    //                 title={ list[key].title }
-    //                 date={ moment(list[key].date).format("YYYY/MM/DD") }
-    //         />
-    //     )
-    // })
+                    isFinish={ list[key].isFinish }
+                    title={ list[key].title }
+                    date={ moment(list[key].date).format("YYYY/MM/DD") }
+                    key={ key }
+            />
+        )
+    })
+    
+
 
     
     return (
         <div>
             <h2>Master Task List</h2>
-            {isUser ? "visa lista" : ""}
+            {isUser ? printList : ""}
 
             {/* {isUser ? printList : ""} */}
 
