@@ -22,10 +22,9 @@ function TaskList() {
         console.log("useEffect TaskList - vill ha 1 ggn");
         GetData((data) => {
             console.log("data fr komponent: data eller data[0]", data);
+            setList(data);
         //     let listArr = data[0];
-        //     // console.log("listArr", listArr);
-        //     // setList(listArr);
-        //     // console.log("list", list);
+        //     setList(listArr);
         })
 
 
