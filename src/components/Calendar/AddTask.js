@@ -1,5 +1,6 @@
 // const data = require('../data/taskInfo.json');
 import { useState, useEffect } from 'react';
+import SaveData from './SaveData';
 
 function AddTask(selectedDate) {
 
@@ -21,6 +22,7 @@ function AddTask(selectedDate) {
     console.log("saveBtn klick med task:", title);
     //uppdatera statet isAdded
     setIsAdded(true);
+    SaveData(newTask);
     evt.preventDefault();
   }
 
