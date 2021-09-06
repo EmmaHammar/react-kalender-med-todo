@@ -54,7 +54,7 @@ function AddTask(selectedDate) {
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           <button type="submit" id="saveBtn">Spara</button>
       </form>
-      {/* {isAdded ? "Du har lagt till en ny uppgift!" : ""} */}
+      {isAdded ? "Du har lagt till en ny uppgift!" : ""}
     </div>
   );
 }
