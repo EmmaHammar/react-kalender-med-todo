@@ -1,6 +1,6 @@
 function GetData (cb) {
 
-    fetch('http://localhost:3010/task')
+    fetch(`http://localhost:3011/list`)
     .then(response => response.json())
     .then(data => {
         console.log("data from fetch", data[0]);

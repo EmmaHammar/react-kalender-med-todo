@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
-import AddTask from '../Tasks/AddTask';
+// import AddTask from '../Tasks/AddTask';
 
 const moment = require('moment');
 
@@ -91,7 +91,7 @@ function MyCalendar() {
                 }
             </div>
             
-            {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""}
+            {/* {onClickDay ? <AddTask selectedDate={ selectedDate }/> : ""} */}
 
 
 
