@@ -25,8 +25,8 @@ VG
 
 För att nå VG på uppgiften så skall även;
 
-Kalendern hämta svenska helgdagar från ett API och visa dessa dagar på kalendern.
-https://svenskahelgdagar.info
+Kalendern hämta svenska helgdagar från ett API och visa dessa dagar på kalendern. Kolla denna istället: https://api.dryg.net/ 
+(https://svenskahelgdagar.info ))
 
 En reflekterande rapport bifogas (max 2 A4) som beskriver hur du arbetat med uppgiften och vilka tekniker och paket du valt att använda och varför.
 
