@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import TaskCard from "./TaskCard";
-// import GetData from './GetData';
+import GetData from './GetData';
 
 // const taskArr = require('../../data/taskData.json');
 // console.log("taskArr", taskArr);
@@ -20,22 +20,22 @@ function TaskList() {
     //denna useEffect körs vid ladding av sidan
     useEffect( () => {
         console.log("useEffect TaskList - vill ha 1 ggn");
-        // GetData((data) => {
-        //     // console.log("data", data[0]);
+        GetData((data) => {
+            console.log("data fr komponent: data eller data[0]", data);
         //     let listArr = data[0];
         //     // console.log("listArr", listArr);
         //     // setList(listArr);
         //     // console.log("list", list);
-    // })
+        })
 
 
-
-        fetch(`http://localhost:3011/list`)
-        .then(response => response.json())
-        .then(data => {
-            console.log("data from fetch", data[0]);
-            // cb(data); 
-        });
+        //fetch funkar o ger endast 1 get
+        // fetch(`http://localhost:3011/list`)
+        // .then(response => response.json())
+        // .then(data => {
+        //     console.log("data from fetch: data[0] eller data?", data[0]);
+        //     // cb(data); 
+        // });
         setIsUser(true)
     }, []);
 
