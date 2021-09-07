@@ -28,14 +28,12 @@ function TaskCard (props) {
     })
 
     return (
-
             <div className="task-card" key={ props.id } id={ props.id }>
                 <input type="checkbox" onClick={handleClick}></input>
                 <h3>{ props.title }</h3>
                 <p>{ props.date }</p>
                 <button className="btn">Radera</button>
             </div>
-                        
     );
 };
 

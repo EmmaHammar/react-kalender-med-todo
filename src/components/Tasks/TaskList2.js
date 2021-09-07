@@ -1,20 +1,16 @@
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import TaskCard from "./TaskCard";
-import GetData from './GetData';
 
 function TaskList2(props) {
 
     const [masterArr, setMasterArr] = useState('');
-    const [isDbUpdate, setIsDbUpdate] = useState(false)
-
-
-    const [isUser, setIsUser] = useState(false);
-
-
+    // const [isDbUpdate, setIsDbUpdate] = useState(false)
+    // const [isUser, setIsUser] = useState(false);
 
     //denna useEffect körs vid ladding av sidan
     useEffect( () => {
+        //FEL!statet hinner inte alltid sättas innan loggen körs -> masterArr är tom
         console.log("useEffect TaskList - vill ha 1 ggn", props.masterArr);
         setMasterArr(props.masterArr);
     }, []);
@@ -23,7 +19,6 @@ function TaskList2(props) {
     const printMasterList = Object.keys(masterArr).map(key => {
         return (
     
-            <div className="task-list">
                 <TaskCard 
                         isFinish={ masterArr[key].isFinish }
                         title={ masterArr[key].title }
@@ -31,7 +26,6 @@ function TaskList2(props) {
                         key={ masterArr[key]._id }
                         id={ masterArr[key]._id }
                 />
-            </div>
             
         )
     })
