@@ -6,6 +6,9 @@ import AddTask from './AddTask';
 
 const moment = require('moment');
 
+
+
+
 function MyCalendar() {
 
     const [calendar, setCalendar] = useState([]);
@@ -14,8 +17,23 @@ function MyCalendar() {
     const [selectedDate, setSelectedDate] = useState('');
     // const [isAdded, setIsAdded] = useState(false);
 
+
+    let mockDataArr = [
+        {
+            date: "2021-12-24",
+            title: "julafton", 
+            isFinish: false
+        }, {
+            date: "2021-12-27",
+            title: "åka pulka", 
+            isFinish: false
+        }
+    ]
+    const [mockData, setMockData] = useState(mockDataArr);
+
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
+
 
     useEffect( () => {
 
@@ -41,7 +59,14 @@ function MyCalendar() {
         const clickedDate = day._d;
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
         setSelectedDate(clickedDateRightFormat);
+        printDeadlines(clickedDateRightFormat);
+        //PRINTA UT ALLA DEADLINES PER DAG: här??
     };
+
+    const printDeadlines = ( (date) => {
+        console.log("visa deadlines för klickad dag:", date);
+
+    })
 
     useEffect( () => {    
         console.log("useeffect onclickday:", onClickDay);
@@ -72,6 +97,8 @@ function MyCalendar() {
                                             } >
                                     <div className={ dayStyles(day, value) }>
                                         {day.format("D")}
+                                        Antal deadlines: X
+                                        {/*PRINTA DEADLINES hämta db, kolla om selectedDate===data.date => göra en arr för alla object för valda datumet => .length på den arrayen för att få fram antal deadlines */}
                                     </div>
                                     
                                 </div>)
