@@ -55,6 +55,8 @@ Surfa in på localhost/3010
 npm install mongodb
 
 npm install cors
+<!-- npm install crypto-js -->
+
 ===========
 
 # Getting Started with Create React App

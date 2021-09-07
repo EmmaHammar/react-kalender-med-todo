@@ -4,21 +4,26 @@ import TaskCard from "./TaskCard";
 
 function TaskList2(props) {
 
-    const [masterArr, setMasterArr] = useState('');
-    // const [isDbUpdate, setIsDbUpdate] = useState(false)
-    // const [isUser, setIsUser] = useState(false);
+    const masterArr = props.masterArr;
+    console.log("masterArr", masterArr);
 
-    //denna useEffect körs vid ladding av sidan
-    useEffect( () => {
-        //FEL!statet hinner inte alltid sättas innan loggen körs -> masterArr är tom
-        console.log("useEffect TaskList - vill ha 1 ggn", props.masterArr);
-        setMasterArr(props.masterArr);
-    }, []);
+
+
+    // const [masterArr, setMasterArr] = useState('');
+    // // const [isDbUpdate, setIsDbUpdate] = useState(false)
+    // // const [isUser, setIsUser] = useState(false);
+    
+    // //denna useEffect körs vid ladding av sidan
+    // useEffect( () => {
+    //     //FEL!statet hinner inte alltid sättas innan loggen körs -> masterArr är tom
+    //     // async await
+    //     console.log("useEffect TaskList - vill ha 1 ggn", props.masterArr);
+    //     setMasterArr(props.masterArr);
+    // }, []);
     
 
     const printMasterList = Object.keys(masterArr).map(key => {
         return (
-    
                 <TaskCard 
                         isFinish={ masterArr[key].isFinish }
                         title={ masterArr[key].title }
@@ -26,8 +31,8 @@ function TaskList2(props) {
                         key={ masterArr[key]._id }
                         id={ masterArr[key]._id }
                 />
-            
         )
+
     })
 
 

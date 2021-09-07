@@ -10,6 +10,7 @@ function AddTask(selectedDate, cb) {
     date: selectedDate.selectedDate, //not object
     title: title,
     isFinish: false
+    // taskId: crypto.randomBytes(4).toString("hex")
   };
 
   const handleChange = (evt) => {
