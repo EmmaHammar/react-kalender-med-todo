@@ -3,6 +3,7 @@ import './MyCalendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
 import AddTask from './AddTask';
+import PrintDayList from './PrintDayList';
 
 const moment = require('moment');
 
@@ -59,20 +60,11 @@ function MyCalendar(props) {
 
     useEffect( () => {    
         console.log("useeffect onclickday:", onClickDay);
+        console.log("printa tasks för:", selectedDate);
         //PRINTA DAYTASKLIST: Hämta db-listan med alla objekt som har date === klickad dag-date???
     
     }, [onClickDay]);
 
-
-
-
-    // const counting = ( (day, taskDate) => {
-    //     let count=0, active;
-    //     active = getMasterArr.filter( (moment(day).format("YYYY-MM-DD") === taskDate ));
-    //     count = active.length;
-    //     return active.map(item => <div><p>antal: {count} </p></div>)
-    // })
-    
     return(
         <div className="calendar">
 
@@ -113,6 +105,9 @@ function MyCalendar(props) {
             </div>
             
             {onClickDay ? <AddTask selectedDate={ selectedDate } /> : ""}
+            {onClickDay ? <PrintDayList selectedDate={ selectedDate } masterArr={ getMasterArr} /> : ""}
+
+            
         </div>
     )
 }
