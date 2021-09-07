@@ -14,7 +14,11 @@ function MyCalendar(props) {
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
     // const [isAdded, setIsAdded] = useState(false);
-    const [getMasterArr, setMasterArr] = useState('');
+    const [getMasterArr, setMasterArr] = useState(''); //borde dela upp så det blir setId, setTitle, setDate, setIsFinish?
+
+
+    const [id, setId] = useState('');
+
 
     useEffect( () => {
         console.log("masterArr i MyCalendar:", props.masterArr);
