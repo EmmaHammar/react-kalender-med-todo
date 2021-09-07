@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Header />
-      <MyCalendar />
+      <MyCalendar masterArr={masterArr}/>
       <TaskList2 masterArr= {masterArr} />
       <Footer />
     </>

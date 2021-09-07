@@ -4,24 +4,17 @@ import TaskCard from "./TaskCard";
 
 function TaskList2(props) {
 
+    // FIXA: denna hinner sättas innan props.masterArr är hämtad fr db -> masterArr ibland blir tom. async await? Ibland körs denna 2 ggr, varför? Samma i MyCalendar:
     const masterArr = props.masterArr;
-    console.log("masterArr", masterArr);
-
-
+    console.log("masterArr i TaskList", masterArr);
 
     // const [masterArr, setMasterArr] = useState('');
-    // // const [isDbUpdate, setIsDbUpdate] = useState(false)
-    // // const [isUser, setIsUser] = useState(false);
-    
     // //denna useEffect körs vid ladding av sidan
     // useEffect( () => {
-    //     //FEL!statet hinner inte alltid sättas innan loggen körs -> masterArr är tom
-    //     // async await
     //     console.log("useEffect TaskList - vill ha 1 ggn", props.masterArr);
     //     setMasterArr(props.masterArr);
     // }, []);
     
-
     const printMasterList = Object.keys(masterArr).map(key => {
         return (
                 <TaskCard 
@@ -32,51 +25,7 @@ function TaskList2(props) {
                         id={ masterArr[key]._id }
                 />
         )
-
     })
-
-
-    // console.log("masterArr har skickats ner fr App:", props.masterArr);
-    // setMasterArr(props.masterArr);
-    // console.log("masterArr 1 ggn", masterArr);
-    //denna useEffect körs vid ladding av sidan
-    // useEffect( (evt) => {
-    //     console.log("useEffect props.masterArr");
-        
-    // })
-
-    // console.log("masterArr?", masterArr); //varför loggas denna 2 ggr?
-    //varje gång db uppdateras ska detta köras
-    
-
-  
-
-    // //denna useEffect körs vid ladding av sidan
-    // useEffect( () => {
-    //     // console.log("useEffect TaskList - vill ha 1 ggn");
-    //     GetData((data) => {
-    //         // console.log("data fr komponent: data eller data[0]", data);
-    //         setList(data[0]);
-    //     })
-    //     setIsUser(true)
-
-    // }, []);
-
-    // const printList = Object.keys(list).map(key => {
-    //     return (
-    //         // <div className="task-list">
-    //             <TaskCard 
-    //                     isFinish={ list[key].isFinish }
-    //                     title={ list[key].title }
-    //                     date={ moment(list[key].date).format("YYYY/MM/DD") }
-    //                     key={ list[key]._id }
-    //                     // key= {key}
-    //                     id={ list[key]._id }
-    //             />
-    //         // </div>
-            
-    //     )
-    // })
     
     return (
         <div id="task-list">
@@ -88,5 +37,3 @@ function TaskList2(props) {
 };
 
 export default TaskList2;
-
-//Warning: Each child in a list should have a unique "key" prop.

@@ -6,31 +6,24 @@ import AddTask from './AddTask';
 
 const moment = require('moment');
 
-function MyCalendar() {
+function MyCalendar(props) {
 
     const [calendar, setCalendar] = useState([]);
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
     // const [isAdded, setIsAdded] = useState(false);
+    const [getMasterArr, setMasterArr] = useState('');
 
+    useEffect( () => {
+        console.log("masterArr i MyCalendar:", props.masterArr);
+        setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
+    }, [props.masterArr]);
+    // }, []);
 
-    // let mockDataArr = [
-    //     {
-    //         date: "2021-12-24",
-    //         title: "julafton", 
-    //         isFinish: false
-    //     }, {
-    //         date: "2021-12-27",
-    //         title: "åka pulka", 
-    //         isFinish: false
-    //     }
-    // ]
-    // const [mockData, setMockData] = useState(mockDataArr);
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
-
 
     useEffect( () => {
 
@@ -57,7 +50,6 @@ function MyCalendar() {
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
         setSelectedDate(clickedDateRightFormat);
         printDeadlines(clickedDateRightFormat);
-        //PRINTA UT ALLA DEADLINES PER DAG: här??
     };
 
     const printDeadlines = ( (date) => {
@@ -70,6 +62,7 @@ function MyCalendar() {
         //PRINTA DAYTASKLIST: Hämta db-listan med alla objekt som har date === klickad dag-date???
     
     }, [onClickDay]);
+
 
     return(
         <div className="calendar">
@@ -93,7 +86,26 @@ function MyCalendar() {
                                                 }
                                             } >
                                     <div className={ dayStyles(day, value) }>
-                                        {day.format("D")}
+                                        { day.format("D") }
+
+                                        { 
+                                            getMasterArr.map( (task, index) => {
+                                                return (
+                                                    <div>
+                                                        Hej
+                                                    </div>
+                                                )
+                                            })
+                                                
+                                        }
+
+                                        {/* HÄNDER INGET */}
+                                        {/* {    
+                                            getMasterArr.map( (task, index) => 
+                                                ( task.date === day._d.toString().slice(0, 10) ) && <div key={index}>{task.task.length}deadline</div> )
+                                        } */}
+
+                                        {/* { getMasterArr.map( (task, index)  => (selectedDate === getMasterArr.date)) } */}
                                         Antal deadlines: X
                                         {/*PRINTA DEADLINES hämta db, kolla om selectedDate===data.date => göra en arr för alla object för valda datumet => .length på den arrayen för att få fram antal deadlines */}
                                     </div>
