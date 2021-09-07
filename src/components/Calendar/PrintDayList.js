@@ -1,20 +1,18 @@
 import { useState, useEffect } from 'react';
 
-function PrintDayList(selectedDate, masterArr) {
+function PrintDayList(props) {
 
-
-    
+  console.log("mm", props.masterArr);
   return (
     <div>
-      <h3>Task-list för: {selectedDate.selectedDate}</h3>
-      {/* <ul>
-        {masterArr.map( (task, index) => {
-          return(
-            <li>task.</li>
+      <h3>Task-list för: {props.selectedDate}</h3>
+      <ul>
+        {
+          props.masterArr.map( (task, index) => 
+            (task.date === props.selectedDate) ? <li key={index}>{task.title}</li> : ""
           )
-        })}
-      </ul> */}
-      
+        }
+      </ul>
     </div>
   );
 }
