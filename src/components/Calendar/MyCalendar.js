@@ -6,9 +6,6 @@ import AddTask from './AddTask';
 
 const moment = require('moment');
 
-
-
-
 function MyCalendar() {
 
     const [calendar, setCalendar] = useState([]);
@@ -18,18 +15,18 @@ function MyCalendar() {
     // const [isAdded, setIsAdded] = useState(false);
 
 
-    let mockDataArr = [
-        {
-            date: "2021-12-24",
-            title: "julafton", 
-            isFinish: false
-        }, {
-            date: "2021-12-27",
-            title: "åka pulka", 
-            isFinish: false
-        }
-    ]
-    const [mockData, setMockData] = useState(mockDataArr);
+    // let mockDataArr = [
+    //     {
+    //         date: "2021-12-24",
+    //         title: "julafton", 
+    //         isFinish: false
+    //     }, {
+    //         date: "2021-12-27",
+    //         title: "åka pulka", 
+    //         isFinish: false
+    //     }
+    // ]
+    // const [mockData, setMockData] = useState(mockDataArr);
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");

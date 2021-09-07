@@ -20,7 +20,7 @@ function TaskList() {
 
     const printList = Object.keys(list).map(key => {
         return (
-            <div className="task-list">
+            // <div className="task-list">
                 <TaskCard 
                         isFinish={ list[key].isFinish }
                         title={ list[key].title }
@@ -29,13 +29,13 @@ function TaskList() {
                         // key= {key}
                         id={ list[key]._id }
                 />
-            </div>
+            // </div>
             
         )
     })
     
     return (
-        <div>
+        <div id="task-list">
             <h2>Master Task List</h2>
             {isUser ? printList : ""}
         </div>

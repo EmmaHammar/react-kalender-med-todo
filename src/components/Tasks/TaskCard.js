@@ -25,7 +25,6 @@ function TaskCard (props) {
             console.log("isFinish=false för id:", props.id);
         }
 
-
     })
 
     return (
