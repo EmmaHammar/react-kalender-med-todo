@@ -64,6 +64,15 @@ function MyCalendar(props) {
     }, [onClickDay]);
 
 
+
+
+    // const counting = ( (day, taskDate) => {
+    //     let count=0, active;
+    //     active = getMasterArr.filter( (moment(day).format("YYYY-MM-DD") === taskDate ));
+    //     count = active.length;
+    //     return active.map(item => <div><p>antal: {count} </p></div>)
+    // })
+    
     return(
         <div className="calendar">
 
@@ -88,26 +97,13 @@ function MyCalendar(props) {
                                     <div className={ dayStyles(day, value) }>
                                         { day.format("D") }
 
+                                        {/*FIXA så att den adderas:*/}
                                         { 
-                                            getMasterArr.map( (task, index) => {
-                                                return (
-                                                    <div>
-                                                        Hej
-                                                    </div>
-                                                )
-                                            })
+                                            getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div>1 deadline</div> : "")
                                                 
                                         }
 
-                                        {/* HÄNDER INGET */}
-                                        {/* {    
-                                            getMasterArr.map( (task, index) => 
-                                                ( task.date === day._d.toString().slice(0, 10) ) && <div key={index}>{task.task.length}deadline</div> )
-                                        } */}
-
-                                        {/* { getMasterArr.map( (task, index)  => (selectedDate === getMasterArr.date)) } */}
-                                        Antal deadlines: X
-                                        {/*PRINTA DEADLINES hämta db, kolla om selectedDate===data.date => göra en arr för alla object för valda datumet => .length på den arrayen för att få fram antal deadlines */}
+                                        
                                     </div>
                                     
                                 </div>)
