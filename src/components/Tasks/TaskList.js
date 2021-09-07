@@ -20,12 +20,17 @@ function TaskList() {
 
     const printList = Object.keys(list).map(key => {
         return (
-            <TaskCard 
-                    isFinish={ list[key].isFinish }
-                    title={ list[key].title }
-                    date={ moment(list[key].date).format("YYYY/MM/DD") }
-                    key={ key }
-            />
+            <div className="task-list">
+                <TaskCard 
+                        isFinish={ list[key].isFinish }
+                        title={ list[key].title }
+                        date={ moment(list[key].date).format("YYYY/MM/DD") }
+                        key={ list[key]._id }
+                        // key= {key}
+                        id={ list[key]._id }
+                />
+            </div>
+            
         )
     })
     
@@ -38,3 +43,5 @@ function TaskList() {
 };
 
 export default TaskList;
+
+//Warning: Each child in a list should have a unique "key" prop.

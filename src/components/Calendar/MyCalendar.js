@@ -44,7 +44,9 @@ function MyCalendar() {
     };
 
     useEffect( () => {    
-        console.log("useeffect onclickday:", onClickDay);        
+        console.log("useeffect onclickday:", onClickDay);
+        //PRINTA DAYTASKLIST: Hämta db-listan med alla objekt som har date === klickad dag-date???
+    
     }, [onClickDay]);
 
     return(
