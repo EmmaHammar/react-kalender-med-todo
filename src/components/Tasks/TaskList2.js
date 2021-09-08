@@ -4,16 +4,16 @@ import TaskCard from "./TaskCard";
 
 function TaskList2(props) {
 
-    // FIXA: denna hinner sättas innan props.masterArr är hämtad fr db -> masterArr ibland blir tom. async await? Ibland körs denna 2 ggr, varför? Samma i MyCalendar:
-    const masterArr = props.masterArr;
-    console.log("masterArr i TaskList", masterArr);
+    // FIXA: denna hinner sättas innan props.masterArr är hämtad fr db -> masterArr ibland blir tom. async await? Ibland körs denna 2 ggr, varför? Samma i MyCalendar: Skrev i state dependcy - skillnad?
+    // const masterArr = props.masterArr;
+    // console.log("masterArr i TaskList", masterArr);
 
-    // const [masterArr, setMasterArr] = useState('');
+    const [masterArr, setMasterArr] = useState('');
     // //denna useEffect körs vid ladding av sidan
-    // useEffect( () => {
-    //     console.log("useEffect TaskList - vill ha 1 ggn", props.masterArr);
-    //     setMasterArr(props.masterArr);
-    // }, []);
+    useEffect( () => {
+        console.log("tom eller ej masterArr", masterArr); //varför loggas detta 3 ggr?
+        setMasterArr(props.masterArr);
+    }, [masterArr, props.masterArr]);
     
     const printMasterList = Object.keys(masterArr).map(key => {
         return (
