@@ -9,16 +9,17 @@ import Footer from './components/Footer';
 function App() {
 
     const [masterArr, setMasterArr] = useState('');
+
+
     const [isFinish, setFinish] = useState(false);
     const [isAdded, setAdded] = useState(false);
-
     // const [dataUpdate, setDataUpdate] = useState(false);
 
     useEffect( () => {
       GetMasterData( (data) => {
-        // console.log("MasterData:", data[0]);
+        // console.log("MasterData in app from fetch:", data); //denna görs 1 gång=Rätt
 
-        setMasterArr(data[0]);
+          setMasterArr(data);
       })
     }, []) 
 
@@ -30,12 +31,10 @@ function App() {
       //ändra
       const newMasterArr = {...masterArr, ...task}
 
-      //spara
-      // setMasterArr(newMasterArr);
-      setAdded(true);
+      //spara - vilken ska det vara?
+      setMasterArr(newMasterArr);
+      // setAdded(true);
     } 
-    // console.log("Här är masterArr-statet kopia av db:", masterArr);
-  
       
     const deleteTask = (task) => {
 
@@ -46,24 +45,27 @@ function App() {
       
       //ändra - hitta index o splice
       const findIndex = masterArr.findIndex(obj => obj._id === task.id)
-      console.log("findIndex", findIndex);
+      // console.log("findIndex", findIndex);
 
       const splicedArr = masterArr.splice(findIndex, 1);
-      console.log("masterArr efter splice", masterArr);
+      // console.log("masterArr efter splice", masterArr);
       
-      //spara
-      setFinish(true);
+      //spara - vilken ska det vara?
+      setMasterArr(masterArr);
+      // setFinish(true);
+
     } 
 
   return (
     <>
       <Header />
-      
-      
-      {/* {setAdded || setFinish ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} /> : "" } */}
-      {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} /> : "" }
 
-      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
+      {/* {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} /> : "" } */}
+      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} />
+
+      {/* {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  } */}
+      {<TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/>}
+
 
 
       <Footer />

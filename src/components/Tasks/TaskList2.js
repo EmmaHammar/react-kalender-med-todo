@@ -9,11 +9,10 @@ function TaskList2(props) {
     // console.log("masterArr i TaskList", masterArr);
 
     const [masterArr, setMasterArr] = useState('');
+    
     // //denna useEffect körs vid ladding av sidan - FIXA!!
     useEffect( () => {
-        console.log("masterArr i TaskList2:", masterArr); 
-        // console.log("har jag nått detta fr app?", props.id); // får bara met ett värde då, varför? loggar jag i app så är det många
-    
+        console.log("masterArr i TaskList2:", masterArr);     
         setMasterArr(props.masterArr);
         
     }, [masterArr, props.masterArr]); // masterArr är inte tom men den körs 3 ggr
@@ -29,27 +28,29 @@ function TaskList2(props) {
     // moment(a.date, 'DD-MM-YYYY').isBefore(moment(b.date, 'DD-MM-YYYY')) ? -1 : 1,)
     // console.log("sortedArr", sortedArr);
 
-    const printMasterList = Object.keys(masterArr).map(key => {
+    // const printMasterList = Object.keys(masterArr).map(key => {
+    const printMasterList = Object.values(masterArr).map( (task ) => {
+        // console.log("masterArr._id", masterArr._id);
         // const printMasterList = masterArr.sort((a, b) => a.date - b.date).map(key => {
         // const printMasterList = Object.entries(masterArr).map(key => {
-
-        
 
 
         return (
                 <TaskCard 
-                        // isFinish={ masterArr.isFinish }
-                        // title={ masterArr.title }
-                        // date={ moment(masterArr.date).format("YYYY/MM/DD") }
-                        // key={ masterArr._id }
-                        // id={ masterArr._id }
+                    isFinish={ task.isFinish }
+                    title={ task.title }
+                    date={ moment(task.date).format("YYYY/MM/DD") }
+                    key={ task._id }
+                    id={ task._id }
+                    deleteTask={ props.deleteTask }
 
-                        isFinish={ masterArr[key].isFinish }
-                        title={ masterArr[key].title }
-                        date={ moment(masterArr[key].date).format("YYYY/MM/DD") }
-                        key={ masterArr[key]._id }
-                        id={ masterArr[key]._id }
-                        deleteTask={ props.deleteTask }
+
+                        // isFinish={ masterArr[key].isFinish }
+                        // title={ masterArr[key].title }
+                        // date={ moment(masterArr[key].date).format("YYYY/MM/DD") }
+                        // key={ masterArr[key]._id }
+                        // id={ masterArr[key]._id }
+                        // deleteTask={ props.deleteTask }
                         
                 />
         )

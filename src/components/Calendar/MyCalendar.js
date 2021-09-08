@@ -13,7 +13,7 @@ function MyCalendar(props) {
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
-    const [getMasterArr, setMasterArr] = useState(''); 
+    const [getMasterArr, setMasterArr] = useState(props.masterArr); 
     const [count, setCount] = useState(0);
 
     const [isUpdate, setUpdate] = useState(props.isUpdate);
@@ -26,9 +26,11 @@ function MyCalendar(props) {
 
     useEffect( () => {
         console.log("masterArr i MyCalendar:", props.masterArr); //DETTA LOGGAS 2 GGR
-        setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
+        // setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
+        setMasterArr(props.masterArr);
     }, [props.masterArr]);
     // }, []); //MASTERARR LOGGAS 1 GGN MEN ÄR TOM
+
 
     // // useEffect( () => {
     //     AddTask( (data) => {
@@ -59,7 +61,7 @@ function MyCalendar(props) {
         };
         //update the state with the matrix when while-loop is finish:
         setCalendar(calendarArr)
-    }, [value]); //React Hook useEffect has missing dependencies: 'endDay' and 'startDay'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+    }, [value]); //FIXA?? React Hook useEffect has missing dependencies: 'endDay' and 'startDay'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
     function formatDate(day) {
         const clickedDate = day._d;
@@ -76,8 +78,6 @@ function MyCalendar(props) {
 
     //köra en count
     //om props.deleteTask fr App.js ändras -> count blir 1 mindre
-
-    
 
     const counter = () => {
         setCount(count + 1)
@@ -114,7 +114,10 @@ function MyCalendar(props) {
                                         { //från getMasterArr - ta bort checkedTask? 
                                     
 
-                                        getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
+                                        Object.values(getMasterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
+
+                                        
+                                        // getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
                                           
 
                                             // getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} onChange={countChange}>{count} deadline</div> : "")
@@ -128,9 +131,11 @@ function MyCalendar(props) {
                         </div>)
                 }
             </div> 
-            
-            {onClickDay ? <AddTask addTask={ props.addTask } selectedDate={ selectedDate } count={counter} /> : ""}
-            {onClickDay ? <PrintDayList selectedDate={ selectedDate } masterArr={ getMasterArr} /> : ""}
+            {/* PARENT PROPS: <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} /> */}
+            {onClickDay ? <AddTask masterArr={props.masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} isUpdate={props.isFinish} selectedDate={ selectedDate } count={counter} /> : ""}
+
+            {/* FIXA: kolla så PrintDayList också har de PARENT PROPS den behöver: */}
+            {onClickDay ? <PrintDayList masterArr={ getMasterArr} selectedDate={ selectedDate }  /> : ""}
 
             
         </div>

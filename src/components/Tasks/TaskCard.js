@@ -4,6 +4,9 @@ import UpdateCheckbox from './UpdateCheckbox';
 
 function TaskCard (props) {
 
+    const [doUpdate, setDoUpdate] = useState(false);
+
+
     const [isFinish, setIsFinish] = useState(props.isFinish);
     
     const handleClick = ( (evt) => {
@@ -11,35 +14,36 @@ function TaskCard (props) {
 
         //UPPDATERA DB 
         let updateTask = { 
-            id: props.id,
-            isFinish: evt.target.checked
+            id: evt.target.id,
+            isFinish: true
         };
 
-        console.log("updateTask", updateTask);
-        // UpdateCheckbox(updateTask);
+        // console.log("updateTask", updateTask);
+        props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
+        UpdateCheckbox(updateTask);
 
     })
 
-    const handleChange = (evt) => {
-        console.log("detta obj ska raderas med id:", evt.target.id);
-        console.log("checkbox har ändrats:", evt.target.value);
+    // const handleChange = (evt) => {
+    //     console.log("detta obj ska raderas med id:", evt.target.id);
+    //     console.log("checkbox har ändrats:", evt.target.value);
 
-        let checkedTask = {
-            id: evt.target.id,
-            isFinish: true
-        }
+    //     let checkedTask = {
+    //         id: evt.target.id,
+    //         isFinish: true
+    //     }
 
-        //ta reda på för vilket id som har ändrats
-        props.deleteTask(checkedTask) //kallar på funktionen deleteTask() i app.js 
-        UpdateCheckbox(checkedTask);
-        // props.deleteDeadline(checkedTask) //ta bort deadline i kalendern
+    //     //ta reda på för vilket id som har ändrats
+    //     props.deleteTask(checkedTask) //kallar på funktionen deleteTask() i app.js 
+    //     UpdateCheckbox(checkedTask);
+    //     // props.deleteDeadline(checkedTask) //ta bort deadline i kalendern
 
 
-      }
+    //   }
 
     return (
             <div className="task-card" key={ props.id } id={ props.id }>
-                <input type="checkbox" id={ props.id } onClick={handleClick} onChange={handleChange}></input>
+                <input type="checkbox" id={ props.id } onClick={handleClick}></input>
                 <h3>{ props.title }</h3>
                 <p>{ props.date }</p>
             </div>
