@@ -12,7 +12,6 @@ function App() {
     const [isFinish, setFinish] = useState(false);
     const [isAdded, setAdded] = useState(false);
 
-
     // const [dataUpdate, setDataUpdate] = useState(false);
 
     useEffect( () => {
@@ -34,10 +33,10 @@ function App() {
       //spara
       // setMasterArr(newMasterArr);
       setAdded(true);
-
     } 
     // console.log("Här är masterArr-statet kopia av db:", masterArr);
-    
+  
+      
     const deleteTask = (task) => {
 
       //hämta state
@@ -60,10 +59,10 @@ function App() {
     <>
       <Header />
       
-      {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} deleteTask={ deleteTask}/> : "" }
       
-      {/* <TaskList2 masterArr= {masterArr} /> */}
-      {/* <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} /> */}
+      {/* {setAdded || setFinish ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} /> : "" } */}
+      {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} /> : "" }
+
       {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
 
 

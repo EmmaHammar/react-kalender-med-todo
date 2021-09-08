@@ -24,6 +24,7 @@ function AddTask(selectedDate, props) {
     SaveData(newTask);
     // console.log("newTask", newTask);
     props.addTask(newTask) //kallar på funktionen addTask() i app.js
+    props.counter() //FEL denna funkar ej, händer inget. Ska köra counter() i MyCalendar
     evt.preventDefault();
   }
 

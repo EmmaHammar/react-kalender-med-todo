@@ -24,9 +24,17 @@ function TaskList2(props) {
     // const sortedArr = Object.keys(masterArr).sort( (a, b) => a.date - b.date).map( (task) => {
     //     return (<div><li>title: {task.title} date: {task.date}</li></div>)
     // })
+
+    // const sortedArr = Object.keys(masterArr).sort((a, b) =>
+    // moment(a.date, 'DD-MM-YYYY').isBefore(moment(b.date, 'DD-MM-YYYY')) ? -1 : 1,)
+    // console.log("sortedArr", sortedArr);
+
     const printMasterList = Object.keys(masterArr).map(key => {
         // const printMasterList = masterArr.sort((a, b) => a.date - b.date).map(key => {
         // const printMasterList = Object.entries(masterArr).map(key => {
+
+        
+
 
         return (
                 <TaskCard 
