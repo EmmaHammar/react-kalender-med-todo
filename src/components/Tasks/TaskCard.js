@@ -19,8 +19,8 @@ function TaskCard (props) {
         };
 
         // console.log("updateTask", updateTask);
-        props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
         UpdateCheckbox(updateTask);
+        props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
 
     })
 

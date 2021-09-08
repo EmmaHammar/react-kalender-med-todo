@@ -115,12 +115,6 @@ function MyCalendar(props) {
                                     
 
                                         Object.values(getMasterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
-
-                                        
-                                        // getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
-                                          
-
-                                            // getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} onChange={countChange}>{count} deadline</div> : "")
                                                 
                                         }
 

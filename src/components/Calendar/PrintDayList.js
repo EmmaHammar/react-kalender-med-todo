@@ -1,7 +1,15 @@
 // import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import UpdateCheckbox from '../Tasks/UpdateCheckbox';
 
 function PrintDayList(props) {
+
+  const [masterArr, setMasterArr] = useState("");
+
+  useEffect( () => {
+    setMasterArr(props.masterArr);
+    console.log("props.masterArr i PrintDayList", props.masterArr);
+  }, [])
 
   console.log("mm", props.masterArr);
 
