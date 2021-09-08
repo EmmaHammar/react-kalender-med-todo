@@ -9,8 +9,6 @@ import Footer from './components/Footer';
 function App() {
 
     const [masterArr, setMasterArr] = useState('');
-
-
     const [isFinish, setFinish] = useState(false);
     const [isAdded, setAdded] = useState(false);
     // const [dataUpdate, setDataUpdate] = useState(false);
@@ -52,7 +50,7 @@ function App() {
       
       //spara - vilken ska det vara?
       // setMasterArr(masterArr);
-      setFinish(true);
+      setFinish(true); //när sätts den till false förutom vid omrendering? 
     } 
 
   return (
