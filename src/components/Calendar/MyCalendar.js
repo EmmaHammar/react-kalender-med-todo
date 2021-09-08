@@ -15,8 +15,9 @@ function MyCalendar(props) {
     const [selectedDate, setSelectedDate] = useState('');
     // const [isAdded, setIsAdded] = useState(false);
     const [getMasterArr, setMasterArr] = useState(''); //borde dela upp så det blir setId, setTitle, setDate, setIsFinish?
+    const [childStatus, setChildStatus] = useState(false);
 
-
+    const [isUpdate, setUpdate] = useState(false);
     const [id, setId] = useState('');
 
 
@@ -25,6 +26,14 @@ function MyCalendar(props) {
         setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
     }, [props.masterArr]);
     // }, []);
+
+    // // useEffect( () => {
+    //     AddTask( (data) => {
+    //         //data ska vara true
+    //         setUpdate(data)
+    //         console.log("data fr child AddTask:", data);
+    //     })
+    // // });
 
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
@@ -67,7 +76,8 @@ function MyCalendar(props) {
         console.log("printa tasks för:", selectedDate);
         //PRINTA DAYTASKLIST: Hämta db-listan med alla objekt som har date === klickad dag-date???
     
-    }, [onClickDay]);
+    }, [onClickDay, selectedDate]);
+
 
     return(
         <div className="calendar">
@@ -108,7 +118,7 @@ function MyCalendar(props) {
                 }
             </div>
             
-            {onClickDay ? <AddTask selectedDate={ selectedDate } /> : ""}
+            {onClickDay ? <AddTask selectedDate={ selectedDate }  /> : ""}
             {onClickDay ? <PrintDayList selectedDate={ selectedDate } masterArr={ getMasterArr} /> : ""}
 
             

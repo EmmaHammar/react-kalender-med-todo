@@ -5,11 +5,13 @@ import UpdateCheckbox from './UpdateCheckbox';
 function TaskCard (props) {
 
     const [isFinish, setIsFinish] = useState(props.isFinish);
+
+    
    
 
     const handleClick = ( (evt) => {
         // console.log("klick evt:", evt.target.id);
-
+        console.log("mappa id?", props.masterArr);
         //UPPDATERA DB 
         let updateTask = { 
             id: props.id,

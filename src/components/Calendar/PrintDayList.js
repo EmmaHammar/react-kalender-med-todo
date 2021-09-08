@@ -1,28 +1,35 @@
 import { useState, useEffect } from 'react';
+import UpdateCheckbox from '../Tasks/UpdateCheckbox';
 
 function PrintDayList(props) {
 
   console.log("mm", props.masterArr);
 
+  //remove() db when checked task in daylist:
   const handleClick = ( (evt) => {
     // console.log("klick evt wee:", evt.target.id);
 
-    //UPPDATERA DB 
     let updateTask = { 
-        id: props.id,
+        id: evt.target.id,
         isFinish: evt.target.checked
     };
 
     console.log("klick updateTask", updateTask);
+    UpdateCheckbox(updateTask);
+
+
+  })
+
+
+  // const handleClick = ( (evt) => {
+  //   console.log("klick evt wee:", evt.target.id);
+    //UPPDATERA DB 
+    // 
+
+    // console.log("klick updateTask", updateTask);
     // UpdateCheckbox(updateTask);
 
-    // if (evt.target.checked === true) {
-    //     console.log("isFinish=true för id:", props.id); 
-    // } else {
-    //     console.log("isFinish=false för id:", props.id);
-    // }
-
-})
+  // })
 
 
   return (
@@ -31,8 +38,9 @@ function PrintDayList(props) {
       <ul>
         {
           props.masterArr.map( (task, index) => 
-            (task.date === props.selectedDate) ? <div key={index} id={task.id}> <input type="checkbox" onClick={handleClick}></input><li>{task.title}</li></div> : ""
+            (task.date === props.selectedDate) ? <div key={index}> <input id={task._id} type="checkbox" onClick={handleClick}></input><li>{task.title}</li></div> : ""
           )
+
         }
       </ul>
     </div>

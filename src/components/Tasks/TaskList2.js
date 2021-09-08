@@ -9,11 +9,14 @@ function TaskList2(props) {
     // console.log("masterArr i TaskList", masterArr);
 
     const [masterArr, setMasterArr] = useState('');
-    // //denna useEffect körs vid ladding av sidan
+    // //denna useEffect körs vid ladding av sidan - FIXA!!
     useEffect( () => {
-        console.log("tom eller ej masterArr", masterArr); //varför loggas detta 3 ggr?
+        console.log("tom eller ej masterArr", masterArr); 
+        // console.log("har jag nått detta fr app?", props.id); // får bara met ett värde då, varför? loggar jag i app så är det många
         setMasterArr(props.masterArr);
-    }, [masterArr, props.masterArr]);
+    }, [masterArr, props.masterArr]); // masterArr är inte tom men den körs 3 ggr
+    // }, []); //den laddas innan masterArr har hunnit uppdateras
+
     
     const printMasterList = Object.keys(masterArr).map(key => {
         return (

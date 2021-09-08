@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import SaveData from './SaveData';
 
-function AddTask(selectedDate, cb) {
+function AddTask(selectedDate) {
+// function AddTask(cb, selectedDate) {
+
 
   const [title, setTitle] = useState('');
   let [isAdded, setIsAdded] = useState(false);
+ 
+
 
   let newTask = { 
     date: selectedDate.selectedDate, //not object
@@ -27,6 +31,7 @@ function AddTask(selectedDate, cb) {
 
   useEffect( () => {
     console.log("isAdded har ändrats till true");
+    //FIXA skicka isAdded true till parent MyCalendar - HUR?
   }, [isAdded]);
     
   return (
@@ -43,3 +48,5 @@ function AddTask(selectedDate, cb) {
 }
   
 export default AddTask;
+
+    //skicka signal till parent(MyCalendar -> App o ner till Tasklist) för att kunna rendera om MasterTasklist
