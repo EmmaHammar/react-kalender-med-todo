@@ -36,34 +36,18 @@ function App() {
     // // FUNKAR EJ
     const deleteTask = (task) => {
 
-      // ERROR: Uncaught ReferenceError: Cannot access 'masterArr' before initialization 
       //hämta state
-      // const masterArr = {...masterArr}
       console.log("task.id", task.id);
       
-      //ändra - hitta index o splice? 
-      // const newMasterArr = {...masterArr, ...task}
-    
+      //ändra - hitta index o splice
       const findIndex = masterArr.findIndex(obj => obj._id === task.id)
       console.log("findIndex", findIndex);
 
       const splicedArr = masterArr.splice(findIndex, 1);
       console.log("masterArr efter splice", masterArr);
       
-
       //spara
       setMasterArr(masterArr);
-
-
-      //   // // ERROR: Warning: Each child in a list should have a unique "key" prop.)
-      //   // // hämta state
-      //   // const myArr = {...masterArr}
-
-      //   // // ändra
-      //   // const newMasterArr2 = {...myArr, ...task}
-
-      //   // // spara
-      //   // setMasterArr(newMasterArr2);
 
     } 
 
