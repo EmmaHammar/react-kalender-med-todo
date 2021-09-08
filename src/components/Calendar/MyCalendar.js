@@ -13,9 +13,12 @@ function MyCalendar(props) {
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
-    const [getMasterArr, setMasterArr] = useState(''); //borde dela upp så det blir setId, setTitle, setDate, setIsFinish?
+    const [getMasterArr, setMasterArr] = useState(''); 
 
-    // const [isAdded, setIsAdded] = useState(false);
+    const [isUpdate, setUpdate] = useState(props.isUpdate);
+
+    // const [isAdded, setIsAdded] = useState(props.addTask); //fått props.addTask från App.js
+
     // const [childStatus, setChildStatus] = useState(false);
     // const [isUpdate, setUpdate] = useState(false);
     // const [id, setId] = useState('');
@@ -67,13 +70,16 @@ function MyCalendar(props) {
         // console.log("useeffect onclickday:", onClickDay);
         // console.log("printa tasks för:", selectedDate);
     }, [onClickDay, selectedDate]);
+    
 
+    
 
     return(
         <div className="calendar">
 
             <CalendarHeader value={value} setValue={setValue} />
             
+            {/* denna div ska renderas om om checkbox har ändrats? */}
             <div className="calendar-body">
                 { 
                     calendar.map((week, index) => 
@@ -94,6 +100,7 @@ function MyCalendar(props) {
                                         { day.format("D") }
 
                                         {/*FIXA så att den adderas:*/}
+                                        {/* FIXA så att getMasterArr renderas om */}
                                         { 
                                             getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index}>1 deadline</div> : "")
                                                 
@@ -105,9 +112,9 @@ function MyCalendar(props) {
                             }
                         </div>)
                 }
-            </div>
+            </div> 
             
-            {onClickDay ? <AddTask addTask={ props.addTask } selectedDate={ selectedDate }  /> : ""}
+            {onClickDay ? <AddTask addTask={ props.addTask } selectedDate={ selectedDate } /> : ""}
             {onClickDay ? <PrintDayList selectedDate={ selectedDate } masterArr={ getMasterArr} /> : ""}
 
             

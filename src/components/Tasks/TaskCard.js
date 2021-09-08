@@ -15,16 +15,8 @@ function TaskCard (props) {
             isFinish: evt.target.checked
         };
 
-        // let updateTask = { 
-        //     id: props.id,
-        //     date: props.date.toString(),
-        //     title: props.title,
-        //     isFinish: evt.target.checked
-        // };
-
-
         console.log("updateTask", updateTask);
-        UpdateCheckbox(updateTask);
+        // UpdateCheckbox(updateTask);
 
     })
 
@@ -39,6 +31,9 @@ function TaskCard (props) {
 
         //ta reda på för vilket id som har ändrats
         props.deleteTask(checkedTask) //kallar på funktionen deleteTask() i app.js 
+        UpdateCheckbox(checkedTask);
+        // props.deleteDeadline(checkedTask) //ta bort deadline i kalendern
+
 
       }
 

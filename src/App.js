@@ -10,6 +10,8 @@ function App() {
 
     const [masterArr, setMasterArr] = useState('');
     const [isFinish, setFinish] = useState(false);
+    const [isAdded, setAdded] = useState(false);
+
 
     // const [dataUpdate, setDataUpdate] = useState(false);
 
@@ -30,12 +32,12 @@ function App() {
       const newMasterArr = {...masterArr, ...task}
 
       //spara
-      setMasterArr(newMasterArr);
+      // setMasterArr(newMasterArr);
+      setAdded(true);
 
     } 
     // console.log("Här är masterArr-statet kopia av db:", masterArr);
     
-    // // FUNKAR EJ
     const deleteTask = (task) => {
 
       //hämta state
@@ -52,14 +54,14 @@ function App() {
       
       //spara
       setFinish(true);
-      // setMasterArr(masterArr);
-
     } 
 
   return (
     <>
       <Header />
-      <MyCalendar masterArr={masterArr} addTask={ addTask }/>
+      
+      {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } isUpdate={isFinish} deleteTask={ deleteTask}/> : "" }
+      
       {/* <TaskList2 masterArr= {masterArr} /> */}
       {/* <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} /> */}
       {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
