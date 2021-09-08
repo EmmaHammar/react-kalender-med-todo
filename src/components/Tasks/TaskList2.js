@@ -11,14 +11,22 @@ function TaskList2(props) {
     const [masterArr, setMasterArr] = useState('');
     // //denna useEffect körs vid ladding av sidan - FIXA!!
     useEffect( () => {
-        console.log("tom eller ej masterArr", masterArr); 
+        console.log("masterArr i TaskList2:", masterArr); 
         // console.log("har jag nått detta fr app?", props.id); // får bara met ett värde då, varför? loggar jag i app så är det många
+    
         setMasterArr(props.masterArr);
+        
     }, [masterArr, props.masterArr]); // masterArr är inte tom men den körs 3 ggr
     // }, []); //den laddas innan masterArr har hunnit uppdateras
-
     
+    //FÖRSÖKER SORTERA
+    // const printMasterList = Object.keys(masterArr).sort((a, b) => a.date - b.date).map(key => {
+    // const sortedArr = Object.keys(masterArr).sort( (a, b) => a.date - b.date).map( (task) => {
+    //     return (<div><li>title: {task.title} date: {task.date}</li></div>)
+    // })
+    // console.log("sortedArr", sortedArr);
     const printMasterList = Object.keys(masterArr).map(key => {
+
         return (
                 <TaskCard 
                         isFinish={ masterArr[key].isFinish }

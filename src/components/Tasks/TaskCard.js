@@ -5,10 +5,7 @@ import UpdateCheckbox from './UpdateCheckbox';
 function TaskCard (props) {
 
     const [isFinish, setIsFinish] = useState(props.isFinish);
-
     
-   
-
     const handleClick = ( (evt) => {
         // console.log("klick evt:", evt.target.id);
         console.log("mappa id?", props.masterArr);
@@ -18,14 +15,14 @@ function TaskCard (props) {
             isFinish: evt.target.checked
         };
 
-        console.log("updateTask", updateTask);
+        // console.log("updateTask", updateTask);
         UpdateCheckbox(updateTask);
 
-        if (evt.target.checked === true) {
-            console.log("isFinish=true för id:", props.id); 
-        } else {
-            console.log("isFinish=false för id:", props.id);
-        }
+        // if (evt.target.checked === true) {
+        //     console.log("isFinish=true för id:", props.id); 
+        // } else {
+        //     console.log("isFinish=false för id:", props.id);
+        // }
 
     })
 

@@ -21,10 +21,10 @@ function MyCalendar(props) {
     // const [id, setId] = useState('');
 
     useEffect( () => {
-        console.log("masterArr i MyCalendar:", props.masterArr);
+        console.log("masterArr i MyCalendar:", props.masterArr); //DETTA LOGGAS 2 GGR
         setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
     }, [props.masterArr]);
-    // }, []);
+    // }, []); //MASTERARR LOGGAS 1 GGN MEN ÄR TOM
 
     // // useEffect( () => {
     //     AddTask( (data) => {
@@ -55,7 +55,7 @@ function MyCalendar(props) {
         };
         //update the state with the matrix when while-loop is finish:
         setCalendar(calendarArr)
-    }, [value]);
+    }, [value]); //React Hook useEffect has missing dependencies: 'endDay' and 'startDay'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
 
     function formatDate(day) {
         const clickedDate = day._d;
