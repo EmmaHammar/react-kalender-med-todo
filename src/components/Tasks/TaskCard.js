@@ -10,17 +10,17 @@ function TaskCard (props) {
         console.log("klick evt:", evt.target.id)
 
         //UPPDATERA DB 
-        // let updateTask = { 
-        //     id: props.id,
-        //     isFinish: evt.target.checked
-        // };
-
         let updateTask = { 
             id: props.id,
-            date: props.date.toString(),
-            title: props.title,
             isFinish: evt.target.checked
         };
+
+        // let updateTask = { 
+        //     id: props.id,
+        //     date: props.date.toString(),
+        //     title: props.title,
+        //     isFinish: evt.target.checked
+        // };
 
         props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
 

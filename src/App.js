@@ -38,11 +38,21 @@ function App() {
 
       // ERROR: Uncaught ReferenceError: Cannot access 'masterArr' before initialization 
       //hämta state
-      const masterArr = {...masterArr}
-      //ändra
-      const newMasterArr = {...masterArr, ...task}
+      // const masterArr = {...masterArr}
+      console.log("task.id", task.id);
+      
+      //ändra - hitta index o splice? 
+      // const newMasterArr = {...masterArr, ...task}
+    
+      const findIndex = masterArr.findIndex(obj => obj._id === task.id)
+      console.log("findIndex", findIndex);
+
+      const splicedArr = masterArr.splice(findIndex, 1);
+      console.log("masterArr efter splice", masterArr);
+      
+
       //spara
-      setMasterArr(newMasterArr);
+      setMasterArr(masterArr);
 
 
       //   // // ERROR: Warning: Each child in a list should have a unique "key" prop.)
