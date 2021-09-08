@@ -39,8 +39,8 @@ function App() {
     const deleteTask = (task) => {
 
       //hämta state
-      console.log("task:", task);
-      
+      console.log("task fr deleteTask app.js:", task);
+
       console.log("task.id", task.id);
       
       //ändra - hitta index o splice
@@ -48,11 +48,11 @@ function App() {
       // console.log("findIndex", findIndex);
 
       const splicedArr = masterArr.splice(findIndex, 1);
-      // console.log("masterArr efter splice", masterArr);
+      console.log("masterArr efter splice i deleteTask app.js", masterArr);
       
       //spara - vilken ska det vara?
-      setMasterArr(masterArr);
-      // setFinish(true);
+      // setMasterArr(masterArr);
+      setFinish(true);
 
     } 
 
@@ -63,8 +63,8 @@ function App() {
       {/* {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} /> : "" } */}
       <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} />
 
-      {/* {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  } */}
-      {<TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/>}
+      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
+      {/* {<TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/>} */}
 
 
 
