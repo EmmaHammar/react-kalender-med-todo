@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import SaveData from './SaveData';
 
-function AddTask(selectedDate) {
+function AddTask(selectedDate, props) {
 // function AddTask(cb, selectedDate) {
 
   const [title, setTitle] = useState('');
@@ -22,6 +22,7 @@ function AddTask(selectedDate) {
     // console.log("saveBtn klick med task:", title);
     setIsAdded(true);
     SaveData(newTask);
+    props.addTask(newTask) //kallar på funktionen addTask() i app.js
     evt.preventDefault();
   }
 

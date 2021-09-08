@@ -23,28 +23,30 @@ function App() {
       GetMasterData( (data) => {
         // console.log("MasterData:", data[0]);
 
-        //FEL: här är ex id alla id, men i child blir id endast 1st
-        data[0].map( (task, index) => {
-          return( 
-            setId(task._id)
-            // console.log("separata state-arr:", task.date)
-            // console.log("separata state-arr:", task._id)
-            // console.log("separata state-arr:", task.title)
-            // console.log("separata state-arr:", task.isFinish)
-          )
-        })
         setMasterArr(data[0]);
       })
     }, []) 
 
+    //testa uppdatera db o state samtiidgt
+    const addTask = (task) => {
+      //hämta state
+      const masterArr = {...masterArr}
+
+      //ändra
+      const newMasterArr = {...masterArr, ...task}
+
+      //spara
+      setMasterArr(newMasterArr);
+
+    } 
     // console.log("Här är masterArr-statet kopia av db:", masterArr);
     
 
   return (
     <>
       <Header />
-      <MyCalendar masterArr={masterArr}/>
-      <TaskList2 masterArr= {masterArr} id={ id }/>
+      <MyCalendar masterArr={masterArr} addTask={ addTask }/>
+      <TaskList2 masterArr= {masterArr} id={ id }  />
       <Footer />
     </>
   );

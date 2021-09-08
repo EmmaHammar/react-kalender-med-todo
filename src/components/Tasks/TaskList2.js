@@ -26,9 +26,18 @@ function TaskList2(props) {
     // })
     // console.log("sortedArr", sortedArr);
     const printMasterList = Object.keys(masterArr).map(key => {
+        // console.log("not a funct?", masterArr);
+    // const printMasterList = masterArr.sort((a, b) => a.date - b.date).map(key => {
+    // const printMasterList = Object.entries(masterArr).map(key => {
+
 
         return (
                 <TaskCard 
+                        // isFinish={ masterArr.isFinish }
+                        // title={ masterArr.title }
+                        // date={ moment(masterArr.date).format("YYYY/MM/DD") }
+                        // key={ masterArr._id }
+                        // id={ masterArr._id }
                         isFinish={ masterArr[key].isFinish }
                         title={ masterArr[key].title }
                         date={ moment(masterArr[key].date).format("YYYY/MM/DD") }

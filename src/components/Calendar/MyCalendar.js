@@ -107,7 +107,7 @@ function MyCalendar(props) {
                 }
             </div>
             
-            {onClickDay ? <AddTask selectedDate={ selectedDate }  /> : ""}
+            {onClickDay ? <AddTask addTask={ props.addTask } selectedDate={ selectedDate }  /> : ""}
             {onClickDay ? <PrintDayList selectedDate={ selectedDate } masterArr={ getMasterArr} /> : ""}
 
             
