@@ -53,7 +53,6 @@ function App() {
       //spara - vilken ska det vara?
       // setMasterArr(masterArr);
       setFinish(true);
-
     } 
 
   return (

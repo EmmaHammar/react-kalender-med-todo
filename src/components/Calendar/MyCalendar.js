@@ -129,7 +129,7 @@ function MyCalendar(props) {
             {onClickDay ? <AddTask masterArr={props.masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} isUpdate={props.isFinish} selectedDate={ selectedDate } count={counter} /> : ""}
 
             {/* FIXA: kolla så PrintDayList också har de PARENT PROPS den behöver: */}
-            {onClickDay ? <PrintDayList masterArr={ getMasterArr} selectedDate={ selectedDate }  /> : ""}
+            {onClickDay ? <PrintDayList masterArr={ getMasterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask}  /> : ""}
 
             
         </div>

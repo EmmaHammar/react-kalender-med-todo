@@ -19,11 +19,12 @@ function PrintDayList(props) {
 
     let updateTask = { 
         id: evt.target.id,
-        isFinish: evt.target.checked
+        isFinish: true
     };
 
-    // console.log("klick updateTask", updateTask);
+    console.log("updateTask i PrintList.js:", updateTask);
     UpdateCheckbox(updateTask);
+    props.deleteTask(updateTask);
 
   });
 
