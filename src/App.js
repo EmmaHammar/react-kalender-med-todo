@@ -9,6 +9,8 @@ import Footer from './components/Footer';
 function App() {
 
     const [masterArr, setMasterArr] = useState('');
+    const [isFinish, setFinish] = useState(false);
+
     // const [dataUpdate, setDataUpdate] = useState(false);
 
     useEffect( () => {
@@ -37,6 +39,8 @@ function App() {
     const deleteTask = (task) => {
 
       //hämta state
+      console.log("task:", task);
+      
       console.log("task.id", task.id);
       
       //ändra - hitta index o splice
@@ -47,7 +51,8 @@ function App() {
       console.log("masterArr efter splice", masterArr);
       
       //spara
-      setMasterArr(masterArr);
+      setFinish(true);
+      // setMasterArr(masterArr);
 
     } 
 
@@ -56,7 +61,9 @@ function App() {
       <Header />
       <MyCalendar masterArr={masterArr} addTask={ addTask }/>
       {/* <TaskList2 masterArr= {masterArr} /> */}
-      <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} />
+      {/* <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} /> */}
+      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
+
 
       <Footer />
     </>
