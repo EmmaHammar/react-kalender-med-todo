@@ -13,13 +13,12 @@ function MyCalendar(props) {
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
-    // const [isAdded, setIsAdded] = useState(false);
     const [getMasterArr, setMasterArr] = useState(''); //borde dela upp så det blir setId, setTitle, setDate, setIsFinish?
-    const [childStatus, setChildStatus] = useState(false);
 
-    const [isUpdate, setUpdate] = useState(false);
-    const [id, setId] = useState('');
-
+    // const [isAdded, setIsAdded] = useState(false);
+    // const [childStatus, setChildStatus] = useState(false);
+    // const [isUpdate, setUpdate] = useState(false);
+    // const [id, setId] = useState('');
 
     useEffect( () => {
         console.log("masterArr i MyCalendar:", props.masterArr);
@@ -34,7 +33,6 @@ function MyCalendar(props) {
     //         console.log("data fr child AddTask:", data);
     //     })
     // // });
-
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
@@ -63,19 +61,11 @@ function MyCalendar(props) {
         const clickedDate = day._d;
         const clickedDateRightFormat = moment(clickedDate).format("YYYY-MM-DD");
         setSelectedDate(clickedDateRightFormat);
-        printDeadlines(clickedDateRightFormat);
     };
 
-    const printDeadlines = ( (date) => {
-        console.log("visa deadlines för klickad dag:", date);
-
-    })
-
     useEffect( () => {    
-        console.log("useeffect onclickday:", onClickDay);
-        console.log("printa tasks för:", selectedDate);
-        //PRINTA DAYTASKLIST: Hämta db-listan med alla objekt som har date === klickad dag-date???
-    
+        // console.log("useeffect onclickday:", onClickDay);
+        // console.log("printa tasks för:", selectedDate);
     }, [onClickDay, selectedDate]);
 
 
@@ -109,7 +99,6 @@ function MyCalendar(props) {
                                                 
                                         }
 
-                                        
                                     </div>
                                     
                                 </div>)
@@ -128,5 +117,4 @@ function MyCalendar(props) {
 
 export default MyCalendar;
 
-//onClick på day-diven: så när du klickar på en dag så sätts värdet till dagen.
-//arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders.                            
+//arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders??                          

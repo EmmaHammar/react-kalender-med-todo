@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import UpdateCheckbox from '../Tasks/UpdateCheckbox';
 
 function PrintDayList(props) {
@@ -14,23 +14,10 @@ function PrintDayList(props) {
         isFinish: evt.target.checked
     };
 
-    console.log("klick updateTask", updateTask);
+    // console.log("klick updateTask", updateTask);
     UpdateCheckbox(updateTask);
 
-
-  })
-
-
-  // const handleClick = ( (evt) => {
-  //   console.log("klick evt wee:", evt.target.id);
-    //UPPDATERA DB 
-    // 
-
-    // console.log("klick updateTask", updateTask);
-    // UpdateCheckbox(updateTask);
-
-  // })
-
+  });
 
   return (
     <div>

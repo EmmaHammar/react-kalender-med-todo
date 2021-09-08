@@ -11,7 +11,7 @@ function App() {
     const [masterArr, setMasterArr] = useState('');
     const [dataUpdate, setDataUpdate] = useState(false);
 
-    //Testa göra separata states för varje object i db:
+    //Testa göra separata states för varje object i db?
     const [title, setTitle] = useState('');
     const [id, setId] = useState('');
     const [isFinish, setFinish] = useState('');
@@ -22,6 +22,8 @@ function App() {
     useEffect( () => {
       GetMasterData( (data) => {
         // console.log("MasterData:", data[0]);
+
+        //FEL: här är ex id alla id, men i child blir id endast 1st
         data[0].map( (task, index) => {
           return( 
             setId(task._id)
@@ -29,9 +31,6 @@ function App() {
             // console.log("separata state-arr:", task._id)
             // console.log("separata state-arr:", task.title)
             // console.log("separata state-arr:", task.isFinish)
- 
-
-
           )
         })
         setMasterArr(data[0]);

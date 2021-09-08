@@ -4,17 +4,13 @@ import SaveData from './SaveData';
 function AddTask(selectedDate) {
 // function AddTask(cb, selectedDate) {
 
-
   const [title, setTitle] = useState('');
   let [isAdded, setIsAdded] = useState(false);
  
-
-
   let newTask = { 
     date: selectedDate.selectedDate, //not object
     title: title,
     isFinish: false
-    // taskId: crypto.randomBytes(4).toString("hex")
   };
 
   const handleChange = (evt) => {

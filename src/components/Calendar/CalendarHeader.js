@@ -16,9 +16,9 @@ export default function CalendarHeader({value, setValue}) {
         return value.clone().add(1, "month");
     };
 
-    function thisMonth() {
-        return value.isSame(new Date(), "month");
-    }
+    // function thisMonth() {
+    //     return value.isSame(new Date(), "month");
+    // }
     return(
         <div className="calendar-header">
                 <div className="prev" onClick={ () => setValue(prevMonth()) }>
