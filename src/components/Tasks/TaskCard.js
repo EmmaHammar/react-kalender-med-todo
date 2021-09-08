@@ -7,22 +7,25 @@ function TaskCard (props) {
     const [isFinish, setIsFinish] = useState(props.isFinish);
     
     const handleClick = ( (evt) => {
-        // console.log("klick evt:", evt.target.id);
-        console.log("mappa id?", props.masterArr);
+        console.log("klick evt:", evt.target.id)
+
         //UPPDATERA DB 
+        // let updateTask = { 
+        //     id: props.id,
+        //     isFinish: evt.target.checked
+        // };
+
         let updateTask = { 
             id: props.id,
+            date: props.date.toString(),
+            title: props.title,
             isFinish: evt.target.checked
         };
 
-        // console.log("updateTask", updateTask);
-        UpdateCheckbox(updateTask);
+        props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
 
-        // if (evt.target.checked === true) {
-        //     console.log("isFinish=true för id:", props.id); 
-        // } else {
-        //     console.log("isFinish=false för id:", props.id);
-        // }
+        console.log("updateTask", updateTask);
+        UpdateCheckbox(updateTask);
 
     })
 
@@ -36,7 +39,3 @@ function TaskCard (props) {
 };
 
 export default TaskCard;
-
-//toggla mellan klasser isFinish true/false?
-
-// {props.isFinish ? <input type="checkbox"/> : <input type="checkbox"/> }

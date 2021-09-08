@@ -11,14 +11,6 @@ function App() {
     const [masterArr, setMasterArr] = useState('');
     // const [dataUpdate, setDataUpdate] = useState(false);
 
-    //Testa göra separata states för varje object i db?
-    const [id, setId] = useState('');
-    // const [title, setTitle] = useState('');
-    // const [isFinish, setFinish] = useState('');
-    // const [data, setDate] = useState('');
-
-    // getMasterArr.map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index}>1 deadline</div> : "")
-
     useEffect( () => {
       GetMasterData( (data) => {
         // console.log("MasterData:", data[0]);
@@ -27,7 +19,7 @@ function App() {
       })
     }, []) 
 
-    //testa uppdatera db o state samtiidgt
+    //uppdatera db o state samtidigt - kopiera nuvarande state och lägga i hop med nya state från child och sedan sätta state till ihopslagna statet i parent:
     const addTask = (task) => {
       //hämta state
       const masterArr = {...masterArr}
@@ -41,12 +33,37 @@ function App() {
     } 
     // console.log("Här är masterArr-statet kopia av db:", masterArr);
     
+    // // FUNKAR EJ
+    const deleteTask = (task) => {
+
+      // ERROR: Uncaught ReferenceError: Cannot access 'masterArr' before initialization 
+      //hämta state
+      const masterArr = {...masterArr}
+      //ändra
+      const newMasterArr = {...masterArr, ...task}
+      //spara
+      setMasterArr(newMasterArr);
+
+
+      //   // // ERROR: Warning: Each child in a list should have a unique "key" prop.)
+      //   // // hämta state
+      //   // const myArr = {...masterArr}
+
+      //   // // ändra
+      //   // const newMasterArr2 = {...myArr, ...task}
+
+      //   // // spara
+      //   // setMasterArr(newMasterArr2);
+
+    } 
 
   return (
     <>
       <Header />
       <MyCalendar masterArr={masterArr} addTask={ addTask }/>
-      <TaskList2 masterArr= {masterArr} id={ id }  />
+      {/* <TaskList2 masterArr= {masterArr} /> */}
+      <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} />
+
       <Footer />
     </>
   );

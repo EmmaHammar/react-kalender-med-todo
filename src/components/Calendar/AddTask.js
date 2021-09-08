@@ -22,6 +22,7 @@ function AddTask(selectedDate, props) {
     // console.log("saveBtn klick med task:", title);
     setIsAdded(true);
     SaveData(newTask);
+    // console.log("newTask", newTask);
     props.addTask(newTask) //kallar på funktionen addTask() i app.js
     evt.preventDefault();
   }
