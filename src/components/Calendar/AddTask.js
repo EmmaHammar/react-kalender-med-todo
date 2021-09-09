@@ -10,9 +10,6 @@ function AddTask(props) {
   const [doUpdate, setDoUpdate] =useState(false);
   const [isUpdate, setIsUpdate] =useState(props.isUpdate);
 
-  //blir error av denna:
-  // const [count, setCount] = useState(props.count);
-
   //state endast i denna funktion som printar text om sparat task:
   const [saved, setSaved] = useState(false);
  
@@ -41,14 +38,11 @@ function AddTask(props) {
     setMasterArr(masterArr)
     console.log("masterArr i AddTask", masterArr);
 
-    // setSaved(!saved);
 
     evt.preventDefault();
   }
 
-  // useEffect( () => {
-  //   console.log("isAdded har ändrats till true");
-  // }, [saved]);
+
     
   return (
     <div>

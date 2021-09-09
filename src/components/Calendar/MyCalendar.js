@@ -3,11 +3,8 @@ import './MyCalendar.css';
 import dayStyles from './Styles';
 
 import CalendarHeader from './CalendarHeader';
-
 import AddTask from './AddTask';
-
 import PrintDayList from './PrintDayList';
-
 const moment = require('moment');
 
 function MyCalendar(props) {
@@ -23,7 +20,8 @@ function MyCalendar(props) {
     const [masterArr, setMasterArr] = useState(props.masterArr); 
     const [doUpdate, setDoUpdate] = useState(props.doUpdate);
     const [isUpdate, setUpdate] = useState(props.isUpdate);
-    const [count, setCount] = useState(0);
+
+    // const [deadlineArr, setDeadlineArr] = useState([])
 
     useEffect( () => {
         console.log("masterArr i MyCalendar:", props.masterArr); //DETTA LOGGAS 2 GGR
@@ -65,15 +63,7 @@ function MyCalendar(props) {
         // console.log("printa tasks för:", selectedDate);
 
     }, [onClickDay, selectedDate]);
-    
 
-    //köra en count
-    //om props.deleteTask fr App.js ändras -> count blir 1 mindre
-
-    const counter = () => {
-        setCount(count + 1)
-        console.log("count:", count);
-    }
 
     return(
         <div className="calendar">
@@ -103,7 +93,7 @@ function MyCalendar(props) {
                                         {/*FIXA så att den adderas:*/}
                                         {
     
-                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
+                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >X deadline</div> : "")
                                                 
                                         }
 
@@ -115,7 +105,7 @@ function MyCalendar(props) {
                 }
             </div> 
 
-            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
+            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate }/> : ""}
 
             {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} /> : ""}
             
