@@ -1,0 +1,1 @@
+//!thisMonth - kollar omd et är sant eller falskt. om det inte är denna månad -> visa pilen till vänster
