@@ -1,3 +1,18 @@
+# Info
+Frontend-repo React: https://emmahammar.github.io/react-kalender-med-todo/
+Backend-repo med express-server: https://react-kalender-med-to-do-be.herokuapp.com/
+Databas noSQL MongoDB
+
+
+
+# Start project?
+1) npx express-generator --no-view
+2) npm install
+3) nodemon start (eller npm start)
+4) git clone Frontend-repo
+
+
+
 # Inlämningsuppgift
 Kalender med Todo 
 I den här uppgiften så skall du ta fram en kalender med todo funktion. 
