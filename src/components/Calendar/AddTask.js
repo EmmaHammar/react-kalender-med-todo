@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import SaveData from './SaveData';
 
-function AddTask(selectedDate, props) {
-// function AddTask(cb, selectedDate) {
+function AddTask(props) {
+  // {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
 
   const [title, setTitle] = useState('');
   let [isAdded, setIsAdded] = useState(false);
  
   let newTask = { 
-    date: selectedDate.selectedDate, //not object
+    date: props.selectedDate.selectedDate, //not object
     title: title,
     isFinish: false
   };
@@ -35,7 +35,7 @@ function AddTask(selectedDate, props) {
     
   return (
     <div>
-      <h3>Lägg till ny uppgift med deadline: {selectedDate.selectedDate}</h3>
+      <h3>Lägg till ny uppgift med deadline: {props.selectedDate.selectedDate}</h3>
       <form onSubmit={ onSubmit }>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           <button type="submit" id="saveBtn">Spara</button>

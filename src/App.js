@@ -3,64 +3,79 @@ import { useState, useEffect } from 'react';
 import GetMasterData from './components/Tasks/GetMasterData';
 import Header from './components/Header/Header';
 import MyCalendar from './components/Calendar/MyCalendar';
-import TaskList2 from './components/Tasks/TaskList2';
 import Footer from './components/Footer';
+
+
+import TaskList2 from './components/Tasks/TaskList2';
+import SaveData from './components/Calendar/SaveData';
+
 
 function App() {
 
-    const [masterArr, setMasterArr] = useState('');
-    const [isFinish, setFinish] = useState(false);
-    const [isAdded, setAdded] = useState(false);
-    // const [dataUpdate, setDataUpdate] = useState(false);
+  //STATES
+  const [masterArr, setMasterArr] = useState([]); //db-data
+  const [doUpdate, setDoUpdate] = useState(false); //togglas fullösning omrendering setDoUpdate(!doUpdate);
+  const [isFinish, setFinish] = useState(false); //? om checkbox är checked?
+  const [isUpdate, setisUpdate] = useState(false); // vad gör denna?
 
-    useEffect( () => {
-      GetMasterData( (data) => {
-        // console.log("MasterData in app from fetch:", data); //denna görs 1 gång=Rätt
+  useEffect( () => {
+    GetMasterData( (data) => {
+      console.log("GetMasterData() till App:", data); //denna görs 1 gång=Rätt
+        setMasterArr(data);
+    })
+  }, []) 
+  // }, [masterArr]) 
 
-          setMasterArr(data);
-      })
-    }, []) 
+  //Children kallar på dessa?
+  //SaveData()
+  //AddTask()
+  //DeleteTask()
 
-    //uppdatera db o state samtidigt - kopiera nuvarande state och lägga i hop med nya state från child och sedan sätta state till ihopslagna statet i parent:
-    const addTask = (task) => {
-      //hämta state
-      const masterArr = {...masterArr}
+  // SaveData ( (data) => {
+  //   //kallar på komponenten SaveTask
+  // })
 
-      //ändra
-      const newMasterArr = {...masterArr, ...task}
 
-      //spara - vilken ska det vara?
-      setMasterArr(newMasterArr);
-      // setAdded(true);
-    } 
+  //kopiera nuvarande state -> lägga till nytt state fr child -> uppdatera till nya statet:
+  const addTask = (task) => {
+    //hämta state
+    const masterArr = {...masterArr}
+
+    //ändra
+    const newMasterArr = {...masterArr, ...task}
+
+    //spara - vilken ska det vara?
+    setMasterArr(newMasterArr);
+    // setAdded(true);
+  } 
       
-    const deleteTask = (task) => {
+  //Leta efter indexnr för task som är checkad -> ta bort det indexnr från arrayen -> uppdatera till nya statet:
+  const deleteTask = (task) => {
 
-      //hämta state
-      console.log("task fr deleteTask app.js:", task);
+    //hämta state
+    console.log("task fr deleteTask app.js:", task);
 
-      console.log("task.id", task.id);
-      
-      //ändra - hitta index o splice
-      const findIndex = masterArr.findIndex(obj => obj._id === task.id)
-      // console.log("findIndex", findIndex);
+    console.log("task.id", task.id);
+    
+    //ändra - hitta index o splice
+    const findIndex = masterArr.findIndex(obj => obj._id === task.id)
+    // console.log("findIndex", findIndex);
 
-      const splicedArr = masterArr.splice(findIndex, 1);
-      console.log("masterArr efter splice i deleteTask app.js", masterArr);
-      
-      //spara - vilken ska det vara?
-      // setMasterArr(masterArr);
-      setFinish(true); //när sätts den till false förutom vid omrendering? 
-    } 
+    const splicedArr = masterArr.splice(findIndex, 1);
+    console.log("masterArr efter splice i deleteTask app.js", masterArr);
+    
+    //spara - vilken ska det vara?
+    // setMasterArr(masterArr);
+    setFinish(true); //när sätts den till false förutom vid omrendering? 
+  } 
 
   return (
     <>
       <Header />
 
-      {/* {setAdded ? <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} /> : "" } */}
-      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} />
+      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish} />
 
-      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/> : ""  }
+      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} doUpdate={doUpdate} /> : ""  }
       {/* {<TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/>} */}
 
 
@@ -73,3 +88,17 @@ function App() {
 export default App;
 
 //vill uppdatera isAdded från AddTask > MyCalendar > App => TaskList omrenderas o ny task syns i listan
+
+//======
+//PROPS
+//======
+
+// STATES:
+// masterArr = [] innehåller db-data
+// isUpdate = false, ???
+// isFinish = false, ???
+// doUpdate = false, fullösning
+
+//FUNKTIONER som child ska köra:
+//addTask = lägga till ny task till db
+//deleteTask = ta bort task från db när checkbox klickats

@@ -1,22 +1,37 @@
 import { useState, useEffect } from 'react';
 import './MyCalendar.css';
 import dayStyles from './Styles';
+
 import CalendarHeader from './CalendarHeader';
+
 import AddTask from './AddTask';
+
 import PrintDayList from './PrintDayList';
 
 const moment = require('moment');
 
 function MyCalendar(props) {
 
+    // <MyCalendar masterArr={masterArr} - sätts som state + skickas vidare
+    //addTask={ addTask } deleteTask={deleteTask} - skickas vidare 
+    //doUpdate={doUpdate} isUpdate={isFinish} /> - sätts som state
     const [calendar, setCalendar] = useState([]);
     const [value, setValue] = useState(moment());
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
-    const [getMasterArr, setMasterArr] = useState(props.masterArr); 
-    const [count, setCount] = useState(0);
+
+    const [masterArr, setMasterArr] = useState(props.masterArr); 
+    const [doUpdate, setDoUpdate] = useState(props.doUpdate);
+
+
 
     const [isUpdate, setUpdate] = useState(props.isUpdate);
+
+    const [count, setCount] = useState(0);
+
+
+
+    
 
     // const [isAdded, setIsAdded] = useState(props.addTask); //fått props.addTask från App.js
 
@@ -110,11 +125,9 @@ function MyCalendar(props) {
                                         { day.format("D") }
 
                                         {/*FIXA så att den adderas:*/}
-                                        {/* FIXA så att getMasterArr renderas om */}
-                                        { //från getMasterArr - ta bort checkedTask? 
-                                    
-
-                                        Object.values(getMasterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
+                                        {
+    
+                                        Object.values(setMasterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >x deadline</div> : "")
                                                 
                                         }
 
@@ -125,11 +138,13 @@ function MyCalendar(props) {
                         </div>)
                 }
             </div> 
-            {/* PARENT PROPS: <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} isUpdate={isFinish} /> */}
-            {onClickDay ? <AddTask masterArr={props.masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} isUpdate={props.isFinish} selectedDate={ selectedDate } count={counter} /> : ""}
+            {/* <MyCalendar masterArr={masterArr} - sätts som state + skickas vidare
+            addTask={ addTask } deleteTask={deleteTask} - skickas vidare 
+            doUpdate={doUpdate} isUpdate={isFinish} /> - sätts som state */}
+            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
 
             {/* FIXA: kolla så PrintDayList också har de PARENT PROPS den behöver: */}
-            {onClickDay ? <PrintDayList masterArr={ getMasterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask}  /> : ""}
+            {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} /> : ""}
 
             
         </div>
