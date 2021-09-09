@@ -91,11 +91,16 @@ function MyCalendar(props) {
                                         { day.format("D") }
 
                                         {/*FIXA så att den adderas:*/}
-                                        {
-    
-                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >{Object.keys(masterArr).length}deadlines</div> : "")
+                                        {/* {
+
+                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) && <div key={index}>{(task.title.length > 0) && task.title.length} deadline(s)</div>)
                                                 
+                                        } */}
+                                        <ul className="taskListInCalendar">
+                                        {
+                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <li className="itemInTaskListInCalendar" key={index} >{task.title}</li> : "")
                                         }
+                                        </ul>
 
                                     </div>
                                     
