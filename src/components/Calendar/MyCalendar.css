@@ -2,6 +2,8 @@
     border: 2px solid darkolivegreen;
     max-width: 80%;
     margin: 1rem;
+    color: #333;
+    font-family: 'Abril Fatface', cursive;
 }
 
 .calendar-header {
@@ -28,13 +30,13 @@
 }
 
 .before {
-    color: grey;
+    color: rgb(187, 179, 179);
 }
 .selected-day {
-    background-color: salmon;
+    background-color: #f7d9c5;
 }
 .today {
-    background-color: wheat;
+    background-color: #f8e9a0;
 }
 
 .day:hover {
