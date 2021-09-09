@@ -18,6 +18,8 @@ function App() {
   const [isFinish, setFinish] = useState(false); //? om checkbox är checked?
   const [isUpdate, setisUpdate] = useState(false); // vad gör denna?
 
+  const [newArray, setNewArr] = useState(false); 
+
   useEffect( () => {
     GetMasterData( (data) => {
       console.log("GetMasterData() till App:", data); //denna görs 1 gång=Rätt
@@ -40,22 +42,10 @@ function App() {
   // }
 
 
+  //spara nyTask i db + statet: 
   //kopiera nuvarande state -> lägga till nytt state fr child -> uppdatera till nya statet:
   const addTask = (newTask) => {
-
-    console.log("addTask() körs i app");
-    SaveData(newTask);
-  
-
-    // //hämta state
-    // const masterArr = {...masterArr}
-
-    // //ändra
-    // const newMasterArr = {...masterArr, ...task}
-
-    // //spara - vilken ska det vara?
-    // setMasterArr(newMasterArr);
-    // // setAdded(true);
+    SaveData(newTask); //spara i db
   } 
       
   //Leta efter indexnr för task som är checkad -> ta bort det indexnr från arrayen -> uppdatera till nya statet:
@@ -74,8 +64,8 @@ function App() {
     console.log("masterArr efter splice i deleteTask app.js", masterArr);
     
     //spara - vilken ska det vara?
-    // setMasterArr(masterArr);
-    setFinish(true); //när sätts den till false förutom vid omrendering? 
+    setMasterArr(masterArr);
+    // setFinish(true); //när sätts den till false förutom vid omrendering? 
   } 
 
   return (
@@ -84,8 +74,7 @@ function App() {
 
       <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish} />
 
-      {setFinish ? <TaskList2 masterArr= {masterArr} deleteTask={ deleteTask} doUpdate={doUpdate} /> : ""  }
-      {/* {<TaskList2 masterArr= {masterArr} deleteTask={ deleteTask}/>} */}
+      <TaskList2 masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish}/> 
 
 
 

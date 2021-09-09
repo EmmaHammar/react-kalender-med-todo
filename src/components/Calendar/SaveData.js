@@ -8,7 +8,7 @@ function SaveData(newTask) {
   })
   .then(data => data.json())
   .then(res => {
-    //   console.log("res from fetch SaveData():", res);
+      console.log("newTask är sparad", res);
   });
 }
 

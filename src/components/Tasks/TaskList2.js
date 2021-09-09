@@ -29,7 +29,7 @@ function TaskList2(props) {
     // console.log("sortedArr", sortedArr);
 
     // const printMasterList = Object.keys(masterArr).map(key => {
-    const printMasterList = Object.values(masterArr).map( (task ) => {
+    const printMasterList = Object.values(masterArr).map( (task, index ) => {
         // console.log("masterArr._id", masterArr._id);
         // const printMasterList = masterArr.sort((a, b) => a.date - b.date).map(key => {
         // const printMasterList = Object.entries(masterArr).map(key => {
@@ -40,7 +40,8 @@ function TaskList2(props) {
                     isFinish={ task.isFinish }
                     title={ task.title }
                     date={ moment(task.date).format("YYYY/MM/DD") }
-                    key={ task._id }
+                    key={ index }
+                    index={index}
                     id={ task._id }
                     deleteTask={ props.deleteTask }
 
