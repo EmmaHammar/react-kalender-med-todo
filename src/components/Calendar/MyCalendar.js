@@ -67,34 +67,12 @@ function MyCalendar(props) {
 
     const getLength = (day, task) => {
         let lengthArr = [];
-   
-        // Object.values(masterArr).map( (task, index) => ((day._d === task.date) && (task.isFinish === false)) && lengthArr.push(task.title))
-
-        // Object.values(masterArr).map( (task, index) => (day._d === task.date && task.isFinish === false) && lengthArr.push(task.title))
-
-        // for (let i in masterArr) {
-        //     // console.log(masterArr[i].date);
-        //     if( (masterArr[i].date) === day._d && (masterArr[i].isFinish === false)) {
-        //         lengthArr.push(masterArr[i].title)
-        //     }
-        // }
-
-        // for (let i in masterArr) {
-        //     if( (masterArr[i].date === day._d) && (masterArr[i].isFinish === false)) {
-        //         lengthArr.push(masterArr[i].title)
-        //     }
-        // }
 
         for (let i in masterArr) {
-            console.log(" masterArr[i].date",  masterArr[i].date);
-            console.log('(moment(day).format("YYYY-MM-DD")) ', (moment(day).format("YYYY-MM-DD")) );
             if( masterArr[i].date === (moment(day).format("YYYY-MM-DD")) && masterArr[i].isFinish === false) {
                 lengthArr.push(masterArr[i].title)
             }
         }
-
-        // console.log("lengthArr", lengthArr);
-        console.log("lengthArr.length", lengthArr.length);
 
         return (
             <div>

@@ -18,6 +18,8 @@ function App() {
   const [isFinish, setFinish] = useState(false); //? om checkbox är checked?
   const [isUpdate, setisUpdate] = useState(false); // vad gör denna?
 
+  const [isTaskUpdate, setisTaskUpdate] = useState(false);
+
   const [newArray, setNewArr] = useState(false); 
 
   useEffect( () => {
@@ -28,9 +30,33 @@ function App() {
   }, []) 
   // }, [masterArr]) 
 
+
   //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
+
+
+    //FEL!! nya tasken finns inte med i datan så jag kan uppdatera setMasterArr..
+    // GetMasterData( (data) => {
+    //   console.log("Finns nya tasken med i masterArr?", data); 
+    //   setMasterArr(data);
+    // })
+
+    // uppdatera masterArr med nya statet:
+    const masterArr = {...masterArr} //denna gör att sidan omrenderas lokalt - behövs inte de andra då? för om jag 
+
+    //hämta+ändra statet 
+    const newMasterArr = {...masterArr, ...newTask}
+    // console.log("TS ...masterArr", ...masterArr);
+    // console.log("TS newMasterArr", newMasterArr);
+    // console.log("TS masterArr", masterArr);
+    
+    // spara state
+    setMasterArr(masterArr)
+    // console.log("masterArr efter newTask tillagd???", masterArr);
+
+
+
   } 
   
   //ta bort checkad task i db (children kallar på den):

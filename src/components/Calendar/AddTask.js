@@ -28,15 +28,15 @@ function AddTask(props) {
   const onSubmit = (evt) => {
     props.addTask(newTask) //kallar på funktionen addTask() i app.js som ska spara i db 
     
-    //uppdatera masterArr med nya statet:
-    const masterArr = {...masterArr}
+    // //uppdatera masterArr med nya statet:
+    // const masterArr = {...masterArr}
 
-    //hämta+ändra statet 
-    const newMasterArr = {...masterArr, ...newTask}
+    // //hämta+ändra statet 
+    // const newMasterArr = {...masterArr, ...newTask}
     
-    // spara state
-    setMasterArr(masterArr)
-    console.log("masterArr i AddTask", masterArr);
+    // // spara state
+    // setMasterArr(masterArr)
+    // console.log("masterArr i AddTask", masterArr);
 
 
     evt.preventDefault();
