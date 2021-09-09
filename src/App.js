@@ -4,10 +4,10 @@ import GetMasterData from './components/Tasks/GetMasterData';
 import Header from './components/Header/Header';
 import MyCalendar from './components/Calendar/MyCalendar';
 import Footer from './components/Footer';
+import SaveData from './components/Calendar/SaveData';
 
 
 import TaskList2 from './components/Tasks/TaskList2';
-import SaveData from './components/Calendar/SaveData';
 
 
 function App() {
@@ -35,18 +35,27 @@ function App() {
   //   //kallar på komponenten SaveTask
   // })
 
+  // const saveTask = (task) => {
+  //   console.log("spara data");
+  // }
+
 
   //kopiera nuvarande state -> lägga till nytt state fr child -> uppdatera till nya statet:
-  const addTask = (task) => {
-    //hämta state
-    const masterArr = {...masterArr}
+  const addTask = (newTask) => {
 
-    //ändra
-    const newMasterArr = {...masterArr, ...task}
+    console.log("addTask() körs i app");
+    SaveData(newTask);
+  
 
-    //spara - vilken ska det vara?
-    setMasterArr(newMasterArr);
-    // setAdded(true);
+    // //hämta state
+    // const masterArr = {...masterArr}
+
+    // //ändra
+    // const newMasterArr = {...masterArr, ...task}
+
+    // //spara - vilken ska det vara?
+    // setMasterArr(newMasterArr);
+    // // setAdded(true);
   } 
       
   //Leta efter indexnr för task som är checkad -> ta bort det indexnr från arrayen -> uppdatera till nya statet:

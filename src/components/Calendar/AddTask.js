@@ -5,26 +5,38 @@ function AddTask(props) {
   // {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
 
   const [title, setTitle] = useState('');
+  const [doUpdate, setDoUpdate] =useState(props.doUpdate);
+  const [isUpdate, setIsUpdate] =useState(props.isUpdate);
+  const [count, setCount] = useState(props.count);
+
+
   let [isAdded, setIsAdded] = useState(false);
  
   let newTask = { 
-    date: props.selectedDate.selectedDate, //not object
+    date: props.selectedDate, //not object
     title: title,
     isFinish: false
   };
 
+  //visa text i input:
   const handleChange = (evt) => {
-    // console.log("känner av skriver i inputfält:", evt.target.value);
     setTitle(evt.target.value)
   }
 
+  //klick spara-btn:
   const onSubmit = (evt) => {
+    setIsUpdate(true);
+    props.addTask(newTask) //kallar på funktionen addTask() i app.js som ska spara i db
+
+    //spara i db
+
     // console.log("saveBtn klick med task:", title);
-    setIsAdded(true);
-    SaveData(newTask);
+    // setIsAdded(true);
+    // SaveData(newTask);
     // console.log("newTask", newTask);
-    props.addTask(newTask) //kallar på funktionen addTask() i app.js
+    
     props.counter() //FEL denna funkar ej, händer inget. Ska köra counter() i MyCalendar
+
     evt.preventDefault();
   }
 
@@ -35,7 +47,7 @@ function AddTask(props) {
     
   return (
     <div>
-      <h3>Lägg till ny uppgift med deadline: {props.selectedDate.selectedDate}</h3>
+      <h3>Lägg till ny uppgift med deadline: {props.selectedDate}</h3>
       <form onSubmit={ onSubmit }>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           <button type="submit" id="saveBtn">Spara</button>

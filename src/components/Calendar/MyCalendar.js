@@ -22,11 +22,7 @@ function MyCalendar(props) {
 
     const [masterArr, setMasterArr] = useState(props.masterArr); 
     const [doUpdate, setDoUpdate] = useState(props.doUpdate);
-
-
-
     const [isUpdate, setUpdate] = useState(props.isUpdate);
-
     const [count, setCount] = useState(0);
 
 
