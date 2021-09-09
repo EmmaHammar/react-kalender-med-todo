@@ -24,8 +24,6 @@ function App() {
     GetMasterData( (data) => {
       console.log("GetMasterData() till App:", data); //denna görs 1 gång=Rätt
       setMasterArr(data);
-
-
     })
   }, []) 
   // }, [masterArr]) 
@@ -40,11 +38,11 @@ function App() {
     UpdateCheckbox(task); //tar bort från db
             //ändra - hitta index o splice
             const findIndex = masterArr.findIndex(obj => obj._id === task.id)
-            console.log("findIndex", findIndex);
+            // console.log("findIndex", findIndex);
     
             const taskToRemove = masterArr.splice(findIndex, 1);
-            console.log("taskToRemove", taskToRemove);
-            console.log("masterArr efter splice:", masterArr);
+            // console.log("taskToRemove", taskToRemove);
+            // console.log("masterArr efter splice:", masterArr);
     
             setMasterArr(masterArr);
             setDoUpdate(!doUpdate)

@@ -16,10 +16,6 @@ function TaskList(props) {
         // console.log("TaskList - state masterArr", masterArr);
     }, [props.masterArr])
 
-    //   useEffect( () => {
-    //     setMasterArr(props.masterArr);
-    //   }, [checked])
-
     const isChecked = () => {
         setChecked(true); //försöka rendera om TaskCard
         

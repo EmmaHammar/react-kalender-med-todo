@@ -31,19 +31,6 @@ function TaskCard (props, index) {
 
         // console.log("updateTask i TaskCard", updateTask);
         props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
-        
-        // //ändra - hitta index o splice
-        // const findIndex = masterArr.findIndex(obj => obj._id === evt.target.id)
-        // console.log("findIndex", findIndex);
-
-        // const taskToRemove = masterArr.splice(findIndex, 1);
-        // console.log("taskToRemove", taskToRemove);
-        // console.log("masterArr efter splice:", masterArr);
-
-        // setMasterArr(masterArr);
-        // setChecked(!checked); 
-
-        // props.isChecked();
 
     })
     
