@@ -134,14 +134,10 @@ function MyCalendar(props) {
                         </div>)
                 }
             </div> 
-            {/* <MyCalendar masterArr={masterArr} - sätts som state + skickas vidare
-            addTask={ addTask } deleteTask={deleteTask} - skickas vidare 
-            doUpdate={doUpdate} isUpdate={isFinish} /> - sätts som state */}
+
             {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
 
-            {/* FIXA: kolla så PrintDayList också har de PARENT PROPS den behöver: */}
             {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} /> : ""}
-
             
         </div>
     )
@@ -150,3 +146,7 @@ function MyCalendar(props) {
 export default MyCalendar;
 
 //arrowfunktion i onClick så det event endast körs när det klickas, o inte när komponenten renders??                          
+
+            {/* <MyCalendar masterArr={masterArr} - sätts som state + skickas vidare
+            addTask={ addTask } deleteTask={deleteTask} - skickas vidare 
+            doUpdate={doUpdate} isUpdate={isFinish} /> - sätts som state */}

@@ -4,27 +4,39 @@ import UpdateCheckbox from '../Tasks/UpdateCheckbox';
 
 function PrintDayList(props) {
 
-  const [masterArr, setMasterArr] = useState("");
+  const [masterArr, setMasterArr] = useState([]);
+  const [checked, setChecked] = useState(false);
+
+  //sätta listan som state i denna komp:
+  useEffect( () => {
+    setMasterArr(props.masterArr);
+  }, [])
 
   useEffect( () => {
     setMasterArr(props.masterArr);
-    console.log("props.masterArr i PrintDayList", props.masterArr);
-  }, [])
-
-  console.log("mm", props.masterArr);
+  }, [checked])
 
   //remove() db when checked task in daylist:
   const handleClick = ( (evt) => {
-    // console.log("klick evt wee:", evt.target.id);
+    // console.log("klick checkbox daylist:", evt.target.id);
 
     let updateTask = { 
         id: evt.target.id,
         isFinish: true
     };
 
-    console.log("updateTask i PrintList.js:", updateTask);
-    UpdateCheckbox(updateTask);
-    props.deleteTask(updateTask);
+    props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js som ska spara i db 
+
+    //ändra - hitta index o splice
+    const findIndex = masterArr.findIndex(obj => obj._id === evt.target.id)
+    // console.log("findIndex", findIndex);
+
+    const taskToRemove = masterArr.splice(findIndex, 1);
+    // console.log("taskToRemove", taskToRemove);
+    // console.log("masterArr efter splice:", masterArr);
+    
+    setMasterArr(masterArr);
+    setChecked(!checked); 
 
   });
 
