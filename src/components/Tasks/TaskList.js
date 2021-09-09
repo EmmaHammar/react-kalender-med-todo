@@ -1,3 +1,4 @@
+import './TaskList.css';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
 import TaskCard from "./TaskCard";

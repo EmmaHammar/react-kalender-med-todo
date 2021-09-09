@@ -7,8 +7,7 @@
 }
 
 .calendar-header {
-    border: 2px darkcyan;
-    background-color:beige;
+    border: 2px #333;
     display: flex;
     justify-content: center;
     padding: 1rem;
@@ -20,13 +19,9 @@
     height: 5rem;
     display: inline-block;
     background-color: antiquewhite;
-    /* padding: 0; */
-    /* margin: 0; */
     box-sizing: border-box;
-    /* z-index: 1; */
     text-align: center;
-    border: 1px solid darkolivegreen;
-
+    border: 1px solid #333;
 }
 
 .before {
@@ -49,10 +44,6 @@
 
 .prev {
     margin-right: 10px;
-}
-
-.curr {
-    
 }
 
 .next {

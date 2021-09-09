@@ -1,7 +1,9 @@
+import './Footer.css'
+
 function Footer() {
     return (
-      <footer>
-        <h3>Footer</h3>
+      <footer id="footer">
+        <h4>2021</h4>
       </footer>
     );
   }

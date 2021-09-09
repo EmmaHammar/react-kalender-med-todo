@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import GetMasterData from './components/Tasks/GetMasterData';
 import Header from './components/Header/Header';
 import MyCalendar from './components/Calendar/MyCalendar';
-import Footer from './components/Footer';
+import Footer from './components/Footer/Footer';
 import SaveData from './components/Calendar/SaveData';
 import UpdateCheckbox from './components/Tasks/UpdateCheckbox';
 
