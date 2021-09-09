@@ -1,6 +1,6 @@
 function SaveData(newTask) {
-    // fetch(`http://localhost:3012/task/add`, {
-    fetch(`https://react-kalender-med-to-do-be.herokuapp.com/task/add`, {
+    fetch(`http://localhost:3012/task/add`, {
+    // fetch(`https://react-kalender-med-to-do-be.herokuapp.com/task/add`, {
 
     method: 'post',
     headers: {
