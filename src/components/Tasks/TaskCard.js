@@ -19,10 +19,6 @@ function TaskCard (props, index) {
         // console.log("TaskList - state masterArr", masterArr);
     }, [])
 
-    useEffect( () => {
-        setMasterArr(props.masterArr);
-      }, [checked, masterArr])
-
     //remove() db when checked task in masterTasklist -> trickle up and down to printDaylist:  
     const handleClick = ( (evt) => {
         // console.log("klick checkbox TaskCard:", evt.target.id);
@@ -36,16 +32,16 @@ function TaskCard (props, index) {
         // console.log("updateTask i TaskCard", updateTask);
         props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
         
-        //ändra - hitta index o splice
-        const findIndex = masterArr.findIndex(obj => obj._id === evt.target.id)
-        console.log("findIndex", findIndex);
+        // //ändra - hitta index o splice
+        // const findIndex = masterArr.findIndex(obj => obj._id === evt.target.id)
+        // console.log("findIndex", findIndex);
 
-        const taskToRemove = masterArr.splice(findIndex, 1);
-        console.log("taskToRemove", taskToRemove);
-        console.log("masterArr efter splice:", masterArr);
+        // const taskToRemove = masterArr.splice(findIndex, 1);
+        // console.log("taskToRemove", taskToRemove);
+        // console.log("masterArr efter splice:", masterArr);
 
-        setMasterArr(masterArr);
-        setChecked(!checked); 
+        // setMasterArr(masterArr);
+        // setChecked(!checked); 
 
         // props.isChecked();
 

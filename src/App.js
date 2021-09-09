@@ -36,9 +36,21 @@ function App() {
   } 
   
   //ta bort checkad task i db (children kallar på den):
-  const deleteTask = (updateTask) => {
-    UpdateCheckbox(updateTask); //tar bort från db
+  const deleteTask = (task) => {
+    UpdateCheckbox(task); //tar bort från db
+            //ändra - hitta index o splice
+            const findIndex = masterArr.findIndex(obj => obj._id === task.id)
+            console.log("findIndex", findIndex);
+    
+            const taskToRemove = masterArr.splice(findIndex, 1);
+            console.log("taskToRemove", taskToRemove);
+            console.log("masterArr efter splice:", masterArr);
+    
+            setMasterArr(masterArr);
+            setDoUpdate(!doUpdate)
+    
   } 
+
 
   return (
     <>
