@@ -93,7 +93,7 @@ function MyCalendar(props) {
                                         {/*FIXA så att den adderas:*/}
                                         {
     
-                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >X deadline</div> : "")
+                                        Object.values(masterArr).map( (task, index) => (moment(day).format("YYYY-MM-DD") === task.date) ? <div key={index} >{Object.keys(masterArr).length}deadlines</div> : "")
                                                 
                                         }
 

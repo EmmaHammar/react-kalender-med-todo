@@ -21,9 +21,8 @@ function TaskList(props) {
         
       } 
 
-    
-    // //FÖRSÖKER SORTERA INNAN:
-    const printMasterList = Object.values(masterArr).map( (task, index ) => {
+    const sortMasterList = props.masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
+    const printMasterList = Object.values(sortMasterList).map( (task, index ) => {
 
         return (
                 <TaskCard 
