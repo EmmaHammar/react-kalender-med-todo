@@ -25,31 +25,11 @@ function MyCalendar(props) {
     const [isUpdate, setUpdate] = useState(props.isUpdate);
     const [count, setCount] = useState(0);
 
-
-
-    
-
-    // const [isAdded, setIsAdded] = useState(props.addTask); //fått props.addTask från App.js
-
-    // const [childStatus, setChildStatus] = useState(false);
-    // const [isUpdate, setUpdate] = useState(false);
-    // const [id, setId] = useState('');
-
     useEffect( () => {
         console.log("masterArr i MyCalendar:", props.masterArr); //DETTA LOGGAS 2 GGR
         // setMasterArr(Array.from(props.masterArr)); //annars får error att getMasterArr.map() is not a function längre ner
         setMasterArr(props.masterArr);
     }, [props.masterArr]);
-    // }, []); //MASTERARR LOGGAS 1 GGN MEN ÄR TOM
-
-
-    // // useEffect( () => {
-    //     AddTask( (data) => {
-    //         //data ska vara true
-    //         setUpdate(data)
-    //         console.log("data fr child AddTask:", data);
-    //     })
-    // // });
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");

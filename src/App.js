@@ -7,8 +7,7 @@ import Footer from './components/Footer';
 import SaveData from './components/Calendar/SaveData';
 import UpdateCheckbox from './components/Tasks/UpdateCheckbox';
 
-
-import TaskList2 from './components/Tasks/TaskList2';
+import TaskList from './components/Tasks/TaskList';
 
 
 function App() {
@@ -24,40 +23,21 @@ function App() {
   useEffect( () => {
     GetMasterData( (data) => {
       console.log("GetMasterData() till App:", data); //denna görs 1 gång=Rätt
-        setMasterArr(data);
+      setMasterArr(data);
+
+
     })
   }, []) 
   // }, [masterArr]) 
 
-  //Children kallar på dessa?
-  //SaveData()
-
-  //DeleteTask()
-
-  //spara nyTask i db + statet: 
-  //kopiera nuvarande state -> lägga till nytt state fr child -> uppdatera till nya statet:
+  //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
   } 
-      
-  //Leta efter indexnr för task som är checkad -> ta bort det indexnr från arrayen -> uppdatera till nya statet:
+  
+  //ta bort checkad task i db (children kallar på den):
   const deleteTask = (updateTask) => {
     UpdateCheckbox(updateTask); //tar bort från db
-
-    // //hämta state
-    // console.log("task fr deleteTask app.js:", task);
-    // console.log("task.id", task.id);
-    
-    // //ändra - hitta index o splice
-    // const findIndex = masterArr.findIndex(obj => obj._id === task.id)
-    // // console.log("findIndex", findIndex);
-
-    // const splicedArr = masterArr.splice(findIndex, 1);
-    // console.log("masterArr efter splice i deleteTask app.js", masterArr);
-    
-    // //spara - vilken ska det vara?
-    // setMasterArr(masterArr);
-    // // setFinish(true); //när sätts den till false förutom vid omrendering? 
   } 
 
   return (
@@ -66,9 +46,7 @@ function App() {
 
       <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish} />
 
-      <TaskList2 masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish}/> 
-
-
+      <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish}/> 
 
       <Footer />
     </>
