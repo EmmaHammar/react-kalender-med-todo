@@ -35,8 +35,8 @@ function AddTask(props) {
     const newMasterArr = {...masterArr, ...newTask}
     
     // spara state
-    setMasterArr(masterArr)
-    console.log("masterArr i setMasterArr(masterArr) i AddTask.js:", masterArr);
+    setMasterArr(newMasterArr)
+    console.log("uppdaterad masterarr?? i setMasterArr(masterArr) i AddTask.js:", masterArr);
 
 
     evt.preventDefault();
