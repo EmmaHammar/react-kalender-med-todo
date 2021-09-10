@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-kalender-med-todo/static/css/main.10287d39.chunk.css",
-    "main.js": "/react-kalender-med-todo/static/js/main.62d5ef96.chunk.js",
-    "main.js.map": "/react-kalender-med-todo/static/js/main.62d5ef96.chunk.js.map",
+    "main.js": "/react-kalender-med-todo/static/js/main.f7291495.chunk.js",
+    "main.js.map": "/react-kalender-med-todo/static/js/main.f7291495.chunk.js.map",
     "runtime-main.js": "/react-kalender-med-todo/static/js/runtime-main.54084383.js",
     "runtime-main.js.map": "/react-kalender-med-todo/static/js/runtime-main.54084383.js.map",
     "static/js/2.7a6ad994.chunk.js": "/react-kalender-med-todo/static/js/2.7a6ad994.chunk.js",
@@ -12,12 +12,12 @@
     "index.html": "/react-kalender-med-todo/index.html",
     "static/css/main.10287d39.chunk.css.map": "/react-kalender-med-todo/static/css/main.10287d39.chunk.css.map",
     "static/js/2.7a6ad994.chunk.js.LICENSE.txt": "/react-kalender-med-todo/static/js/2.7a6ad994.chunk.js.LICENSE.txt",
-    "static/js/main.62d5ef96.chunk.js.LICENSE.txt": "/react-kalender-med-todo/static/js/main.62d5ef96.chunk.js.LICENSE.txt"
+    "static/js/main.f7291495.chunk.js.LICENSE.txt": "/react-kalender-med-todo/static/js/main.f7291495.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.54084383.js",
     "static/js/2.7a6ad994.chunk.js",
     "static/css/main.10287d39.chunk.css",
-    "static/js/main.62d5ef96.chunk.js"
+    "static/js/main.f7291495.chunk.js"
   ]
 }
