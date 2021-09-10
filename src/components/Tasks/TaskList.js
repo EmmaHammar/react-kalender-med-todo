@@ -12,14 +12,8 @@ function TaskList(props) {
   
     //sätta listan som state i denna komp, första gången denna komp körs har GetMasterData() inte hunnit köras o sätta statet masterArr -> behöver köra useEffect när props.masterArr ändras:
     useEffect( () => {
-        if (props.masterArr !== []){
         // console.log("TaskList - props.masterArr", props.masterArr);
         setMasterArr(props.masterArr)
-        console.log("TK: props.masterArr finns  ->  sätt state", props.masterArr);
-
-        }else {
-            console.log("TK: props.masterArr är tom  -> ej sätt state", props.masterArr);
-        }
         // console.log("TaskList - state masterArr", masterArr);
     }, [props.masterArr])
 
@@ -28,13 +22,7 @@ function TaskList(props) {
         
       } 
 
-    // const sortMasterList = props.masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
-    // console.log("TK: props.masterArr??", props.masterArr);
-    // console.log("TK: masterArr??", masterArr);
-
-
-    const sortMasterList = masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
-    console.log("sortMasterList - detta är en array?", sortMasterList);
+    const sortMasterList = props.masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
     const printMasterList = Object.values(sortMasterList).map( (task, index ) => {
 
         return (
