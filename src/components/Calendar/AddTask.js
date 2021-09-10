@@ -27,9 +27,13 @@ function AddTask(props) {
   //klick spara-btn:
   const onSubmit = (evt) => {
     props.addTask(newTask) //kallar på funktionen addTask() i app.js som ska spara i db 
+    console.log("newTask", newTask);
     
     //uppdatera masterArr med nya statet:
     const masterArr = {...masterArr}
+    console.log("masterArr", masterArr);
+    console.log("...masterArr", ...masterArr);
+
 
     //hämta+ändra statet 
     const newMasterArr = {...masterArr, ...newTask}
