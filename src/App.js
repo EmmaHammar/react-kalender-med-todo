@@ -35,21 +35,14 @@ function App() {
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
 
+    let newMasterArr = [...masterArr, newTask];
+    console.log("newMasterArr", newMasterArr);
 
-    //FEL!! nya tasken finns inte med i datan så jag kan uppdatera setMasterArr..
-    // GetMasterData( (data) => {
-    //   console.log("Finns nya tasken med i masterArr?", data); 
-    //   setMasterArr(data);
-    // })
+    // // uppdatera masterArr med nya statet:
+    // const masterArr = {...masterArr} //denna gör att sidan omrenderas lokalt - behövs inte de andra då? för om jag 
 
-    // uppdatera masterArr med nya statet:
-    const masterArr = {...masterArr} //denna gör att sidan omrenderas lokalt - behövs inte de andra då? för om jag 
-
-    //hämta+ändra statet 
-    const newMasterArr = {...masterArr, ...newTask}
-    // console.log("TS ...masterArr", ...masterArr);
-    // console.log("TS newMasterArr", newMasterArr);
-    // console.log("TS masterArr", masterArr);
+    // //hämta+ändra statet 
+    // const newMasterArr = {...masterArr, ...newTask}
     
     // spara state
     setMasterArr(masterArr)
