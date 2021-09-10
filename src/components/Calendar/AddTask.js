@@ -40,7 +40,7 @@ function AddTask(props) {
     
     // spara state
     setMasterArr(newMasterArr)
-    console.log("uppdaterad masterarr?? i setMasterArr(masterArr) i AddTask.js:", masterArr);
+    console.log("bör vara uppdaterad masterarr i setMasterArr(masterArr) i AddTask.js:", masterArr);
 
 
     evt.preventDefault();
