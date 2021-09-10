@@ -35,20 +35,16 @@ function App() {
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
 
-    let newMasterArr = [...masterArr, newTask];
-    console.log("newMasterArr", newMasterArr);
 
-    // // uppdatera masterArr med nya statet:
-    // const masterArr = {...masterArr} //denna gör att sidan omrenderas lokalt - behövs inte de andra då? för om jag 
+    // uppdatera masterArr med nya statet:
+    const masterArr = {...masterArr}
 
-    // //hämta+ändra statet 
-    // const newMasterArr = {...masterArr, ...newTask}
+    //hämta+ändra statet 
+    const newMasterArr = {...masterArr, ...newTask}
     
     // spara state
     setMasterArr(masterArr)
-    // console.log("masterArr efter newTask tillagd???", masterArr);
-
-
+    console.log("masterArr efter newTask tillagd???", masterArr);
 
   } 
   
