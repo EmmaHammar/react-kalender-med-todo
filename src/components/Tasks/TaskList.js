@@ -22,7 +22,8 @@ function TaskList(props) {
         
       } 
 
-    const sortMasterList = props.masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
+    const sortMasterList = masterArr.sort( (a,b) => a.date > b.date ? 1: -1)
+    console.log("sortMasterList - är detta en array?", sortMasterList);
     const printMasterList = Object.values(sortMasterList).map( (task, index ) => {
 
         return (
