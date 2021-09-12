@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react';
-import SaveData from './SaveData';
 
 function AddTask(props) {
-  // {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate } count={counter} /> : ""}
 
   const [title, setTitle] = useState('');
   const [masterArr, setMasterArr] = useState([]);
 
   const [doUpdate, setDoUpdate] =useState(false);
   const [isUpdate, setIsUpdate] =useState(props.isUpdate);
-
-  //state endast i denna funktion som printar text om sparat task:
-  const [saved, setSaved] = useState(false);
  
   let newTask = { 
-    date: props.selectedDate, //not object
+    date: props.selectedDate, 
     title: title,
     isFinish: false,
     id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
@@ -28,26 +23,7 @@ function AddTask(props) {
   //klick spara-btn:
   const handleClick = (evt) => {
     props.addTask(newTask) //kallar på funktionen addTask() i app.js som ska spara i db 
-    console.log("newTask", newTask);
-    
-    // //uppdatera masterArr med nya statet:
-    // const masterArr = {...masterArr}
-    // console.log("masterArr", masterArr);
-    // console.log("...masterArr", ...masterArr);
-
-
-    // //hämta+ändra statet 
-    // const newMasterArr = {...masterArr, ...newTask}
-    
-    // // spara state
-    // setMasterArr(newMasterArr)
-    // console.log("bör vara uppdaterad masterarr i setMasterArr(masterArr) i AddTask.js:", masterArr);
-
-
-    // evt.preventDefault();
   }
-
-
     
   return (
     <div>
@@ -56,7 +32,6 @@ function AddTask(props) {
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
           <button onClick = { handleClick } type="submit" id="saveBtn">Spara</button>
       </div>
-      {/* {saved ? "Du har lagt till en ny uppgift!" : "Du har inte lagt till"} */}
     </div>
   );
 }

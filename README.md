@@ -1,17 +1,12 @@
 # Info
-Frontend-repo React: https://emmahammar.github.io/react-kalender-med-todo/
-Backend-repo med express-server: https://react-kalender-med-to-do-be.herokuapp.com/
+npx express-generator --no-view
+npm install
+nodemon start (npm start)
+
+Frontendrepo: https://github.com/EmmaHammar/react-kalender-med-todo.git, https://react-kalender-med-todo-fe.herokuapp.com/
+Backendrepo: https://github.com/EmmaHammar/react-kalender-med-todo-backend.git, https://react-kalender-med-to-do-be.herokuapp.com/
+
 Databas noSQL MongoDB
-
-
-
-# Start project?
-1) npx express-generator --no-view
-2) npm install
-3) nodemon start (eller npm start)
-4) git clone Frontend-repo
-
-
 
 # Inlämningsuppgift
 Kalender med Todo 
@@ -57,20 +52,13 @@ npx create-react-app
 npm i react-calendar
 npm install moment --save 
 
-JSON-file
-
-
 ===========
 Backend-repot:
 
 npx express-generator --no-view
 npm install
 starta servern: nodemon start (npm start)
-Surfa in på localhost/3010
-npm install mongodb
-
 npm install cors
-<!-- npm install crypto-js -->
 
 ===========
 

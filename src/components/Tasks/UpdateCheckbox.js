@@ -1,6 +1,6 @@
 function UpdateCheckbox(updateTask) {
-    // fetch(`http://localhost:3012/checkbox`, {
-    fetch(`https://react-kalender-med-to-do-be.herokuapp.com/checkbox`, {
+    fetch(`http://localhost:3012/checkbox`, {
+    // fetch(`https://react-kalender-med-to-do-be.herokuapp.com/checkbox`, {
 
         method: 'post',
         headers: {
@@ -10,7 +10,7 @@ function UpdateCheckbox(updateTask) {
         })
     .then(data => data.json())
     .then(res => {
-        console.log("res from fetch updateCheckbox():", res);
+        // console.log("res from fetch updateCheckbox():", res);
     });
 
 }
