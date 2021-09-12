@@ -13,21 +13,9 @@ function App() {
 
   //STATES
   const [masterArr, setMasterArr] = useState([]); //db-data
-  const [doUpdate, setDoUpdate] = useState(false); //togglas fullösning omrendering setDoUpdate(!doUpdate);
-  const [isFinish, setFinish] = useState(false); //? om checkbox är checked?
-
-
-  const [isUpdate, setisUpdate] = useState(false); // vad gör denna?
-
-  const [isTaskUpdate, setisTaskUpdate] = useState(false);
-
-  const [newArray, setNewArr] = useState(false); 
-
-  const [newTask, setNewTask] = useState("");
 
   useEffect( () => {
     GetMasterData( (data) => {
-      // console.log("GetMasterData() till App:", data); 
       setMasterArr(data);
     })
   }, []) 
@@ -35,8 +23,6 @@ function App() {
   //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
-
-    setNewTask(newTask);
 
     //hämta+ändra statet 
     const newMasterArr = {...Object.values(masterArr), newTask}
@@ -65,9 +51,9 @@ function App() {
     <>
       <Header />
 
-      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish} />
+      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} />
 
-      <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} doUpdate={doUpdate} isUpdate={isFinish}/> 
+      <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> 
 
       <Footer />
     </>

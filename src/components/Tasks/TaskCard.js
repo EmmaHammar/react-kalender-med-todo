@@ -1,14 +1,9 @@
 import {useState, useEffect} from 'react';
 import './TaskCard.css';
-import UpdateCheckbox from './UpdateCheckbox';
 
 function TaskCard (props, index) {
     
     const [masterArr, setMasterArr] = useState([]);
-
-    const [checked, setChecked] = useState(false);
-    const [doUpdate, setDoUpdate] = useState(false);
-    const [isFinish, setIsFinish] = useState(props.isFinish);
 
     useEffect( () => {
         setMasterArr(props.masterArr)

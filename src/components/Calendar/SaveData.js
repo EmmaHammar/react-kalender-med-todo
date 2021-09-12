@@ -10,7 +10,7 @@ function SaveData(newTask) {
   })
   .then(data => data.json())
   .then(res => {
-      console.log("newTask är sparad", res);
+      // console.log("newTask är sparad", res);
   });
 }
 

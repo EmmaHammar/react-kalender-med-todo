@@ -5,9 +5,6 @@ function AddTask(props) {
   const [title, setTitle] = useState('');
   const [masterArr, setMasterArr] = useState([]);
 
-  const [doUpdate, setDoUpdate] =useState(false);
-  const [isUpdate, setIsUpdate] =useState(props.isUpdate);
- 
   let newTask = { 
     date: props.selectedDate, 
     title: title,

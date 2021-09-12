@@ -15,9 +15,6 @@ function MyCalendar(props) {
     const [selectedDate, setSelectedDate] = useState('');
     const [masterArr, setMasterArr] = useState(props.masterArr); 
 
-    const [doUpdate, setDoUpdate] = useState(props.doUpdate);
-    const [isUpdate, setUpdate] = useState(props.isUpdate);
-
     useEffect( () => {
         setMasterArr(props.masterArr);
     }, [props.masterArr]);
@@ -74,7 +71,6 @@ function MyCalendar(props) {
         )
     }
 
-
     return(
         <div className="calendar">
 
@@ -107,9 +103,9 @@ function MyCalendar(props) {
                 }
             </div> 
 
-            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} selectedDate={ selectedDate }/> : ""}
+            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} selectedDate={ selectedDate }/> : ""}
 
-            {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} doUpdate={props.doUpdate} isUpdate={props.isUpdate} /> : ""}
+            {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} /> : ""}
             
         </div>
     )
