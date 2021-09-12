@@ -40,6 +40,8 @@ function TaskCard (props, index) {
                 <input id={ props.id } type="checkbox" onClick={handleClick}></input>
                 <h3>{ props.title }</h3>
                 <p>{ props.date }</p>
+                <p>{ props.id }</p>
+
             </div>
     );
 };

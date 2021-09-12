@@ -22,6 +22,8 @@ function App() {
 
   const [newArray, setNewArr] = useState(false); 
 
+  const [newTask, setNewTask] = useState("");
+
   useEffect( () => {
     GetMasterData( (data) => {
       console.log("GetMasterData() till App:", data); //denna görs 1 gång=Rätt
@@ -33,20 +35,38 @@ function App() {
 
   //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
+  //   console.log("newTask att skicka in i SaveData", newTask);
     SaveData(newTask); //spara i db
 
+    //detta göra att nyTask finns med som props.masterArr i alla komponenter:
+    // uppdatera masterArr med nya statet:
+    // const masterArr2 = {...masterArr}
+    // console.log("masterArr2:", masterArr2); // new task är konstig
+    console.log("state masterArr utan new Task - rätt", masterArr);
 
 
+    setNewTask(newTask);
+    console.log("state newTask utan masterArr - rätt", newTask);
 
-    // // uppdatera masterArr med nya statet:
-    // const masterArr = {...masterArr}
-
-    // //hämta+ändra statet 
-    // const newMasterArr = {...masterArr, ...newTask}
+    //hämta+ändra statet 
+    const newMasterArr = {...Object.values(masterArr), newTask}
+    console.log("HÄR newMasterArr", newMasterArr); // newTask är tillagd men istället för indexnr så heter den newTask 
     
+    // spara state
+    setMasterArr(newMasterArr)
+    // console.log("masterArr efter newTask tillagd???", masterArr); // newTask finns ej
+
+
+  //  let newArr = masterArr.push(newTask);
+  //  console.log("newArr", newArr);
+  //  setMasterArr(newArr)
+
+
     // // spara state
-    setMasterArr({...masterArr, ...newTask})
+    // setMasterArr({...masterArr, ...newTask}) // denna gör att newTask hamnar på 4 olika rader
     // console.log("masterArr efter newTask tillagd???", masterArr);
+
+
 
   } 
   
@@ -54,7 +74,7 @@ function App() {
   const deleteTask = (task) => {
     UpdateCheckbox(task); //tar bort från db
             //ändra - hitta index o splice
-            const findIndex = masterArr.findIndex(obj => obj._id === task.id)
+            const findIndex = masterArr.findIndex(obj => obj.id === task.id)
             // console.log("findIndex", findIndex);
     
             const taskToRemove = masterArr.splice(findIndex, 1);

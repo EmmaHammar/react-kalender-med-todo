@@ -16,7 +16,8 @@ function AddTask(props) {
   let newTask = { 
     date: props.selectedDate, //not object
     title: title,
-    isFinish: false
+    isFinish: false,
+    id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
   };
 
   //visa text i input:
