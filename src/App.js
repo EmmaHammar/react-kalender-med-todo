@@ -36,16 +36,14 @@ function App() {
   //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
     SaveData(newTask); //spara i db
-
-    console.log("state masterArr utan new Task - rätt", masterArr);
-
+    // console.log("state masterArr utan new Task - rätt", masterArr);
 
     setNewTask(newTask);
-    console.log("state newTask utan masterArr - rätt", newTask);
+    // console.log("state newTask utan masterArr - rätt", newTask);
 
     //hämta+ändra statet 
     const newMasterArr = {...Object.values(masterArr), newTask}
-    console.log("HÄR newMasterArr", newMasterArr); // newTask är tillagd men istället för indexnr så heter den newTask 
+    // console.log("HÄR newMasterArr", newMasterArr); // newTask är tillagd men istället för indexnr så heter den newTask 
     
     // spara state
     setMasterArr(newMasterArr)
@@ -55,17 +53,46 @@ function App() {
   
   //ta bort checkad task i db (children kallar på den):
   const deleteTask = (task) => {
+    console.log("task in till post - ID ÄR TOMT", task); 
     UpdateCheckbox(task); //tar bort från db
             //ändra - hitta index o splice
-            const findIndex = masterArr.findIndex(obj => obj.id === task.id)
-            // console.log("findIndex", findIndex);
+
+            // console.log("state masterArr innan findIndex", masterArr);
+            // console.log("task.id - funkar:", task.id);
+            const masterArrCopy = {...Object.values(masterArr)}
+
+            
+            console.log("findIndexArr", masterArrCopy);
+
+            const findIndex = Object.values(masterArrCopy).findIndex(obj => obj.id === task.id)
+
+
+            console.log("ta bort denna - rätt:", masterArrCopy[findIndex].id);
+
+
+            delete masterArrCopy[findIndex]; //remove task with id
+            console.log("masterArrCopy efter delete task - rätt", masterArrCopy);
+
+            setMasterArr(masterArrCopy);
+
+            //splice a copy
+            // console.log("findIndex - funkar", findIndex);
+
+            // const masterArr = prevState.masterArr.splice(findIndex, 1)
+
+            // const masterArrRemoved = masterArrCopy.splice(findIndex, 1)
+
+            // console.log("HÄRHÄR masterArrRemoved:", masterArrRemoved);
+            
+
+
+            
+
+
     
-            const taskToRemove = masterArr.splice(findIndex, 1);
-            // console.log("taskToRemove", taskToRemove);
-            // console.log("masterArr efter splice:", masterArr);
-    
-            setMasterArr(masterArr);
-            setDoUpdate(!doUpdate)
+            // 
+            // console.log("masterArr efter  remove:", masterArr);
+            // setDoUpdate(!doUpdate)
     
   } 
 
