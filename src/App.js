@@ -35,13 +35,8 @@ function App() {
 
   //spara ny task i db (children kallar på den):
   const addTask = (newTask) => {
-  //   console.log("newTask att skicka in i SaveData", newTask);
     SaveData(newTask); //spara i db
 
-    //detta göra att nyTask finns med som props.masterArr i alla komponenter:
-    // uppdatera masterArr med nya statet:
-    // const masterArr2 = {...masterArr}
-    // console.log("masterArr2:", masterArr2); // new task är konstig
     console.log("state masterArr utan new Task - rätt", masterArr);
 
 
@@ -54,19 +49,7 @@ function App() {
     
     // spara state
     setMasterArr(newMasterArr)
-    // console.log("masterArr efter newTask tillagd???", masterArr); // newTask finns ej
-
-
-  //  let newArr = masterArr.push(newTask);
-  //  console.log("newArr", newArr);
-  //  setMasterArr(newArr)
-
-
-    // // spara state
-    // setMasterArr({...masterArr, ...newTask}) // denna gör att newTask hamnar på 4 olika rader
-    // console.log("masterArr efter newTask tillagd???", masterArr);
-
-
+    // console.log("masterArr efter newTask tillagd???", masterArr); 
 
   } 
   

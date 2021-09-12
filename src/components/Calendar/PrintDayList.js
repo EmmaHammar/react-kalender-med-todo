@@ -4,13 +4,13 @@ import UpdateCheckbox from '../Tasks/UpdateCheckbox';
 
 function PrintDayList(props) {
 
-  const [masterArr, setMasterArr] = useState([]);
+  const [masterArr, setMasterArr] = useState(props.masterArr);
   const [checked, setChecked] = useState(false);
 
   //sätta listan som state i denna komp:
   useEffect( () => {
     setMasterArr(props.masterArr);
-  }, [])
+  }, [props.masterArr])
 
   useEffect( () => {
     setMasterArr(props.masterArr);

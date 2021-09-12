@@ -21,13 +21,17 @@ function TaskCard (props, index) {
 
     //remove() db when checked task in masterTasklist -> trickle up and down to printDaylist:  
     const handleClick = ( (evt) => {
-        // console.log("klick checkbox TaskCard:", evt.target.id);
+        console.log("evt.target", evt.target);
+        console.log("klick checkbox TaskCard:", evt.target.id);
 
         //UPPDATERA DB 
         let updateTask = { 
             id: evt.target.id,
             isFinish: true
         };
+        console.log("evt.target.id", evt.target);
+        console.log("updateTask rätt?", updateTask);
+        // console.log("props.taskId", props.taskId);// rätt
 
         // console.log("updateTask i TaskCard", updateTask);
         props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js 
@@ -40,8 +44,6 @@ function TaskCard (props, index) {
                 <input id={ props.id } type="checkbox" onClick={handleClick}></input>
                 <h3>{ props.title }</h3>
                 <p>{ props.date }</p>
-                <p>{ props.id }</p>
-
             </div>
     );
 };
