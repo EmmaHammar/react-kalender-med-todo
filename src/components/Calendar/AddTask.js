@@ -25,25 +25,25 @@ function AddTask(props) {
   }
 
   //klick spara-btn:
-  const onSubmit = (evt) => {
+  const handleClick = (evt) => {
     props.addTask(newTask) //kallar på funktionen addTask() i app.js som ska spara i db 
     console.log("newTask", newTask);
     
-    //uppdatera masterArr med nya statet:
-    const masterArr = {...masterArr}
-    console.log("masterArr", masterArr);
-    console.log("...masterArr", ...masterArr);
+    // //uppdatera masterArr med nya statet:
+    // const masterArr = {...masterArr}
+    // console.log("masterArr", masterArr);
+    // console.log("...masterArr", ...masterArr);
 
 
-    //hämta+ändra statet 
-    const newMasterArr = {...masterArr, ...newTask}
+    // //hämta+ändra statet 
+    // const newMasterArr = {...masterArr, ...newTask}
     
-    // spara state
-    setMasterArr(newMasterArr)
-    console.log("bör vara uppdaterad masterarr i setMasterArr(masterArr) i AddTask.js:", masterArr);
+    // // spara state
+    // setMasterArr(newMasterArr)
+    // console.log("bör vara uppdaterad masterarr i setMasterArr(masterArr) i AddTask.js:", masterArr);
 
 
-    evt.preventDefault();
+    // evt.preventDefault();
   }
 
 
@@ -51,10 +51,10 @@ function AddTask(props) {
   return (
     <div>
       <h3>Lägg till ny uppgift med deadline: {props.selectedDate}</h3>
-      <form onSubmit={ onSubmit }>
+      <div>
           <input type="text" placeholder="Skriv ny uppgift" value={ title } onChange={ handleChange }></input>
-          <button type="submit" id="saveBtn">Spara</button>
-      </form>
+          <button onClick = { handleClick } type="submit" id="saveBtn">Spara</button>
+      </div>
       {/* {saved ? "Du har lagt till en ny uppgift!" : "Du har inte lagt till"} */}
     </div>
   );

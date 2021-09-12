@@ -36,6 +36,8 @@ function App() {
     SaveData(newTask); //spara i db
 
 
+
+
     // // uppdatera masterArr med nya statet:
     // const masterArr = {...masterArr}
 
@@ -43,7 +45,7 @@ function App() {
     // const newMasterArr = {...masterArr, ...newTask}
     
     // // spara state
-    // setMasterArr(masterArr)
+    setMasterArr({...masterArr, ...newTask})
     // console.log("masterArr efter newTask tillagd???", masterArr);
 
   } 
