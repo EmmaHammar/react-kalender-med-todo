@@ -35,7 +35,11 @@ function TaskList(props) {
     // console.log("sortMasterList", sortMasterList); // här är new task på 4 olika rader
     // const printMasterList = Object.values(sortMasterList).map( (task, index ) => {
 
-    const printMasterList = Object.values(masterArr).map( (task, index ) => {
+    const sortMasterList = Object.values(masterArr).sort( (a,b) => a.date > b.date ? 1: -1);
+    const printMasterList = Object.values(sortMasterList).map( (task, index ) => {
+
+
+    // const printMasterList = Object.values(masterArr).map( (task, index ) => {
 
 
     // const printMasterList = Object.values(props.masterArr).map( (task, index ) => {
