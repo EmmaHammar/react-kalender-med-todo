@@ -3,7 +3,6 @@ function DeleteTask(taskId) {
 
     // fetch(`http://localhost:3012/delete`, {
     fetch(`https://react-kalender-med-to-do-be.herokuapp.com/delete`, {
-        mode: "no-cors",
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
