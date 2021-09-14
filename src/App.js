@@ -72,8 +72,12 @@ function App() {
     //spara
     setMasterList(masterListCopy)
 
+    let deleteTaskInfo = { 
+      id: taskId
+    };
+
     //ta bort i db
-    DeleteTask(taskId);
+    DeleteTask(deleteTaskInfo);
   }; 
 
   return (

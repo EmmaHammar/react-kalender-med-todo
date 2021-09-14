@@ -1,6 +1,6 @@
 function DeleteTask(taskId) {
-    fetch(`http://localhost:3012/delete`, {
-    // fetch(`https://cors-anywhere.herokuapp.com/https://react-kalender-med-to-do-be.herokuapp.com/delete`, {
+    // fetch(`http://localhost:3012/delete`, {
+    fetch(`https://cors-anywhere.herokuapp.com/https://react-kalender-med-to-do-be.herokuapp.com/delete`, {
 
         method: 'post',
         headers: {
