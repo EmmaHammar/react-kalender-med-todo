@@ -14,7 +14,7 @@ function AddTask(props) {
   };
 
   const handleClick = (evt) => {
-    props.addTask(title) //kallar på funktionen addTask() i app.js som ska spara i db 
+    props.addTask(title, props.selectedDate) //kallar på funktionen addTask() i app.js som ska spara i db 
   }
     
   return (

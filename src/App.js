@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 import GetList from './components/Data/GetList';
 import DeleteTask from './components/Data/DeleteTask';
+import SaveTask from './components/Data/SaveTask';
 // import SaveTask from './components/Data/SaveTask'; 
 // import UpdateCheckbox from './components/Tasks/UpdateCheckbox'; //DeleteTask
 // //GetHolidays
@@ -17,7 +18,7 @@ import Footer from './components/Footer/Footer';
 function App() {
 
   const [masterList, setMasterList] = useState([]); //db-data
-
+  // const [newTask, setNewTask] = useState({}); //bör jag spara newTaskInfo i state eller ej?
   
   useEffect( () => {
     //hämta
@@ -30,28 +31,34 @@ function App() {
   console.log("masterList App.js", masterList);
 
   // //spara ny task i db (children kallar på den):
-  const addTask = (title) => {
-    console.log("hej addTask() app");
+  const addTask = (title, selectedDate) => {
+    // console.log("hej addTask() app", title);
     //tar emot new title -> skapa ett nytt obje:
 
+    let newTaskInfo = { 
+      date: selectedDate, 
+      title: title,
+      isFinish: false,
+      id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
+    };
+    console.log("newTaskInfo", newTaskInfo);
 
-    // let newTaskInfo = { 
-    //   date: props.selectedDate, 
-    //   title: evt.target.value,
-    //   isFinish: false,
-    //   id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
-    //   };
-    //   // console.log("newTaskInfo", newTaskInfo);
-    //   setNewTask(newTaskInfo)
+    // spara state newTask
+    // setNewTask(newTaskInfo)
 
-
-    // SaveData(newTask); //spara i db
-
-    // //hämta+ändra statet 
-    // const newMasterArr = {...Object.values(masterArr), newTask}
+    //hämta+ändra statet 
+    const newMasterList = {...Object.values(masterList), newTaskInfo}
+    console.log("newMasterList", newMasterList); //newTaskInfo har ej array-/indexnr - gör det ngt?
     
-    // // spara state
-    // setMasterArr(newMasterArr)
+    // spara state masterList
+    setMasterList(newMasterList);
+
+    //spara i db
+    SaveTask(newTaskInfo); //spara i db
+
+
+    
+    // 
   } 
   
   // //ta bort checkad task i db (children kallar på den):
@@ -79,7 +86,7 @@ function App() {
   return (
   <>
     <Header />
-    <Calendar masterList={masterList}/>
+    <Calendar masterList={masterList} addTask={addTask}/>
     <MasterList masterList={masterList} deleteTask={deleteTask}/>
 
   {/* <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> */}

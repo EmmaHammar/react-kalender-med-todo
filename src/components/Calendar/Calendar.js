@@ -90,7 +90,7 @@ function Calendar(props) {
                 }
             </div> 
 
-            {onClickDay ? <AddTask masterList={props.masterList} selectedDate={ selectedDate }/> : ""}
+            {onClickDay ? <AddTask masterList={props.masterList} selectedDate={selectedDate} addTask={props.addTask}/> : ""}
 
 
 {/* 
