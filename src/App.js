@@ -3,21 +3,18 @@ import { useState, useEffect } from 'react';
 import GetList from './components/Data/GetList';
 import DeleteTask from './components/Data/DeleteTask';
 import SaveTask from './components/Data/SaveTask';
-// import SaveTask from './components/Data/SaveTask'; 
-// import UpdateCheckbox from './components/Tasks/UpdateCheckbox'; //DeleteTask
-// //GetHolidays
-
+import GetHolidays from './components/Data/GetHolidays';
 
 import Header from './components/Header/Header';
 import Calendar from './components/Calendar/Calendar';
 import MasterList from './components/MasterList/MasterList';
-// import MyCalendar from './components/Calendar/MyCalendar'; //Calendar
 import Footer from './components/Footer/Footer';
 
 
 function App() {
 
   const [masterList, setMasterList] = useState([]); //db-data
+  const [holidayList, setHolidayList] = useState([]);
   // const [newTask, setNewTask] = useState({}); //bör jag spara newTaskInfo i state eller ej?
   
   useEffect( () => {
@@ -28,13 +25,18 @@ function App() {
     })
   }, []) 
 
+  useEffect( () => {
+    //hämta
+    GetHolidays( (data) => {
+      //spara
+        setHolidayList(data)
+    })
+  }, []); 
+
   console.log("masterList App.js", masterList);
 
-  // //spara ny task i db (children kallar på den):
+  //spara ny task i db (children kallar på addTask-funktion):
   const addTask = (title, selectedDate) => {
-    // console.log("hej addTask() app", title);
-    //tar emot new title -> skapa ett nytt obje:
-
     let newTaskInfo = { 
       date: selectedDate, 
       title: title,
@@ -81,7 +83,7 @@ function App() {
   return (
   <>
     <Header />
-    <Calendar masterList={masterList} addTask={addTask} deleteTask={deleteTask}/>
+    <Calendar masterList={masterList} addTask={addTask} deleteTask={deleteTask} holidayList={holidayList}/>
     <MasterList masterList={masterList} deleteTask={deleteTask}/>
 
   {/* <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> */}

@@ -11,12 +11,8 @@ function DayList (props) {
   }, [props.masterList])
 
   const handleClick = ( (evt) => {
-      console.log("klick klar-btn DayList.js", evt.target.id);
-      let deleteTaskId = evt.target.id;
-//     let updateTask = { 
-//         id: evt.target.id,
-//         isFinish: true
-    // };
+    //   console.log("klick klar-btn DayList.js", evt.target.id);
+    let deleteTaskId = evt.target.id;
 
     props.deleteTask(deleteTaskId) //kallar på funktionen deleteTask() i app.js som ska spara i db + uppdat state
   });
@@ -31,6 +27,6 @@ function DayList (props) {
       </ul>
     </div>
   )
-}
+};
   
 export default DayList;

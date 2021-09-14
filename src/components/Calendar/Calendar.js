@@ -4,8 +4,6 @@ import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
 import AddTask from './AddTask';
 import DayList from './DayList';
-// import GetListLength from './GetListLength';
-// import PrintDayList from './PrintDayList';
 
 const moment = require('moment');
 
@@ -16,12 +14,13 @@ function Calendar(props) {
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
 
-    // const [dayList, setDayList] = useState([]);
-
     const [masterList, setMasterList] = useState([]);
+    const [holidayList, setHolidayList] = useState([]);
 
     useEffect( () => {
         setMasterList(props.masterList);
+        
+        setHolidayList(props.holidayList);
     }, [props.masterList]); //varför denna?
     // }, []);
 
@@ -71,6 +70,24 @@ function Calendar(props) {
         )
     };
 
+    const printHolidays = (day) => {
+        // console.log("holidayList", holidayList);
+        let holidays = [];
+
+        for (let i in holidayList) {
+            if(holidayList[i].datum === (moment(day).format("YYYY-MM-DD")) && holidayList[i].["arbetsfri dag"] === "ja") {
+                holidays.push(holidayList[i].datum)
+            }
+        }
+        // holidays.classList.add("red");
+
+        return(
+            <div>
+                {/* {holidays}  */}
+            </div>
+        )
+    };
+
     return(
 
         <div className="calendar">
@@ -98,6 +115,8 @@ function Calendar(props) {
                                         
                                         { getLength(day) } 
 
+                                        {printHolidays(day)}
+
                                     </div>
                         
                                 </div>)
@@ -109,14 +128,6 @@ function Calendar(props) {
             {onClickDay ? <AddTask masterList={masterList} selectedDate={selectedDate} addTask={props.addTask}/> : ""}
 
             {onClickDay ? <DayList masterList={masterList} selectedDate={ selectedDate } deleteTask={props.deleteTask} /> : ""}
-
-
-
-{/* 
-            
-
-            {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} /> : ""} */}
-            
         </div>
     )
 };
