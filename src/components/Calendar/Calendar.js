@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import './Calendar.css';
 import dayStyles from './Styles';
 import CalendarHeader from './CalendarHeader';
-import GetListLength from './GetListLength';
-
 import AddTask from './AddTask';
+import DayList from './DayList';
+// import GetListLength from './GetListLength';
 // import PrintDayList from './PrintDayList';
 
 const moment = require('moment');
@@ -106,11 +106,14 @@ function Calendar(props) {
                 }
             </div> 
 
-            {onClickDay ? <AddTask masterList={props.masterList} selectedDate={selectedDate} addTask={props.addTask}/> : ""}
+            {onClickDay ? <AddTask masterList={masterList} selectedDate={selectedDate} addTask={props.addTask}/> : ""}
+
+            {onClickDay ? <DayList masterList={masterList} selectedDate={ selectedDate } deleteTask={props.deleteTask} /> : ""}
+
 
 
 {/* 
-            {onClickDay ? <AddTask masterArr={masterArr} addTask={ props.addTask } deleteTask={props.deleteTask} selectedDate={ selectedDate }/> : ""}
+            
 
             {onClickDay ? <PrintDayList masterArr={ masterArr} selectedDate={ selectedDate } deleteTask={props.deleteTask} /> : ""} */}
             

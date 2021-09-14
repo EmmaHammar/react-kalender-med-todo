@@ -1,0 +1,7 @@
+.day-list {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    max-width: 20%;
+    margin-left: -40px;
+}
