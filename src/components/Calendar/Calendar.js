@@ -16,12 +16,14 @@ function Calendar(props) {
     const [onClickDay, setOnClickDay] = useState(false)
     const [selectedDate, setSelectedDate] = useState('');
 
-    // const [masterList, setMasterList] = useState([]);
-//     const [masterArr, setMasterArr] = useState(props.masterArr); 
+    // const [dayList, setDayList] = useState([]);
 
-//     useEffect( () => {
-//         setMasterArr(props.masterArr);
-//     }, [props.masterArr]);
+    const [masterList, setMasterList] = useState([]);
+
+    useEffect( () => {
+        setMasterList(props.masterList);
+    }, [props.masterList]); //varför denna?
+    // }, []);
 
     const startDay = value.clone().startOf("month").startOf("week").weekday(1);
     const endDay = value.clone().endOf("month").endOf("week");
@@ -53,9 +55,21 @@ function Calendar(props) {
         setSelectedDate(clickedDateRightFormat);
     };
 
-    // useEffect( () => {    
-    // }, [onClickDay, selectedDate]);
+    const getLength = (day, task) => {
+        let lengthArr = [];
 
+        for (let i in masterList) {
+            if( masterList[i].date === (moment(day).format("YYYY-MM-DD")) && masterList[i].isFinish === false) {
+                lengthArr.push(masterList[i].title)
+            }
+        }
+
+        return (
+            <div>
+                {lengthArr.length} deadlines
+            </div>
+        )
+    };
 
     return(
 
@@ -81,7 +95,9 @@ function Calendar(props) {
                                             } >
                                     <div className={ dayStyles(day, value) }>
                                         { day.format("D") }
-                                        <GetListLength day={day} masterList={props.masterList}/>
+                                        
+                                        { getLength(day) } 
+
                                     </div>
                         
                                 </div>)

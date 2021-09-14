@@ -7,7 +7,6 @@ function GetList (cb) {
         // console.log("GetList:", data);
         cb(data) //GetList() blir cb i app
     });
-
-}
+};
 
 export default GetList;
