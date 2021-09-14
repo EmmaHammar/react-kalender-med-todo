@@ -44,9 +44,6 @@ function App() {
   const deleteTask = (taskId) => {
     console.log("deleteTask i App.js", taskId);
 
-    //ta bort i db
-    DeleteTask(taskId);
-
     //kopiera (hämta)
     const masterListCopy = {...Object.values(masterList)}
 
@@ -59,6 +56,10 @@ function App() {
 
     //spara
     setMasterList(masterListCopy)
+
+      //ta bort i db
+      DeleteTask(taskId);
+
   } 
 
   return (

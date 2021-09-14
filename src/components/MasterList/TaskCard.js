@@ -6,6 +6,7 @@ function TaskCard (props) {
     const handleClick = ( (evt) => {
         // console.log("klick klar evt", evt.target.id);
         let deleteId = evt.target.id;
+        
         props.deleteTask(deleteId) //kallar på funktionen deleteTask() i app.js 
     });
     
