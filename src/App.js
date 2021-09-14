@@ -85,11 +85,6 @@ function App() {
     <Header />
     <Calendar masterList={masterList} addTask={addTask} deleteTask={deleteTask} holidayList={holidayList}/>
     <MasterList masterList={masterList} deleteTask={deleteTask}/>
-
-  {/* <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> */}
-
-  {/* <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} />  */}
-
     <Footer />
  </>
   );

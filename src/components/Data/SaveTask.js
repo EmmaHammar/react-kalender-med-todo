@@ -1,6 +1,6 @@
 function SaveTask(newTask) {
-    fetch(`http://localhost:3012/add`, {
-    // fetch(`https://react-kalender-med-to-do-be.herokuapp.com/add`, {
+    // fetch(`http://localhost:3012/add`, {
+    fetch(`https://react-kalender-med-to-do-be.herokuapp.com/add`, {
 
     method: 'post',
     headers: {
@@ -12,6 +12,6 @@ function SaveTask(newTask) {
   .then(res => {
       console.log("newTask är sparad", res);
   });
-}
+};
 
 export default SaveTask;

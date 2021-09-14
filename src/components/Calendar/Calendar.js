@@ -70,23 +70,23 @@ function Calendar(props) {
         )
     };
 
-    const printHolidays = (day) => {
-        // console.log("holidayList", holidayList);
-        let holidays = [];
+    // const printHolidays = (day) => {
+    //     // console.log("holidayList", holidayList);
+    //     let holidays = [];
 
-        for (let i in holidayList) {
-            if(holidayList[i].datum === (moment(day).format("YYYY-MM-DD")) && holidayList[i].["arbetsfri dag"] === "ja") {
-                holidays.push(holidayList[i].datum)
-            }
-        }
-        // holidays.classList.add("red");
+    //     for (let i in holidayList) {
+    //         if(holidayList[i].datum === (moment(day).format("YYYY-MM-DD")) && holidayList[i].["arbetsfri dag"] === "ja") {
+    //             holidays.push(holidayList[i].datum)
+    //         }
+    //     }
+    //     // holidays.classList.add("red");
 
-        return(
-            <div>
-                {/* {holidays}  */}
-            </div>
-        )
-    };
+    //     return(
+    //         <div>
+    //             {/* {holidays}  */}
+    //         </div>
+    //     )
+    // };
 
     return(
 
@@ -115,7 +115,7 @@ function Calendar(props) {
                                         
                                         { getLength(day) } 
 
-                                        {printHolidays(day)}
+                                        {/* {printHolidays(day)} */}
 
                                     </div>
                         
