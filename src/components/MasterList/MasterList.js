@@ -15,7 +15,7 @@ function MasterList(props) {
         setMasterList(props.masterList);
     }, [props.masterList])
     // }, []); varför funkar det inte alltid att skriva så?
-    console.log("MasterList.js masterList:", masterList);
+    // console.log("MasterList.js masterList:", masterList);
 
 //     const isChecked = () => {
 //         setChecked(true); //försöka rendera om TaskCard

@@ -15,7 +15,6 @@ function App() {
 
   const [masterList, setMasterList] = useState([]); //db-data
   const [holidayList, setHolidayList] = useState([]);
-  // const [newTask, setNewTask] = useState({}); //bör jag spara newTaskInfo i state eller ej?
   
   useEffect( () => {
     //hämta
@@ -33,7 +32,7 @@ function App() {
   //   })
   // }, []); 
 
-  console.log("masterList App.js", masterList);
+  // console.log("masterList App.js", masterList);
 
   //spara ny task i db (children kallar på addTask-funktion):
   const addTask = (title, selectedDate) => {
@@ -43,14 +42,11 @@ function App() {
       isFinish: false,
       id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
     };
-    console.log("newTaskInfo", newTaskInfo);
-
-    // spara state newTask
-    // setNewTask(newTaskInfo)
+    // console.log("newTaskInfo", newTaskInfo);
 
     //hämta+ändra statet 
     const newMasterList = {...Object.values(masterList), newTaskInfo}
-    console.log("newMasterList", newMasterList); //newTaskInfo har ej array-/indexnr - gör det ngt?
+    // console.log("newMasterList", newMasterList); //newTaskInfo har ej array-/indexnr - gör det ngt?
     
     // spara state masterList
     setMasterList(newMasterList);
@@ -61,7 +57,7 @@ function App() {
   
   // //ta bort checkad task i db (children kallar på den):
   const deleteTask = (taskId) => {
-    console.log("deleteTask i App.js", taskId);
+    // console.log("deleteTask i App.js", taskId);
 
     //kopiera (hämta)
     const masterListCopy = {...Object.values(masterList)}

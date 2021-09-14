@@ -1,6 +1,6 @@
 function SaveTask(newTask) {
-  // fetch(`http://localhost:3012/add`, {
-  fetch(`https://cors-anywhere.herokuapp.com/https://react-kalender-med-to-do-be.herokuapp.com/add`, {
+  fetch(`http://localhost:3012/add`, {
+  // fetch(`https://cors-anywhere.herokuapp.com/https://react-kalender-med-to-do-be.herokuapp.com/add`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -9,7 +9,7 @@ function SaveTask(newTask) {
   })
   .then(data => data.json())
   .then(res => {
-      console.log("newTask är sparad", res);
+      // console.log("newTask är sparad", res);
   });
 };
 
