@@ -25,13 +25,13 @@ function App() {
     })
   }, []) 
 
-  useEffect( () => {
-    //hämta
-    GetHolidays( (data) => {
-      //spara
-        setHolidayList(data)
-    })
-  }, []); 
+  // useEffect( () => {
+  //   //hämta
+  //   GetHolidays( (data) => {
+  //     //spara
+  //       setHolidayList(data)
+  //   })
+  // }, []); 
 
   console.log("masterList App.js", masterList);
 
