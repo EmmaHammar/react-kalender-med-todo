@@ -1,62 +1,78 @@
 import { useState, useEffect } from 'react';
 
-import GetMasterData from './components/Tasks/GetMasterData';
-import Header from './components/Header/Header';
-import MyCalendar from './components/Calendar/MyCalendar';
-import Footer from './components/Footer/Footer';
-import SaveData from './components/Calendar/SaveData';
-import UpdateCheckbox from './components/Tasks/UpdateCheckbox';
+import GetList from './components/Data/GetList';
+import DeleteTask from './components/Data/DeleteTask';
+// import SaveData from './components/Calendar/SaveData'; //SaveTask
+// import UpdateCheckbox from './components/Tasks/UpdateCheckbox'; //DeleteTask
+// //GetHolidays
 
-import TaskList from './components/Tasks/TaskList';
+
+import Header from './components/Header/Header';
+import Calendar from './components/Calendar/Calendar';
+import MasterList from './components/MasterList/MasterList';
+// import MyCalendar from './components/Calendar/MyCalendar'; //Calendar
+import Footer from './components/Footer/Footer';
+
 
 function App() {
 
-  //STATES
-  const [masterArr, setMasterArr] = useState([]); //db-data
+  const [masterList, setMasterList] = useState([]); //db-data
 
+  
   useEffect( () => {
-    GetMasterData( (data) => {
-      setMasterArr(data);
+    //hämta
+    GetList( (data) => {
+      //spara
+      setMasterList(data);
     })
   }, []) 
 
-  //spara ny task i db (children kallar på den):
-  const addTask = (newTask) => {
-    SaveData(newTask); //spara i db
+  console.log("masterList App.js", masterList);
 
-    //hämta+ändra statet 
-    const newMasterArr = {...Object.values(masterArr), newTask}
+  // //spara ny task i db (children kallar på den):
+  // const addTask = (newTask) => {
+  //   SaveData(newTask); //spara i db
+
+  //   //hämta+ändra statet 
+  //   const newMasterArr = {...Object.values(masterArr), newTask}
     
-    // spara state
-    setMasterArr(newMasterArr)
-  } 
+  //   // spara state
+  //   setMasterArr(newMasterArr)
+  // } 
   
-  //ta bort checkad task i db (children kallar på den):
-  const deleteTask = (task) => {
-    UpdateCheckbox(task); //tar bort från db
+  // //ta bort checkad task i db (children kallar på den):
+  const deleteTask = (taskId) => {
+    console.log("deleteTask i App.js", taskId);
 
-      //Kopiera
-      const masterArrCopy = {...Object.values(masterArr)}
+    //ta bort i db
+    DeleteTask(taskId);
 
-      //hitta indexnr
-      const findIndex = Object.values(masterArrCopy).findIndex(obj => obj.id === task.id)
+    //kopiera (hämta)
+    const masterListCopy = {...Object.values(masterList)}
 
-      //remove task with index
-      delete masterArrCopy[findIndex]; 
+    //ändra - hitta id:ets indexnr:
+    const findIndex = Object.values(masterListCopy).findIndex(obj => obj.id === taskId);
+    // console.log("findIndex", findIndex);
 
-      setMasterArr(masterArrCopy);
+    delete masterListCopy[findIndex]; //ta bort tasken
+    // console.log("deleted masterListCopy", masterListCopy);
+
+    //spara
+    setMasterList(masterListCopy)
   } 
 
   return (
-    <>
-      <Header />
+  <>
+    <Header />
+    <Calendar masterList={masterList}/>
+    <MasterList masterList={masterList} deleteTask={deleteTask}/>
 
-      <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} />
+  {/* <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> */}
 
-      <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> 
+  {/* <TaskList masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} />  */}
 
-      <Footer />
-    </>
+    <Footer />
+ </>
   );
 }
 

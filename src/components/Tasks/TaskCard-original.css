@@ -1,0 +1,7 @@
+.task-card {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    max-width: 20%;
+    padding-left: 2rem;
+}

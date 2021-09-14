@@ -1,0 +1,51 @@
+.calendar {
+    border: 2px solid darkolivegreen;
+    max-width: 80%;
+    margin: 1rem;
+    color: #333;
+    font-family: 'Abril Fatface', cursive;
+}
+
+.calendar-header {
+    border: 2px #333;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.day {
+    position: relative;
+    width: calc(100% / 7);
+    height: 5rem;
+    display: inline-block;
+    background-color: antiquewhite;
+    box-sizing: border-box;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+.before {
+    color: rgb(187, 179, 179);
+}
+.selected-day {
+    background-color: #f7d9c5;
+}
+.today {
+    background-color: #f8e9a0;
+}
+
+.day:hover {
+    cursor: pointer;
+}
+
+.prev:hover, .next:hover {
+    cursor: pointer;
+}
+
+.prev {
+    margin-right: 10px;
+}
+
+.next {
+    margin-left: 10px;
+}
