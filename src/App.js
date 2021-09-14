@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import GetList from './components/Data/GetList';
 import DeleteTask from './components/Data/DeleteTask';
-// import SaveData from './components/Calendar/SaveData'; //SaveTask
+// import SaveTask from './components/Data/SaveTask'; 
 // import UpdateCheckbox from './components/Tasks/UpdateCheckbox'; //DeleteTask
 // //GetHolidays
 
@@ -30,15 +30,29 @@ function App() {
   console.log("masterList App.js", masterList);
 
   // //spara ny task i db (children kallar på den):
-  // const addTask = (newTask) => {
-  //   SaveData(newTask); //spara i db
+  const addTask = (title) => {
+    console.log("hej addTask() app");
+    //tar emot new title -> skapa ett nytt obje:
 
-  //   //hämta+ändra statet 
-  //   const newMasterArr = {...Object.values(masterArr), newTask}
+
+    // let newTaskInfo = { 
+    //   date: props.selectedDate, 
+    //   title: evt.target.value,
+    //   isFinish: false,
+    //   id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
+    //   };
+    //   // console.log("newTaskInfo", newTaskInfo);
+    //   setNewTask(newTaskInfo)
+
+
+    // SaveData(newTask); //spara i db
+
+    // //hämta+ändra statet 
+    // const newMasterArr = {...Object.values(masterArr), newTask}
     
-  //   // spara state
-  //   setMasterArr(newMasterArr)
-  // } 
+    // // spara state
+    // setMasterArr(newMasterArr)
+  } 
   
   // //ta bort checkad task i db (children kallar på den):
   const deleteTask = (taskId) => {

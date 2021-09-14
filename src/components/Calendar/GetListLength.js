@@ -7,13 +7,14 @@ function GetListLength(props) {
     let [dayList, setDayList] = useState([]);
 
     //hämta
-    useEffect(() => {
-        // console.log("GetLIstLength.js masterList:", props.masterList);
-        setMasterList(props.masterList);
-    })
+    // useEffect(() => {
+    //     // console.log("GetLIstLength.js masterList:", props.masterList);
+    // })
 
     //blir annars infinite loop
     useEffect(() => {
+        setMasterList(props.masterList);
+
 
         for (let task in masterList) {
             if( masterList[task].date === (moment(props.day).format("YYYY-MM-DD")) && masterList[task].isFinish === false) {
