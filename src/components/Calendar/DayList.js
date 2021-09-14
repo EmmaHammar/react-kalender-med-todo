@@ -11,13 +11,14 @@ function DayList (props) {
   }, [props.masterList])
 
   const handleClick = ( (evt) => {
-      console.log("klick klar-btn DayList.js");
+      console.log("klick klar-btn DayList.js", evt.target.id);
+      let deleteTaskId = evt.target.id;
 //     let updateTask = { 
 //         id: evt.target.id,
 //         isFinish: true
     // };
 
-//     props.deleteTask(updateTask) //kallar på funktionen deleteTask() i app.js som ska spara i db + uppdat state
+    props.deleteTask(deleteTaskId) //kallar på funktionen deleteTask() i app.js som ska spara i db + uppdat state
   });
 
   return (

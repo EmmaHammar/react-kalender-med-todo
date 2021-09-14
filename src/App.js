@@ -55,11 +55,7 @@ function App() {
 
     //spara i db
     SaveTask(newTaskInfo); //spara i db
-
-
-    
-    // 
-  } 
+  };
   
   // //ta bort checkad task i db (children kallar på den):
   const deleteTask = (taskId) => {
@@ -78,15 +74,14 @@ function App() {
     //spara
     setMasterList(masterListCopy)
 
-      //ta bort i db
-      DeleteTask(taskId);
-
-  } 
+    //ta bort i db
+    DeleteTask(taskId);
+  }; 
 
   return (
   <>
     <Header />
-    <Calendar masterList={masterList} addTask={addTask}/>
+    <Calendar masterList={masterList} addTask={addTask} deleteTask={deleteTask}/>
     <MasterList masterList={masterList} deleteTask={deleteTask}/>
 
   {/* <MyCalendar masterArr={masterArr} addTask={ addTask } deleteTask={deleteTask} /> */}
