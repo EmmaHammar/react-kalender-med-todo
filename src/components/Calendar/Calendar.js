@@ -17,6 +17,8 @@ function Calendar(props) {
     const [masterList, setMasterList] = useState([]);
     const [holidayList, setHolidayList] = useState([]);
 
+    const [isHoliday, setHoliday] = useState(false);
+
     useEffect( () => {
         setMasterList(props.masterList);
         
@@ -70,23 +72,23 @@ function Calendar(props) {
         )
     };
 
-    // const printHolidays = (day) => {
-    //     // console.log("holidayList", holidayList);
-    //     let holidays = [];
+    const printHolidays = (day) => {
+        // console.log("holidayList", holidayList);
 
-    //     for (let i in holidayList) {
-    //         if(holidayList[i].datum === (moment(day).format("YYYY-MM-DD")) && holidayList[i].["arbetsfri dag"] === "ja") {
-    //             holidays.push(holidayList[i].datum)
-    //         }
-    //     }
-    //     // holidays.classList.add("red");
+        let redDay = document.createElement("div");
+        redDay.classList.add("red");
+        let redDayText = document.createTextNode("Ledig");
+        redDay.appendChild(redDayText);
 
-    //     return(
-    //         <div>
-    //             {/* {holidays}  */}
-    //         </div>
-    //     )
-    // };
+    
+        let isHoliday = holidayList.find( (item) => item === moment(day).format("YYYY-MM-DD"));
+
+        console.log("isHoliday", isHoliday);
+
+        if (isHoliday !== undefined) {
+            return <p>Ledig</p>
+        } 
+    };
 
     return(
 
@@ -115,7 +117,7 @@ function Calendar(props) {
                                         
                                         { getLength(day) } 
 
-                                        {/* {printHolidays(day)} */}
+                                        {printHolidays(day)}
 
                                     </div>
                         

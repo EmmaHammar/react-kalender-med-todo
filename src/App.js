@@ -15,7 +15,7 @@ function App() {
 
   const [masterList, setMasterList] = useState([]); //db-data
   const [holidayList, setHolidayList] = useState([]);
-  
+
   useEffect( () => {
     //hämta
     GetList( (data) => {
@@ -24,13 +24,23 @@ function App() {
     })
   }, []) 
 
-  // useEffect( () => {
-  //   //hämta
-  //   GetHolidays( (data) => {
-  //     //spara
-  //       setHolidayList(data)
-  //   })
-  // }, []); 
+  useEffect( () => {
+    //hämta
+    GetHolidays( (data) => {
+
+      for (let i in data) {
+        // console.log("data", data[i].["arbetsfri dag"]);
+        // console.log("data[i].datum", data[i].datum);
+          if(data[i]['röd dag'] === "Ja") {
+              holidayList.push(data[i].datum)
+          }
+      }
+      // console.log("holidayList after push", holidayList);
+      
+      //spara
+      setHolidayList(holidayList)
+    })
+  }, []); 
 
   // console.log("masterList App.js", masterList);
 
