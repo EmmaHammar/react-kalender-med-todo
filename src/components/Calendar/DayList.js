@@ -19,7 +19,7 @@ function DayList (props) {
 
   return (
     <div id='daylist-container'>
-      <h3>Task-list för: {props.selectedDate}</h3>
+      {/* <h3>Task-list för: {props.selectedDate}</h3> */}
       <ul>
         {
           Object.values(masterList).map( (task, index) => (task.date === props.selectedDate) ? <div key={index} className='day-list'><button id={task.id} onClick={handleClick}>Klar</button><p>{task.title}</p></div> : "")

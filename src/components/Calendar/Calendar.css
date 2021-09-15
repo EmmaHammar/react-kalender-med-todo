@@ -16,7 +16,7 @@
 .day {
     position: relative;
     width: calc(100% / 7);
-    height: 5rem;
+    height: 8rem;
     display: inline-block;
     background-color: antiquewhite;
     box-sizing: border-box;
@@ -48,4 +48,8 @@
 
 .next {
     margin-left: 10px;
+}
+
+.redDay {
+    color: saddlebrown;
 }

@@ -4,7 +4,6 @@ import './TaskCard.css';
 function TaskCard (props) {
 
     const handleClick = ( (evt) => {
-        // console.log("klick klar evt", evt.target.id);
         let deleteId = evt.target.id;
         
         props.deleteTask(deleteId) //kallar på funktionen deleteTask() i app.js 
@@ -12,9 +11,9 @@ function TaskCard (props) {
     
     return (
         <div className="task-card" key={ props.index }>
-            <h3>{ props.title }</h3>
-            <p>{ props.date }</p>
-            <button id={props.id} onClick={handleClick}>Klar</button>
+            <button id={props.id} onClick={handleClick} className="btn task-card-deadline">Klar</button>
+            <h3 className='task-card-deadline'>{ props.date }</h3>
+            <h4 className='task-card-title'>{ props.title }</h4>
         </div>
     );
 };

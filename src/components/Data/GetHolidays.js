@@ -1,6 +1,5 @@
 function GetHolidays (cb) {
     fetch(`https://sholiday.faboul.se/dagar/v2.1/2021`, )
-
     .then(response => response.json())
     .then(data => {
         // console.log("Fetch GetHolidays.js:", data.dagar);

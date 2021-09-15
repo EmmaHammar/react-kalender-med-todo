@@ -32,15 +32,9 @@ function MasterList(props) {
                     isFinish={ task.isFinish }
                     title={ task.title }
                     date={ moment(task.date).format("YYYY/MM/DD") }
-                    //varför skriver man sådär key o index?
                     key={ index }
                     index={index}
                     deleteTask={ props.deleteTask }
-//                     masterArr={ props.masterArr } 
-//                     doUpdate={props.doUpdate} 
-//                     isUpdate={props.isUpdate}
-//                     checked={checked}
-//                     isChecked={isChecked}
                 />
         )
     })

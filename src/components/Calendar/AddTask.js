@@ -17,7 +17,7 @@ function AddTask(props) {
     
   return (
     <div>
-      <h3>Lägg till ny uppgift med deadline: {props.selectedDate}</h3>
+      <h3>{props.selectedDate} | Todo-lista</h3>
       <div>
         <input id='input-add-task' type="text" placeholder="Skriv ny uppgift" onChange={handleChange}></input>
           <button onClick = { handleClick }id="saveBtn">Spara</button>

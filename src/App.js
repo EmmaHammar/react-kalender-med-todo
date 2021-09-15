@@ -29,20 +29,15 @@ function App() {
     GetHolidays( (data) => {
 
       for (let i in data) {
-        // console.log("data", data[i].["arbetsfri dag"]);
-        // console.log("data[i].datum", data[i].datum);
           if(data[i]['röd dag'] === "Ja") {
               holidayList.push(data[i].datum)
           }
       }
-      // console.log("holidayList after push", holidayList);
       
       //spara
       setHolidayList(holidayList)
     })
   }, []); 
-
-  // console.log("masterList App.js", masterList);
 
   //spara ny task i db (children kallar på addTask-funktion):
   const addTask = (title, selectedDate) => {
@@ -52,11 +47,9 @@ function App() {
       isFinish: false,
       id: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) 
     };
-    // console.log("newTaskInfo", newTaskInfo);
 
     //hämta+ändra statet 
     const newMasterList = {...Object.values(masterList), newTaskInfo}
-    // console.log("newMasterList", newMasterList); //newTaskInfo har ej array-/indexnr - gör det ngt?
     
     // spara state masterList
     setMasterList(newMasterList);
@@ -74,10 +67,8 @@ function App() {
 
     //ändra - hitta id:ets indexnr:
     const findIndex = Object.values(masterListCopy).findIndex(obj => obj.id === taskId);
-    // console.log("findIndex", findIndex);
 
     delete masterListCopy[findIndex]; //ta bort tasken
-    // console.log("deleted masterListCopy", masterListCopy);
 
     //spara
     setMasterList(masterListCopy)

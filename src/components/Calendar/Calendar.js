@@ -65,28 +65,21 @@ function Calendar(props) {
             }
         }
 
-        return (
-            <div>
-                {lengthArr.length} deadlines
-            </div>
-        )
+        if (lengthArr.length > 0) {
+            return (
+                <div>
+                    {lengthArr.length} todo
+                </div>
+            )
+        } 
     };
 
     const printHolidays = (day) => {
-        // console.log("holidayList", holidayList);
-
-        let redDay = document.createElement("div");
-        redDay.classList.add("red");
-        let redDayText = document.createTextNode("Ledig");
-        redDay.appendChild(redDayText);
-
     
         let isHoliday = holidayList.find( (item) => item === moment(day).format("YYYY-MM-DD"));
 
-        console.log("isHoliday", isHoliday);
-
         if (isHoliday !== undefined) {
-            return <p>Ledig</p>
+            return <p className="redDay">Ledig</p>
         } 
     };
 
